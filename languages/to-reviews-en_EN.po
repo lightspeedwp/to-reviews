@@ -1,0 +1,187 @@
+# Copyright (C) 2017 to-reviews
+# This file is distributed under the same license as the to-reviews package.
+msgid ""
+msgstr ""
+"Project-Id-Version: to-reviews\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: LightSpeed <webmaster@lsdev.biz>\n"
+"Report-Msgid-Bugs-To: https://bitbucket.org/feedmycode/to-reviews\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: classes/class-to-reviews-frontend.php:178, classes/class-to-reviews-frontend.php:312, classes/class-to-reviews-frontend.php:335, classes/class-to-reviews-frontend.php:363, templates/content-widget-review.php:47, includes/metaboxes/config-review.php:161
+msgid "Accommodation"
+msgstr ""
+
+#: classes/class-to-reviews-frontend.php:202, classes/class-to-reviews-frontend.php:313, classes/class-to-reviews-frontend.php:336, classes/class-to-reviews-frontend.php:364, templates/content-widget-review.php:48, includes/metaboxes/config-review.php:163
+msgid "Tours"
+msgstr ""
+
+#: classes/class-to-reviews-frontend.php:226, classes/class-to-reviews-frontend.php:314, classes/class-to-reviews-frontend.php:337, classes/class-to-reviews-frontend.php:365, templates/content-widget-review.php:49, includes/metaboxes/config-review.php:162
+msgid "Destinations"
+msgstr ""
+
+#: classes/class-to-reviews-frontend.php:241, classes/class-to-reviews-frontend.php:246, classes/class-to-reviews-frontend.php:250, classes/class-to-reviews-frontend.php:383, includes/metaboxes/config-review.php:107, includes/metaboxes/config-review.php:113
+msgid "Gallery"
+msgstr ""
+
+#: classes/class-to-reviews-frontend.php:272, classes/class-to-reviews-frontend.php:386, classes/class-to-reviews-frontend.php:388
+msgid "Videos"
+msgstr ""
+
+#: classes/class-to-reviews-frontend.php:295, includes/metaboxes/config-review.php:160
+msgid "Posts"
+msgstr ""
+
+#: classes/class-to-reviews-frontend.php:346
+msgid "View more"
+msgstr ""
+
+#: classes/class-to-reviews-frontend.php:361, includes/metaboxes/config-review.php:68
+msgid "Rating"
+msgstr ""
+
+#: classes/class-to-reviews-frontend.php:362
+msgid "Date Travelled"
+msgstr ""
+
+#: classes/class-to-reviews.php:103, includes/post-types/config-review.php:16, includes/post-types/config-review.php:22
+msgid "Reviews"
+msgstr ""
+
+#: classes/class-to-reviews.php:106, includes/post-types/config-review.php:17
+msgid "Review"
+msgstr ""
+
+#: includes/template-tags.php:24
+msgid "Featured Posts"
+msgstr ""
+
+#: includes/template-tags.php:109, includes/template-tags.php:132, includes/template-tags.php:155, includes/template-tags.php:178, includes/template-tags.php:201, includes/template-tags.php:224
+msgstr ""
+
+#: templates/content-review.php:28
+msgid "Trip Details"
+msgstr ""
+
+#: templates/content-widget-review.php:50
+msgid "Advised by"
+msgstr ""
+
+#: templates/single-review.php:24
+msgid "Summary"
+msgstr ""
+
+#: includes/metaboxes/config-review.php:13
+msgid "Tour Operator Plugin"
+msgstr ""
+
+#: includes/metaboxes/config-review.php:20
+msgid "Featured"
+msgstr ""
+
+#: includes/metaboxes/config-review.php:26
+msgid "Disable Single"
+msgstr ""
+
+#: includes/metaboxes/config-review.php:33
+msgid "Tagline"
+msgstr ""
+
+#: includes/metaboxes/config-review.php:40
+msgid "No of Adults"
+msgstr ""
+
+#: includes/metaboxes/config-review.php:47
+msgid "No of Children"
+msgstr ""
+
+#: includes/metaboxes/config-review.php:54
+msgid "Reviewer Name"
+msgstr ""
+
+#: includes/metaboxes/config-review.php:61
+msgid "Reviewer Email"
+msgstr ""
+
+#: includes/metaboxes/config-review.php:76
+msgid "Date of visit"
+msgstr ""
+
+#: includes/metaboxes/config-review.php:91
+msgid "Reviewed By"
+msgstr ""
+
+#: includes/metaboxes/config-review.php:122, includes/metaboxes/config-review.php:128
+msgid "Envira Gallery"
+msgstr ""
+
+#: includes/metaboxes/config-review.php:144
+msgid "Envira Video Gallery"
+msgstr ""
+
+#: includes/metaboxes/config-review.php:175
+msgid " related with this review"
+msgstr ""
+
+#: includes/partials/review.php:4
+msgid "General"
+msgstr ""
+
+#: includes/partials/review.php:6
+msgid "Search"
+msgstr ""
+
+#: includes/partials/review.php:8
+msgid "Placeholders"
+msgstr ""
+
+#: includes/partials/review.php:9
+msgid "Archives"
+msgstr ""
+
+#: includes/partials/review.php:10
+msgid "Single"
+msgstr ""
+
+#: includes/post-types/config-review.php:18
+msgid "Add New"
+msgstr ""
+
+#: includes/post-types/config-review.php:19
+msgid "Add New Review"
+msgstr ""
+
+#: includes/post-types/config-review.php:20
+msgid "Edit Review"
+msgstr ""
+
+#: includes/post-types/config-review.php:21
+msgid "New Reviews"
+msgstr ""
+
+#: includes/post-types/config-review.php:23
+msgid "View Review"
+msgstr ""
+
+#: includes/post-types/config-review.php:24
+msgid "Search Reviews"
+msgstr ""
+
+#: includes/post-types/config-review.php:25
+msgid "No reviews found"
+msgstr ""
+
+#: includes/post-types/config-review.php:26
+msgid "No reviews found in Trash"
+msgstr ""
+
+#: includes/post-types/config-review.php:28
+msgid "Activities"
+msgstr ""
