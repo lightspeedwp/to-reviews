@@ -73,6 +73,7 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 
 			require_once(LSX_TO_REVIEWS_PATH . '/classes/class-to-reviews-admin.php');
 			require_once(LSX_TO_REVIEWS_PATH . '/classes/class-to-reviews-frontend.php');
+			require_once(LSX_TO_REVIEWS_PATH . '/classes/class-reviews-schema.php');
 			require_once(LSX_TO_REVIEWS_PATH . '/includes/template-tags.php');
 
 			// flush_rewrite_rules()
