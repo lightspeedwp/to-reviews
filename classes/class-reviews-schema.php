@@ -55,18 +55,17 @@ class LSX_TO_Reviews_Schema extends LSX_TO_Reviews {
 			}
 			$meta = array(
 			"@context" => "https://schema.org/",
-			
-				"@type" => "Review",
-				"reviewRating" => array(
-				"@type" => "Rating",
-				"ratingValue" => $rating_value,
-				"bestRating"  => $rating_value,
-				),
-				"author" => array(
+			"@type" => "Review",
+			"reviewRating" => array(
+			"@type" => "Rating",
+			"ratingValue" => $rating_value,
+			"bestRating"  => $rating_value,
+			),
+			"author" => array(
 				"@type" => "Person",
 				"name" => $review_author,
 				"email" => $review_email
-				),
+			),
 				"reviewBody" => $review_description,
 				"itemReviewed" => $tour_list,
 			); 
