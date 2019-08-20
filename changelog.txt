@@ -1,7 +1,7 @@
 ## Change log
 
 ### 1.1.1
-* Fix - Travis and dependancy fixes 
+* Fix - Travis and dependency fixes 
 * Dev - API Class Removal
 * Dev - No sidebars on single or archive
 
