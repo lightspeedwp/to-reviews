@@ -1,5 +1,11 @@
 ## Change log
 
+### 1.1.1
+* Fix - Travis and dependency fixes 
+* Dev - API Class Removal
+* Dev - No sidebars on single or archive
+
+
 ### 1.1.0
 * Dev - Support LSX Theme 2.0 new designs
 * Added compatibility with LSX 2.0
