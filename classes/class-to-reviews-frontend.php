@@ -98,11 +98,11 @@ class LSX_TO_Reviews_Frontend extends LSX_TO_Reviews {
 		}
 
 		if ( is_main_query() && is_singular( 'review' ) && false === $lsx_to_archive ) {
-			if ( lsx_to_has_enquiry_contact() ) {
+			//if ( lsx_to_has_enquiry_contact() ) {
 				$classes[] = 'col-xs-12 col-sm-8 col-md-9';
-			} else {
-				$classes[] = 'col-sm-12';
-			}
+			//} else {
+				//$classes[] = 'col-sm-12';
+			//}
 		}
 
 		return $classes;
@@ -113,12 +113,12 @@ class LSX_TO_Reviews_Frontend extends LSX_TO_Reviews {
 	 */
 	public function rating( $html = '', $meta_key = false, $value = false, $before = '', $after = '' ) {
 		if ( get_post_type() === 'review' && 'rating' === $meta_key ) {
-			$ratings_array = false;
+			$ratings_array = array();
 			$counter       = 5;
 			$html          = '';
 			if ( 0 !== (int) $value ) {
 				while ( $counter > 0 ) {
-					if ( $value >= 0 ) {
+					if ( $value > 0 ) {
 						$ratings_array[] = '<i class="fa fa-star"></i>';
 					} else {
 						$ratings_array[] = '<i class="fa fa-star-o"></i>';

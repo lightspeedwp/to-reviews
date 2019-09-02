@@ -67,10 +67,9 @@ $metabox['fields'][] = array(
 	'id'		 => 'rating',
 	'name'		 => esc_html__( 'Rating', 'to-reviews' ),
 	'type'		 => 'radio',
-	'options'	 => array( '1', '2', '3', '4', '5' ),
+	'options'	 => array( '0', '1', '2', '3', '4', '5' ),
 	'allow_none' => true,
 );
-
 $metabox['fields'][] = array(
 	'id'	=> 'date_of_visit_start',
 	'name'	=> esc_html__( 'Date of visit', 'to-reviews' ),
