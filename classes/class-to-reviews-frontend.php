@@ -34,13 +34,13 @@ class LSX_TO_Reviews_Frontend extends LSX_TO_Reviews {
 		add_action( 'wp_head', array( $this, 'change_single_review_layout' ), 20, 1 );
 
 		add_filter( 'lsx_to_entry_class', array( $this, 'entry_class' ) );
-		add_action( 'init',array( $this, 'init' ) );
+		add_action( 'init', array( $this, 'init' ) );
 
 		if ( ! class_exists( 'LSX_TO_Template_Redirects' ) ) {
 			require_once( LSX_TO_REVIEWS_PATH . 'classes/class-template-redirects.php' );
 		}
 
-		$this->redirects = new LSX_TO_Template_Redirects( LSX_TO_REVIEWS_PATH,array_keys( $this->post_types ) );
+		$this->redirects = new LSX_TO_Template_Redirects( LSX_TO_REVIEWS_PATH, array_keys( $this->post_types ) );
 
 		add_action( 'lsx_to_review_content', array( $this->redirects, 'content_part' ), 10 , 2 );
 
@@ -114,22 +114,23 @@ class LSX_TO_Reviews_Frontend extends LSX_TO_Reviews {
 	public function rating( $html = '', $meta_key = false, $value = false, $before = '', $after = '' ) {
 		if ( get_post_type() === 'review' && 'rating' === $meta_key ) {
 			$ratings_array = false;
-			$counter = 5;
+			$counter       = 5;
+			$html          = '';
+			if ( 0 !== (int) $value ) {
+				while ( $counter > 0 ) {
+					if ( $value >= 0 ) {
+						$ratings_array[] = '<i class="fa fa-star"></i>';
+					} else {
+						$ratings_array[] = '<i class="fa fa-star-o"></i>';
+					}
 
-			while ( $counter > 0 ) {
-				if ( $value >= 0 ) {
-					$ratings_array[] = '<i class="fa fa-star"></i>';
-				} else {
-					$ratings_array[] = '<i class="fa fa-star-o"></i>';
+					$counter--;
+					$value--;
 				}
 
-				$counter--;
-				$value--;
+				$html = $before . implode( '', $ratings_array ) . $after;
 			}
-
-			$html = $before . implode( '',$ratings_array ) . $after;
 		}
-
 		return $html;
 	}
 
