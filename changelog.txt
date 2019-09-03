@@ -1,10 +1,12 @@
 ## Change log
 
+### 1.1.2 - In Development
+* Dev - Adding the .gitattributes file to remove unnecessary files from the WordPress version.
+
 ### 1.1.1
 * Fix - Travis and dependency fixes 
 * Dev - API Class Removal
 * Dev - No sidebars on single or archive
-
 
 ### 1.1.0
 * Dev - Support LSX Theme 2.0 new designs
