@@ -89,7 +89,7 @@ class LSX_TO_Schema_Review extends LSX_TO_Schema_Graph_Piece {
 	 *
 	 * @return array $data Country / State data.
 	 */
-	public function add_destinations( $data ) {
+	public function add_destinations( $data, $data_key = '' ) {
 		$places_array = array();
 		$destinations = get_post_meta( $this->context->id, 'destination_to_' . $this->post_type, false );
 		if ( ! empty( $destinations ) ) {
