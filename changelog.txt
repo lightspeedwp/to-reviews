@@ -1,6 +1,6 @@
 ## Change log
 
-### 1.1.2 - September 27 2019
+### 1.2.0 - September 27 2019
 * Dev - Added in the Review Schema integrated with Yoast WordPress SEO
 * Dev - Adding the .gitattributes file to remove unnecessary files from the WordPress version.
 * Dev - Enabled the sorting of the gallery field
