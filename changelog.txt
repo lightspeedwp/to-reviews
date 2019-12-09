@@ -1,5 +1,10 @@
 ## Change log
 
+## 1.2.1
+* Dev - Enabled the sorting of the gallery field
+* Dev - General testing to ensure compatibility with latest WordPress version (5.3).
+* Dev - Checking compatibility with LSX 2.6 release.
+
 ### 1.2.0 - September 27 2019
 * Dev - Added in the Review Schema integrated with Yoast WordPress SEO
 * Dev - Adding the .gitattributes file to remove unnecessary files from the WordPress version.
