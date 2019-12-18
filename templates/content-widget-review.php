@@ -36,7 +36,16 @@ if ( $has_single ) {
 
 	<?php if ( empty( $disable_text ) ) { ?>
 		<blockquote class="lsx-to-widget-blockquote">
-			<?php the_excerpt(); ?>
+			<?php
+			$excerpt = get_the_excerpt();
+			if ( empty( $excerpt ) || '' === $excerpt ) {
+				$tooltip = apply_filters( 'get_the_excerpt', get_the_content() );
+				$tooltip = strip_tags( $tooltip );
+				echo wp_kses_post( wpautop( $tooltip ) );
+			} else {
+				echo wp_kses_post( $excerpt );
+			}
+			?>
 		</blockquote>
 	<?php } ?>
 

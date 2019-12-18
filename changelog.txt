@@ -4,6 +4,7 @@
 * Dev - Enabled the sorting of the gallery field
 * Dev - General testing to ensure compatibility with latest WordPress version (5.3).
 * Dev - Checking compatibility with LSX 2.6 release.
+* Dev - If the review does not have an excerpt it will show trimmed content on the Reviews widget.
 
 ### 1.2.0 - September 27 2019
 * Dev - Added in the Review Schema integrated with Yoast WordPress SEO
