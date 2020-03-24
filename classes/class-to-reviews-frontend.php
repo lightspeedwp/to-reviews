@@ -209,6 +209,7 @@ class LSX_TO_Reviews_Frontend extends LSX_TO_Reviews {
 	 * Tests for the Related Destinations and returns a link for the section
 	 */
 	public function get_related_destinations_link() {
+		$connected_destination  = '';
 		$connected_destinations = get_post_meta( get_the_ID(), 'destination_to_review', false );
 
 		if ( post_type_exists( 'destination' ) && is_array( $connected_destinations ) && ! empty( $connected_destinations ) ) {
