@@ -1,7 +1,7 @@
 # Change log
 
 
-## [Unreleased] - Minor version 1.2.2
+## [[1.2.]](https://github.com/lightspeeddevelopment/to-reviews/releases/tag/1.2.2) - 2020-03-30
 
 ### Fixed
 - Fixed PHP error `Undefined variable: connected_destination`.
