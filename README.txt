@@ -9,7 +9,7 @@ Stable tag: 1.2.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
-The LSX Tour Operator Reviews plugin adds reviews to tours, accommodation and destinations.
+This plugin adds reviews to tours, accommodation and destinations.
 
 == Description ==
 
