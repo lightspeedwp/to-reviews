@@ -1,15 +1,17 @@
-=== Tour Operator Reviews ===
-Contributors: feedmymedia
-Donate link: https://donate.lsdev.biz/
-Tags: tour operator, lsx, reviews, ratings, accommodation, tours, destinations
-Requires at least: 5.3
-Tested up to: 5.5
-Requires PHP: 7.2
-Stable tag: 1.2.2
-License: GPLv3
+=== LSX Tour Operator Reviews ===
+Contributors: feedmymedia, lightspeedwp, eleshar, krugazul, jacquesvdh, ignusvermaak
+Donate link: https://lsdev.biz/lsx/donate/
+Tags: lsx, tour operator, reviews, ratings, accommodation, tours, destinations
+Requires at least: 5.0
+Tested up to: 5.5.1
+Requires PHP: 7.0
+Stable tag: 1.2.3
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
 Welcome to the [Tour Operator Reviews extension](https://tour-operator.lsdev.biz/extensions/reviews/).
 
+== Description ==
 If you haven't yet had the chance to [install and configure the Tour Operator Plugin](https://tour-operator.lsdev.biz/), you should do that before proceeding here! 
 
 People want to be sure that they’re making the right choice with the the right company. Your offerings aren’t that different from many other competitors, but it’s your “trustability” that will set you apart from the herd. 
@@ -22,7 +24,7 @@ The [Tour Operator Plugin](https://tour-operator.lsdev.biz/) and [Extensions](ht
 
 We are always updating our software to add functionality, and maintain latest security protocols. 
 
-== Gutenberg Compatible Plugin ==
+== Gutenberg Compatible ==
 
 Have you updated to the new WordPress Gutenberg editor? We've got you covered! The Tour Operator Reviews Plugin has been optimized for the Gutenberg update. 
 
@@ -37,14 +39,40 @@ We are constantly maintaining and updating our extension so you have the latest 
 
 Anything you need to double check, or simply need a walkthrough for setting up the extension? Visit the [Tour Operator Reviews documentation](https://tour-operator.lsdev.biz/documentation/extension/reviews/).
 
-== Tour Operator Reviews Help & Support ==
 
-We offer premium support for this plugin. Premium support that can be purchased [via our website](https://www.lsdev.biz/services/support/).
+= Support =
+
+Contact the [LightSpeed](https://lsdev.biz/) for assistance via the [LSX support form](https://www.lsdev.biz/lsx/support/).
 
 If you are experiencing issues with the Tour Operator Reviews Plugin & have experience with Github, please log any bug issues you are having on the [Tour Operator Reviews Github Issues](https://github.com/lightspeeddevelopment/to-reviews/issues/) page.
 
-== Contributing to the Tour Operator Reviews Plugin ==
+== Contributing ==
 
 If you're a developer who's spotted a bug issue and have a fix, or simply have the functionality you think would extend our core theme, we are always happy to accept your contribution! 
 
 Visit the [Tour Operator Reviews Plugin on Github](https://github.com/lightspeeddevelopment/to-reviews/) and submit a Pull Request with your updates.
+
+== Screenshots ==
+
+
+
+
+== Frequently Asked Questions ==
+
+Take a look at all our [Frequently Asked Questions](https://www.lsdev.biz/lsx/documentation/lsx-theme/lsx-theme-faqs/), we are sure you'll find what you're looking for. 
+
+= First question? =
+First answer
+
+= Second question? =
+First answer
+
+= Third question? =
+First answer
+
+== Changelog == 
+
+[Lastest changelogs can be found on GitHub](https://github.com/lightspeeddevelopment/lsx/blob/master/changelog.md).
+
+== Upgrade Notice == 
+
