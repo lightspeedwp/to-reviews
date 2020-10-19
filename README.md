@@ -1,4 +1,4 @@
-<p align="center"><a target="_blank" href="https://tour-operator.lsdev.biz/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2020/09/tour-operator-reviews-banner-1544x500-1.jpg" alt="Tour Operator Reviews Extension"></a>
+<p align="center"><a target="_blank" href="https://www.lsdev.biz/lsx/extensions/tour-operator/reviews/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2020/09/tour-operator-reviews-banner-1544x500-1.jpg" alt="Tour Operator Reviews Extension"></a>
 </p>
 <h1 align="center">Tour Operator Reviews</h1>
 
@@ -21,7 +21,7 @@ The Tour Operators Reviews extension allows you to add reviews written by your p
 
 ## Works with the LSX Theme
 
-The [Tour Operator Plugin](https://tour-operator.lsdev.biz) and [Extensions](https://tour-operator.lsdev.biz/extensions/) are designed to work seamlessly with the LSX theme. 
+The [Tour Operator Plugin](https://www.lsdev.biz/lsx/extensions/tour-operator/) and [Extensions](https://www.lsdev.biz/lsx/extensions/tour-operator/) are designed to work seamlessly with the LSX theme. 
 
 We are always updating our software to add functionality, and maintain latest security protocols. 
 
@@ -29,7 +29,7 @@ We are always updating our software to add functionality, and maintain latest se
 
 Have you updated to the new WordPress Gutenberg editor? We've got you covered! The Tour Operator Reviews Plugin has been optimised for the Gutenberg update. 
 
-Check out our [our Tour Operator dedicated website](https://tour-operator.lsdev.biz/) to check out all our available extensions and features.
+Check out our [our Tour Operator dedicated website](https://www.lsdev.biz/lsx/extensions/tour-operator/) to check out all our available extensions and features.
 
 ## It's free, and always will be.
 We’re firm believers in open source - that’s why this extension is free, and that won't change. 
@@ -38,7 +38,7 @@ We are constantly maintaining and updating our extension so you have the latest 
 
 ## Tour Operator Reviews Documentation
 
-Anything you need to double check, or simply need a walkthrough for setting up the extension? Visit the [Tour Operator Reviews documentation](https://tour-operator.lsdev.biz/documentation/extension/reviews/).
+Anything you need to double check, or simply need a walkthrough for setting up the extension? Visit the [Tour Operator Reviews documentation](https://lsdev.biz/lsx/documentation/lsx-tour-operator/reviews/).
 
 ## Tour Operator Reviews Help & Support
 
