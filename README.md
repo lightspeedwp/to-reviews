@@ -1,4 +1,4 @@
-<p align="center"><a target="_blank" href="https://tour-operator.lsdev.biz/"><img width="100px;" src="https://tour-operator.lsdev.biz/wp-content/uploads/2019/04/icon-reviews.svg" alt="Tour Operator Reviews Extension"></a>
+<p align="center"><a target="_blank" href="https://tour-operator.lsdev.biz/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2020/09/tour-operator-reviews-banner-1544x500-1.jpg" alt="Tour Operator Reviews Extension"></a>
 </p>
 <h1 align="center">Tour Operator Reviews</h1>
 
@@ -9,8 +9,6 @@
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://poser.pugx.org/woocommerce/woocommerce/license" alt="license"></a>
   <a href="http://gulpjs.com/"><img src="https://img.shields.io/badge/built%20with-gulp.js-green.svg" alt="Built with gulp.js"></a> 
   	<a href="https://travis-ci.org/github/lightspeeddevelopment/to-reviews"><img src="https://travis-ci.org/lightspeeddevelopment/to-reviews.svg?branch=master" alt="Build Status"></a>
-	<a href="https://lsdev.biz/lsx/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2019/06/Designed-for-LSX-Theme-blue.png" alt="Made for LSX Theme"></a>
-	<a href="https://lsdev.biz/lsx/extensions/tour-operator/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2019/06/Designed-for-Tour-Operator-plugin-1098ad.png" alt="LSX Tour Operator"></a>
 </p>
 
 Welcome to the [Tour Operator Reviews extension](https://tour-operator.lsdev.biz/extensions/reviews/).
