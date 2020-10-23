@@ -56,7 +56,9 @@ if ( $has_single ) {
 			lsx_to_connected_accommodation( '<span class="' . $meta_class . 'accommodations"><span class="lsx-to-meta-data-key">' . __( 'Accommodation', 'to-reviews' ) . ':</span> ', '</span>' );
 			lsx_to_connected_tours( '<span class="' . $meta_class . 'tours"><span class="lsx-to-meta-data-key">' . __( 'Tours', 'to-reviews' ) . ':</span> ', '</span>' );
 			lsx_to_connected_destinations( '<span class="' . $meta_class . 'destinations"><span class="lsx-to-meta-data-key">' . __( 'Destinations', 'to-reviews' ) . ':</span> ', '</span>' );
-			lsx_to_connected_team( '<span class="' . $meta_class . 'team"><span class="lsx-to-meta-data-key">' . __( 'Advised by', 'to-reviews' ) . ':</span> ', '</span>' );
+			if ( function_exists( 'lsx_to_connected_team' ) ) {
+				lsx_to_connected_team( '<span class="' . $meta_class . 'team"><span class="lsx-to-meta-data-key">' . __( 'Advised by', 'to-reviews' ) . ':</span> ', '</span>' );
+			}
 		?>
 	</div>
 
