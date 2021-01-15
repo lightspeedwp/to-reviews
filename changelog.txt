@@ -1,7 +1,16 @@
 # Change log
 
+## [[1.2.3]](https://github.com/lightspeeddevelopment/to-reviews/releases/tag/1.2.3) - 2021-01-15
+### Added
+- Allowing the block editor for the single reviews description area.
 
-## [[1.2.]](https://github.com/lightspeeddevelopment/to-reviews/releases/tag/1.2.2) - 2020-03-30
+### Fixed
+- Fixed all undefined notices to adhere to coding standards.
+
+### Security
+- General testing to ensure compatibility with latest WordPress version (5.6).
+
+## [[1.2.2]](https://github.com/lightspeeddevelopment/to-reviews/releases/tag/1.2.2) - 2020-03-30
 
 ### Fixed
 - Fixed PHP error `Undefined variable: connected_destination`.
