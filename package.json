@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.5",
-    "minimatch": "^4.1.1",
+    "minimatch": "^5.0.0",
     "randomatic": "^3.0.0"
   }
 }
