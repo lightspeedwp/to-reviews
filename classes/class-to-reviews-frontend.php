@@ -36,13 +36,13 @@ class LSX_TO_Reviews_Frontend extends LSX_TO_Reviews {
 		add_filter( 'lsx_to_entry_class', array( $this, 'entry_class' ) );
 		add_action( 'init', array( $this, 'init' ) );
 
-		if ( ! class_exists( 'LSX_TO_Template_Redirects' ) ) {
+		/*if ( ! class_exists( 'LSX_TO_Template_Redirects' ) ) {
 			require_once( LSX_TO_REVIEWS_PATH . 'classes/class-template-redirects.php' );
 		}
 
 		$this->redirects = new LSX_TO_Template_Redirects( LSX_TO_REVIEWS_PATH, array_keys( $this->post_types ) );
 
-		add_action( 'lsx_to_review_content', array( $this->redirects, 'content_part' ), 10 , 2 );
+		add_action( 'lsx_to_review_content', array( $this->redirects, 'content_part' ), 10 , 2 );*/
 
 		add_filter( 'lsx_to_page_navigation', array( $this, 'page_links' ) );
 
