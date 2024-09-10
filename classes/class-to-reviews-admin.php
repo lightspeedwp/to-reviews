@@ -88,26 +88,15 @@ class LSX_TO_Reviews_Admin extends LSX_TO_Reviews {
 		}
 		if ( false !== $post_type ) {
 			$fields[] = array(
-				'id' => 'review_title',
-				'name' => 'Reviews',
-				'type' => 'title',
-				'cols' => 12,
-			);
-			$fields[] = array(
 				'id' => 'review_to_' . $post_type,
 				'name' => 'Reviews related with this ' . $post_type,
-				'type' => 'post_select',
-				'use_ajax' => false,
-				'query' => array(
-					'post_type' => 'review',
-					'nopagin' => true,
-					'posts_per_page' => '-1',
-					'orderby' => 'title',
-					'order' => 'ASC',
-				),
-				'repeatable' => true,
+				'type' => 'pw_multiselect',
+				'use_ajax'   => false,
+				'repeatable' => false,
 				'allow_none' => true,
-				'cols' => 12,
+				'options'  => array(
+					'post_type_args' => 'destination',
+				),
 			);
 		}
 		return $fields;
