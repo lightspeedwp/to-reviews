@@ -95,7 +95,7 @@ class LSX_TO_Reviews_Admin extends LSX_TO_Reviews {
 				'repeatable' => false,
 				'allow_none' => true,
 				'options'  => array(
-					'post_type_args' => 'destination',
+					'post_type_args' => 'review',
 				),
 			);
 		}
