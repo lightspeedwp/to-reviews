@@ -59,6 +59,7 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 			add_action( 'activated_plugin', array( $this, 'activated_plugin' ) );
 
 			add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
+			add_action( 'init', array( $this, 'register_post_type' ) );
 
 			if ( false !== $this->post_types ) {
 				add_filter( 'lsx_to_framework_post_types', array( $this, 'post_types_filter' ) );
@@ -231,6 +232,18 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 				$pieces[] = new LSX_TO_Schema_Review( $context );
 			}
 			return $pieces;
+		}
+
+		/**
+		 * Registers the custom post type for the content model.
+		 *
+		 * @return void
+		 */
+		public function register_post_type() {
+			register_post_type(
+				'review',
+				require_once LSX_TO_REVIEWS_PATH . '/includes/post-types/config-review.php'
+			);
 		}
 	}
 	new LSX_TO_Reviews();

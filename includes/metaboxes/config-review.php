@@ -79,12 +79,8 @@ if ( class_exists( 'LSX_TO_Team' ) ) {
 		'type'       => 'pw_multiselect',
 		'use_ajax'   => false,
 		'allow_none' => true,
-		'query'      => array(
-			'post_type'      => 'team',
-			'nopagin'        => true,
-			'posts_per_page' => 1000,
-			'orderby'        => 'title',
-			'order'          => 'ASC',
+		'options'  => array(
+			'post_type_args' => 'team',
 		),
 	);
 }
@@ -128,12 +124,8 @@ foreach ( $post_types as $slug => $label ) {
 		'use_ajax'   => false,
 		'repeatable' => true,
 		'allow_none' => true,
-		'query'      => array(
-			'post_type'      => $slug,
-			'nopagin'        => true,
-			'posts_per_page' => '-1',
-			'orderby'        => 'title',
-			'order'          => 'ASC',
+		'options'  => array(
+			'post_type_args' => $slug,
 		),
 	);
 }

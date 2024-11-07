@@ -25,12 +25,11 @@ $post_type = array(
 		'not_found'          => esc_html__( 'No reviews found', 'to-reviews' ),
 		'not_found_in_trash' => esc_html__( 'No reviews found in Trash', 'to-reviews' ),
 		'parent_item_colon'  => '',
-		'menu_name'          => esc_html__( 'Activities', 'to-reviews' ),
+		'menu_name'          => esc_html__( 'Reviews', 'to-reviews' ),
 	),
 	'public'              => true,
 	'publicly_queryable'  => true,
 	'show_ui'             => true,
-	'show_in_menu'        => 'tour-operator',
 	'menu_position'       => 60,
 	'query_var'           => true,
 	'rewrite'             => array(
