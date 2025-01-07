@@ -25,27 +25,27 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 		/**
 		 * The post types the plugin registers
 		 */
-		public $post_types = false;	
+		public $post_types = [];	
 
 		/**
 		 * The singular post types the plugin registers
 		 */
-		public $post_types_singular = false;	
+		public $post_types_singular = '';	
 
 		/**
 		 * An array of the post types slugs plugin registers
 		 */
-		public $post_type_slugs = false;			
+		public $post_type_slugs = [];			
 
 		/**
 		 * The taxonomies the plugin registers
 		 */
-		public $taxonomies = false;			
+		public $taxonomies = [];			
 
 		/**
 		 * The taxonomies the plugin registers (plural)
 		 */
-		public $taxonomies_plural = false;			
+		public $taxonomies_plural = [];			
 
 		/**
 		 * Constructor
@@ -53,7 +53,6 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 		public function __construct() {
 			//Set the variables
 			$this->set_vars();
-			$this->lsx_to_search_integration();
 
 			// Make TO last plugin to load.
 			add_action( 'activated_plugin', array( $this, 'activated_plugin' ) );
@@ -81,14 +80,6 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 
 			add_filter( 'wpseo_schema_graph_pieces', array( $this, 'add_graph_pieces' ), 11, 2 );
 		}
-
-		/**
-		 * Include the post type for the search integration
-		 */
-		public function lsx_to_search_integration(){
-			add_filter( 'lsx_to_search_post_types', array( $this, 'post_types_filter' ) );
-			add_filter( 'lsx_to_search_taxonomies', array( $this, 'taxonomies_filter' ) );
-		}
 	
 		/**
 		 * Load the plugin text domain for translation.
@@ -107,7 +98,7 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 			$this->post_types_singular = array(
 				'review'	=>	__('Review','to-reviews')
 			);
-			$this->post_type_slugs = array_keys($this->post_types);			
+			$this->post_type_slugs = array_keys( $this->post_types );			
 		}
 
 		/**

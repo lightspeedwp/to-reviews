@@ -24,7 +24,6 @@ class LSX_TO_Reviews_Admin extends LSX_TO_Reviews {
 	public function __construct() {
 		$this->set_vars();
 
-		add_filter( 'lsx_get_post-types_configs', array( $this, 'post_type_config' ), 10, 1 );
 		add_filter( 'lsx_get_metaboxes_configs', array( $this, 'meta_box_config' ), 10, 1 );
 
 		add_filter( 'lsx_to_destination_custom_fields', array( $this, 'custom_fields' ) );
