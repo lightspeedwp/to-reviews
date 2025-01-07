@@ -13,10 +13,6 @@
  * @param		$after	| string
  * @param		$echo	| boolean
  * @return		string
- *
- * @package 	lsx-tour-operators
- * @subpackage	template-tags
- * @category 	review
  */
 function lsx_to_review_rating( $before = '', $after = '', $echo = true ) {
 	lsx_to_custom_field_query( 'rating', $before, $after, $echo );
@@ -29,10 +25,6 @@ function lsx_to_review_rating( $before = '', $after = '', $echo = true ) {
  * @param		$after	| string
  * @param		$echo	| boolean
  * @return		string
- *
- * @package 	lsx-tour-operators
- * @subpackage	template-tags
- * @category 	review
  */
 function lsx_to_review_dates( $before = '', $after = '', $echo = true ) {
 	$valid_from = get_post_meta( get_the_ID(), 'date_of_visit_start', true );
