@@ -61,10 +61,8 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 			add_action( 'init', array( $this, 'register_post_type' ) );
 
 			if ( false !== $this->post_types ) {
-				add_filter( 'lsx_to_framework_post_types', array( $this, 'post_types_filter' ) );
 				add_filter( 'lsx_to_post_types', array( $this, 'post_types_filter' ) );
 				add_filter( 'lsx_to_post_types_singular', array( $this, 'post_types_singular_filter' ) );
-				add_filter( 'lsx_to_settings_path', array( $this, 'plugin_path' ), 10, 2 );
 			}
 			if ( false !== $this->taxonomies ) {
 				add_filter( 'lsx_to_framework_taxonomies', array( $this, 'taxonomies_filter' ) );
@@ -104,19 +102,9 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 		/**
 		 * Adds our post types to an array via a filter
 		 */
-		public function plugin_path($path,$post_type){
-			if(false !== $this->post_types && array_key_exists($post_type,$this->post_types)){
-				$path = LSX_TO_REVIEWS_PATH;
-			}
-			return $path;
-		}	
-
-		/**
-		 * Adds our post types to an array via a filter
-		 */
 		public function post_types_slugs_filter($post_types){
-			if(is_array($post_types)){
-				$post_types = array_merge($post_types,$this->post_type_slugs);
+			if( is_array( $post_types ) ){
+				$post_types = array_merge( $post_types, $this->post_type_slugs );
 			}else{
 				$post_types = $this->post_type_slugs;
 			}
