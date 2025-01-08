@@ -54,21 +54,21 @@ $metabox['fields'][] = array(
 $metabox['fields'][] = array(
 	'id'		 => 'rating',
 	'name'		 => esc_html__( 'Rating', 'to-reviews' ),
-	'type'		 => 'radio',
+	'type'		 => 'select',
 	'options'	 => array( '0', '1', '2', '3', '4', '5' ),
 	'allow_none' => true,
 );
 $metabox['fields'][] = array(
 	'id'	=> 'date_of_visit_start',
-	'name'	=> esc_html__( 'Date of visit', 'to-reviews' ),
-	'type'	=> 'date',
+	'name'	=> esc_html__( 'Start date of visit', 'to-reviews' ),
+	'type'	=> 'text_date_timestamp',
 	'cols'	=> 6,
 );
 
 $metabox['fields'][] = array(
 	'id'	=> 'date_of_visit_end',
-	'name'	=> '',
-	'type'	=> 'date',
+	'name'	=> esc_html__( 'End date of visit', 'to-reviews' ),
+	'type'	=> 'text_date_timestamp',
 	'cols'	=> 6,
 );
 
@@ -103,6 +103,12 @@ $metabox['fields'][] = array(
     ),
 );
 
+$metabox['fields'][] = array(
+	'id'   => 'related_title',
+	'name' => esc_html__( 'Related', 'to-reviews' ),
+	'type' => 'title',
+);
+
 $post_types = array(
 	'post'          => esc_html__( 'Posts', 'to-reviews' ),
 	'accommodation' => esc_html__( 'Accommodation', 'to-reviews' ),
@@ -111,12 +117,6 @@ $post_types = array(
 );
 
 foreach ( $post_types as $slug => $label ) {
-	$metabox['fields'][] = array(
-		'id'   => $slug . '_title',
-		'name' => $label,
-		'type' => 'title',
-	);
-
 	$metabox['fields'][] = array(
 		'id'         => $slug . '_to_review',
 		'name'       => $label . esc_html__( ' related with this review', 'to-reviews' ),
@@ -130,6 +130,6 @@ foreach ( $post_types as $slug => $label ) {
 	);
 }
 
-$metabox['fields'] = apply_filters( 'lsx_to_review_custom_fields', $metabox['fields'] );
+//$metabox['fields'] = apply_filters( 'lsx_to_review_custom_fields', $metabox['fields'] );
 
 return $metabox;

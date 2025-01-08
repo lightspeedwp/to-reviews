@@ -43,16 +43,20 @@ class LSX_TO_Reviews_Frontend {
 			$html          = '';
 			if ( 0 !== (int) $value ) {
 				while ( $counter > 0 ) {
-					if ( $value > 0 ) {
-						$ratings_array[] = '<i class="fa fa-star"></i>';
+					$ratings_array[] = '<figure class="wp-block-image size-large is-resized">';
+					// phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage
+					$ratings_array[] = '<img src="';
+					if ( (int) $value > 0 ) {
+						$ratings_array[] = LSX_TO_URL . 'assets/img/rating-star-full.png';
 					} else {
-						$ratings_array[] = '<i class="fa fa-star-o"></i>';
+						$ratings_array[] = LSX_TO_URL . 'assets/img/rating-star-empty.png';
 					}
+					$ratings_array[] = '" alt="" style="width:20px;vertical-align:sub;">';
+					$ratings_array[] = '</figure>';
 
-					$counter--;
-					$value--;
+					$counter --;
+					$value --;
 				}
-
 				$html = $before . implode( '', $ratings_array ) . $after;
 			}
 		}
