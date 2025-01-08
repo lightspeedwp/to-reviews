@@ -16,13 +16,14 @@
  * @author  LightSpeed
  */
 
-class LSX_TO_Reviews_Admin extends LSX_TO_Reviews {
+class LSX_TO_Reviews_Admin {
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->set_vars();
+		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
+		add_action( 'init', array( $this, 'register_post_type' ) );
 
 		add_filter( 'lsx_to_destination_custom_fields', array( $this, 'custom_fields' ) );
 		add_filter( 'lsx_to_tour_custom_fields', array( $this, 'custom_fields' ) );
@@ -31,6 +32,25 @@ class LSX_TO_Reviews_Admin extends LSX_TO_Reviews {
 		add_filter( 'lsx_to_team_custom_fields', array( $this, 'custom_fields' ) );
 		add_filter( 'lsx_to_special_custom_fields', array( $this, 'custom_fields' ) );
 		add_filter( 'lsx_to_activity_custom_fields', array( $this, 'custom_fields' ) );
+	}
+
+	/**
+	 * Load the plugin text domain for translation.
+	 */
+	public function load_plugin_textdomain() {
+		load_plugin_textdomain( 'to-reviews', FALSE, basename( LSX_TO_REVIEWS_PATH ) . '/languages');
+	}
+
+	/**
+	 * Registers the custom post type for the content model.
+	 *
+	 * @return void
+	 */
+	public function register_post_type() {
+		register_post_type(
+			'review',
+			require_once LSX_TO_REVIEWS_PATH . '/includes/post-types/config-review.php'
+		);
 	}
 
 	/**
@@ -67,4 +87,3 @@ class LSX_TO_Reviews_Admin extends LSX_TO_Reviews {
 		return $fields;
 	}
 }
-new LSX_TO_Reviews_Admin();

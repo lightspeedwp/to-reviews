@@ -16,7 +16,7 @@
  * @author  LightSpeed
  */
 
-class LSX_TO_Reviews_Frontend extends LSX_TO_Reviews {
+class LSX_TO_Reviews_Frontend {
 
 	/**
 	 * Holds the $page_links array while its being built on the single review page.
@@ -29,8 +29,8 @@ class LSX_TO_Reviews_Frontend extends LSX_TO_Reviews {
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->set_vars();
 		add_filter( 'lsx_to_custom_field_query', array( $this, 'rating' ), 5, 10 );
+		add_filter( 'wpseo_schema_graph_pieces', array( $this, 'add_graph_pieces' ), 11, 2 );
 	}
 
 	/**
@@ -58,6 +58,20 @@ class LSX_TO_Reviews_Frontend extends LSX_TO_Reviews {
 		}
 		return $html;
 	}
-}
 
-new LSX_TO_Reviews_Frontend();
+	/**
+	 * Adds Schema pieces to our output.
+	 *
+	 * @param array                 $pieces  Graph pieces to output.
+	 * @param \WPSEO_Schema_Context $context Object with context variables.
+	 *
+	 * @return array $pieces Graph pieces to output.
+	 */
+	public function add_graph_pieces( $pieces, $context ) {
+		if ( class_exists( 'LSX_TO_Schema_Graph_Piece' ) ) {
+			require_once LSX_TO_REVIEWS_PATH . '/classes/class-to-review-schema.php';
+			$pieces[] = new LSX_TO_Schema_Review( $context );
+		}
+		return $pieces;
+	}
+}
