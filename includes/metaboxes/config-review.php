@@ -130,6 +130,6 @@ foreach ( $post_types as $slug => $label ) {
 	);
 }
 
-//$metabox['fields'] = apply_filters( 'lsx_to_review_custom_fields', $metabox['fields'] );
+$metabox['fields'] = apply_filters( 'lsx_to_review_custom_fields', $metabox['fields'] );
 
 return $metabox;
