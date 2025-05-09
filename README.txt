@@ -1,5 +1,5 @@
 === Tour Operator Reviews ===
-Contributors: feedmymedia, lightspeedwp, eleshar, krugazul, jacquesvdh, ignusvermaak
+Contributors: feedmymedia, lightspeedwp, eleshar, krugazul
 Donate link: https://lightspeedwp.agency/donate/
 Tags: lsx, tour operator, travel, tourism, reviews
 Requires at least: 6.7
