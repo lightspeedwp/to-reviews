@@ -15,18 +15,6 @@ $metabox = array(
 	'fields' => array(),
 );
 
-$metabox['fields'][] = array(
-	'id'   => 'featured',
-	'name' => esc_html__( 'Featured', 'to-reviews' ),
-	'type' => 'checkbox',
-);
-
-$metabox['fields'][] = array(
-	'id'   => 'disable_single',
-	'name' => esc_html__( 'Disable Single', 'to-reviews' ),
-	'type' => 'checkbox',
-);
-
 if ( ! class_exists( 'LSX_Banners' ) ) {
 	$metabox['fields'][] = array(
 		'id'   => 'tagline',
@@ -66,21 +54,21 @@ $metabox['fields'][] = array(
 $metabox['fields'][] = array(
 	'id'		 => 'rating',
 	'name'		 => esc_html__( 'Rating', 'to-reviews' ),
-	'type'		 => 'radio',
+	'type'		 => 'select',
 	'options'	 => array( '0', '1', '2', '3', '4', '5' ),
 	'allow_none' => true,
 );
 $metabox['fields'][] = array(
 	'id'	=> 'date_of_visit_start',
-	'name'	=> esc_html__( 'Date of visit', 'to-reviews' ),
-	'type'	=> 'date',
+	'name'	=> esc_html__( 'Start date of visit', 'to-reviews' ),
+	'type'	=> 'text_date_timestamp',
 	'cols'	=> 6,
 );
 
 $metabox['fields'][] = array(
 	'id'	=> 'date_of_visit_end',
-	'name'	=> '',
-	'type'	=> 'date',
+	'name'	=> esc_html__( 'End date of visit', 'to-reviews' ),
+	'type'	=> 'text_date_timestamp',
 	'cols'	=> 6,
 );
 
@@ -88,15 +76,11 @@ if ( class_exists( 'LSX_TO_Team' ) ) {
 	$metabox['fields'][] = array(
 		'id'         => 'team_to_review',
 		'name'       => esc_html__( 'Reviewed By', 'to-reviews' ),
-		'type'       => 'post_select',
+		'type'       => 'pw_multiselect',
 		'use_ajax'   => false,
 		'allow_none' => true,
-		'query'      => array(
-			'post_type'      => 'team',
-			'nopagin'        => true,
-			'posts_per_page' => 1000,
-			'orderby'        => 'title',
-			'order'          => 'ASC',
+		'options'  => array(
+			'post_type_args' => 'team',
 		),
 	);
 }
@@ -108,54 +92,22 @@ $metabox['fields'][] = array(
 );
 
 $metabox['fields'][] = array(
-	'id'                  => 'gallery',
-	'name'                => '',
-	'type'                => 'image',
-	'repeatable'          => true,
-	'show_size'           => false,
-	'sortable'            => true,
-	'string-repeat-field' => esc_html__( 'Add new image', 'tour-operator' ),
+    'name' => esc_html__( 'Gallery', 'to-reviews' ),
+	'desc' => esc_html__( 'Add images related to the review to be displayed in the Reviews\'s gallery.', 'to-reviews' ),
+    'id'   => 'gallery',
+    'type' => 'file_list',
+    'preview_size' => 'thumbnail', // Image size to use when previewing in the admin.
+    'query_args' => array( 'type' => 'image' ), // Only images attachment
+    'text' => array(
+        'add_upload_files_text' => esc_html__( 'Add new image', 'to-reviews' ), // default: "Add or Upload Files"
+    ),
 );
 
-if ( class_exists( 'Envira_Gallery' ) ) {
-	$metabox['fields'][] = array(
-		'id'   => 'envira_title',
-		'name' => esc_html__( 'Envira Gallery', 'to-reviews' ),
-		'type' => 'title',
-	);
-
-	$metabox['fields'][] = array(
-		'id'         => 'envira_gallery',
-		'name'       => esc_html__( 'Envira Gallery', 'to-reviews' ),
-		'type'       => 'post_select',
-		'use_ajax'   => false,
-		'allow_none' => true,
-		'query'      => array(
-			'post_type'      => 'envira',
-			'nopagin'        => true,
-			'posts_per_page' => '-1',
-			'orderby'        => 'title',
-			'order'          => 'ASC',
-		),
-	);
-
-	if ( class_exists( 'Envira_Videos' ) ) {
-		$metabox['fields'][] = array(
-			'id'         => 'envira_video',
-			'name'       => esc_html__( 'Envira Video Gallery', 'to-reviews' ),
-			'type'       => 'post_select',
-			'use_ajax'   => false,
-			'allow_none' => true,
-			'query'      => array(
-				'post_type'      => 'envira',
-				'nopagin'        => true,
-				'posts_per_page' => '-1',
-				'orderby'        => 'title',
-				'order'          => 'ASC',
-			),
-		);
-	}
-}
+$metabox['fields'][] = array(
+	'id'   => 'related_title',
+	'name' => esc_html__( 'Related', 'to-reviews' ),
+	'type' => 'title',
+);
 
 $post_types = array(
 	'post'          => esc_html__( 'Posts', 'to-reviews' ),
@@ -166,24 +118,14 @@ $post_types = array(
 
 foreach ( $post_types as $slug => $label ) {
 	$metabox['fields'][] = array(
-		'id'   => $slug . '_title',
-		'name' => $label,
-		'type' => 'title',
-	);
-
-	$metabox['fields'][] = array(
 		'id'         => $slug . '_to_review',
 		'name'       => $label . esc_html__( ' related with this review', 'to-reviews' ),
-		'type'       => 'post_select',
+		'type'       => 'pw_multiselect',
 		'use_ajax'   => false,
-		'repeatable' => true,
+		'repeatable' => false,
 		'allow_none' => true,
-		'query'      => array(
-			'post_type'      => $slug,
-			'nopagin'        => true,
-			'posts_per_page' => '-1',
-			'orderby'        => 'title',
-			'order'          => 'ASC',
+		'options'  => array(
+			'post_type_args' => $slug,
 		),
 	);
 }

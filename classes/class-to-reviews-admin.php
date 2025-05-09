@@ -16,16 +16,22 @@
  * @author  LightSpeed
  */
 
-class LSX_TO_Reviews_Admin extends LSX_TO_Reviews {
+class LSX_TO_Reviews_Admin {
+
+	/**
+	 * The post type slug
+	 *
+	 * @var string
+	 */
+	public $post_type = 'review';
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->set_vars();
-
-		add_filter( 'lsx_get_post-types_configs', array( $this, 'post_type_config' ), 10, 1 );
-		add_filter( 'lsx_get_metaboxes_configs', array( $this, 'meta_box_config' ), 10, 1 );
+		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
+		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'register_cmb2_fields' ) );
 
 		add_filter( 'lsx_to_destination_custom_fields', array( $this, 'custom_fields' ) );
 		add_filter( 'lsx_to_tour_custom_fields', array( $this, 'custom_fields' ) );
@@ -33,39 +39,26 @@ class LSX_TO_Reviews_Admin extends LSX_TO_Reviews {
 
 		add_filter( 'lsx_to_team_custom_fields', array( $this, 'custom_fields' ) );
 		add_filter( 'lsx_to_special_custom_fields', array( $this, 'custom_fields' ) );
-		add_filter( 'lsx_to_activity_custom_fields', array( $this, 'custom_fields' ) );
+		add_filter( 'lsx_to_activity_custom_fields', array( $this, 'custom_fields' ) );	
 	}
 
 	/**
-	 * Register the activity post type config
-	 *
-	 * @param  $objects
-	 * @return   array
+	 * Load the plugin text domain for translation.
 	 */
-	public function post_type_config( $objects ) {
-
-		foreach ( $this->post_types as $key => $label ) {
-			if ( file_exists( LSX_TO_REVIEWS_PATH . 'includes/post-types/config-' . $key . '.php' ) ) {
-				$objects[ $key ] = include LSX_TO_REVIEWS_PATH . 'includes/post-types/config-' . $key . '.php';
-			}
-		}
-
-		return 	$objects;
+	public function load_plugin_textdomain() {
+		load_plugin_textdomain( 'to-reviews', false, basename( LSX_TO_REVIEWS_PATH ) . '/languages' );
 	}
 
 	/**
-	 * Register the activity metabox config
+	 * Registers the custom post type for the content model.
 	 *
-	 * @param  $meta_boxes
-	 * @return   array
+	 * @return void
 	 */
-	public function meta_box_config( $meta_boxes ) {
-		foreach ( $this->post_types as $key => $label ) {
-			if ( file_exists( LSX_TO_REVIEWS_PATH . 'includes/metaboxes/config-' . $key . '.php' ) ) {
-				$meta_boxes[ $key ] = include LSX_TO_REVIEWS_PATH . 'includes/metaboxes/config-' . $key . '.php';
-			}
-		}
-		return 	$meta_boxes;
+	public function register_post_type() {
+		register_post_type(
+			'review',
+			require_once LSX_TO_REVIEWS_PATH . '/includes/post-types/config-' . $this->post_type . '.php'
+		);
 	}
 
 	/**
@@ -75,6 +68,7 @@ class LSX_TO_Reviews_Admin extends LSX_TO_Reviews {
 		global $post, $typenow, $current_screen;
 
 		$post_type = false;
+		// @phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if ( $post && $post->post_type ) {
 			$post_type = $post->post_type;
 		} elseif ( $typenow ) {
@@ -86,31 +80,68 @@ class LSX_TO_Reviews_Admin extends LSX_TO_Reviews {
 		} elseif ( isset( $_REQUEST['post'] ) ) {
 			$post_type = get_post_type( sanitize_key( $_REQUEST['post'] ) );
 		}
+		// @phpcs:enable WordPress.Security.NonceVerification.Recommended
 		if ( false !== $post_type ) {
-			$fields[] = array(
-				'id' => 'review_title',
-				'name' => 'Reviews',
-				'type' => 'title',
-				'cols' => 12,
-			);
 			$fields[] = array(
 				'id' => 'review_to_' . $post_type,
 				'name' => 'Reviews related with this ' . $post_type,
-				'type' => 'post_select',
-				'use_ajax' => false,
-				'query' => array(
-					'post_type' => 'review',
-					'nopagin' => true,
-					'posts_per_page' => '-1',
-					'orderby' => 'title',
-					'order' => 'ASC',
-				),
-				'repeatable' => true,
+				'type' => 'pw_multiselect',
+				'use_ajax'   => false,
+				'repeatable' => false,
 				'allow_none' => true,
-				'cols' => 12,
+				'options'  => array(
+					'post_type_args' => 'review',
+				),
 			);
 		}
 		return $fields;
 	}
+
+	/**
+	 * Registers the CMB2 custom fields
+	 *
+	 * @return void
+	 */
+	public function register_cmb2_fields() {
+		/**
+		 * Initiate the metabox
+		 */
+		$cmb = [];
+		$fields = include( LSX_TO_REVIEWS_PATH . 'includes/metaboxes/config-' . $this->post_type . '.php' );
+
+		$metabox_counter = 1;
+		$cmb[ $metabox_counter ] = new_cmb2_box( array(
+			'id'            => 'lsx_to_metabox_' . $this->post_type . '_' . $metabox_counter,
+			'title'         => $fields['title'],
+			'object_types'  => array( $this->post_type ), // Post type
+			'context'       => 'normal',
+			'priority'      => 'high',
+			'show_names'    => true,
+		) );
+
+		foreach ( $fields['fields'] as $field ) {
+
+			if ( 'title' === $field['type'] ) {
+				$metabox_counter++;
+				$cmb[ $metabox_counter ] = new_cmb2_box( array(
+					'id'            => 'lsx_to_metabox_' . $this->post_type . '_' . $metabox_counter,
+					'title'         => $field['name'],
+					'object_types'  => array( $this->post_type ), // Post type
+					'context'       => 'normal',
+					'priority'      => 'high',
+					'show_names'    => true,
+				) );
+				continue;
+			}
+
+			/**
+			 * Fixes for the extensions
+			 */
+			if ( 'post_select' === $field['type'] || 'post_ajax_search' === $field['type'] ) {
+				$field['type'] = 'pw_multiselect';
+			}
+
+			$cmb[ $metabox_counter ]->add_field( $field );
+		}
+	}
 }
-new LSX_TO_Reviews_Admin();
