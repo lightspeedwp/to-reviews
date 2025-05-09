@@ -57,7 +57,7 @@ class LSX_TO_Reviews_Admin {
 	public function register_post_type() {
 		register_post_type(
 			'review',
-			require_once LSX_TO_REVIEWS_PATH . '/includes/post-types/config-review.php'
+			require_once LSX_TO_REVIEWS_PATH . '/includes/post-types/config-' . $this->post_type . '.php'
 		);
 	}
 
@@ -107,11 +107,11 @@ class LSX_TO_Reviews_Admin {
 		 * Initiate the metabox
 		 */
 		$cmb = [];
-		$fields = include( LSX_TO_REVIEWS_PATH . 'includes/metaboxes/config-review.php' );
+		$fields = include( LSX_TO_REVIEWS_PATH . 'includes/metaboxes/config-' . $this->post_type . '.php' );
 
 		$metabox_counter = 1;
 		$cmb[ $metabox_counter ] = new_cmb2_box( array(
-			'id'            => 'lsx_to_metabox_reviews_' . $metabox_counter,
+			'id'            => 'lsx_to_metabox_' . $this->post_type . '_' . $metabox_counter,
 			'title'         => $fields['title'],
 			'object_types'  => array( $this->post_type ), // Post type
 			'context'       => 'normal',
