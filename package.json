@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://www.lsdev.biz/product/tour-operators-reviews/"
+    "url": "git+https://github.com/lightspeedwp/to-reviews/"
   },
   "keywords": [
     "lsx",
@@ -17,9 +17,9 @@
   "author": "LightSpeed",
   "license": "GPL2+",
   "bugs": {
-    "url": "https://www.lsdev.biz/product/tour-operators-reviews/issues"
+    "url": "https://github.com/lightspeedwp/to-reviews/issues"
   },
-  "homepage": "https://www.lsdev.biz/product/tour-operators-reviews/#readme",
+  "homepage": "https://github.com/lightspeedwp/to-reviews/#readme",
   "devDependencies": {
     "gulp": "^5.0.0",
     "gulp-gettext": "^0.3.0",

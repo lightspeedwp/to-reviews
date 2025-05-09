@@ -1,11 +1,11 @@
 <?php
 /*
- * Plugin Name: LSX Tour Operator Reviews
- * Plugin URI:  https://www.lsdev.biz/product/tour-operator-reviews/
+ * Plugin Name: Tour Operator Reviews
+ * Plugin URI:  https://touroperator.solutions/plugins/reviews/
  * Description: The Tour Operator Reviews extension adds the “Reviews” post type, which you can assign to our Tour Operator core post types: Tours, accommodations and destinations.
  * Version:     2.0.0
  * Author:      LightSpeed
- * Author URI:  https://www.lsdev.biz/
+ * Author URI:  https://www.lightspeedwp.agency/
  * License:     GPL3+
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: to-reviews

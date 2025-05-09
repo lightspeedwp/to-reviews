@@ -31,18 +31,18 @@ function lsx_to_review_dates( $before = '', $after = '', $echo = true ) {
 	$valid_to = get_post_meta( get_the_ID(), 'date_of_visit_end', true );
 
 	if ( false !== $valid_from && '' !== $valid_from ) {
-		$valid_from = date( 'd M Y', strtotime( $valid_from ) );
+		$valid_from = gmdate( 'd M Y', strtotime( $valid_from ) );
 	}
 
 	if ( false !== $valid_to && '' !== $valid_to ) {
-		$valid_from .= ' - ' . date( 'd M Y', strtotime( $valid_to ) );
+		$valid_from .= ' - ' . gmdate( 'd M Y', strtotime( $valid_to ) );
 	}
 
 	if ( false !== $valid_from && '' !== $valid_from ) {
 		$return = $before . $valid_from . $after;
 
 		if ( $echo ) {
-			echo $return;
+			echo wp_kses_post( $return );
 		} else {
 			return $return;
 		}

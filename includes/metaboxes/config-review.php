@@ -92,14 +92,14 @@ $metabox['fields'][] = array(
 );
 
 $metabox['fields'][] = array(
-    'name' => esc_html__( 'Gallery', 'tour-operator' ),
-	'desc' => esc_html__( 'Add images related to the review to be displayed in the Reviews\'s gallery.', 'tour-operator' ),
+    'name' => esc_html__( 'Gallery', 'to-reviews' ),
+	'desc' => esc_html__( 'Add images related to the review to be displayed in the Reviews\'s gallery.', 'to-reviews' ),
     'id'   => 'gallery',
     'type' => 'file_list',
     'preview_size' => 'thumbnail', // Image size to use when previewing in the admin.
     'query_args' => array( 'type' => 'image' ), // Only images attachment
     'text' => array(
-        'add_upload_files_text' => esc_html__( 'Add new image', 'tour-operator' ), // default: "Add or Upload Files"
+        'add_upload_files_text' => esc_html__( 'Add new image', 'to-reviews' ), // default: "Add or Upload Files"
     ),
 );
 

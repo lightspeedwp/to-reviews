@@ -46,7 +46,7 @@ class LSX_TO_Reviews_Admin {
 	 * Load the plugin text domain for translation.
 	 */
 	public function load_plugin_textdomain() {
-		load_plugin_textdomain( 'to-reviews', FALSE, basename( LSX_TO_REVIEWS_PATH ) . '/languages');
+		load_plugin_textdomain( 'to-reviews', basename( LSX_TO_REVIEWS_PATH ) . '/languages' );
 	}
 
 	/**
@@ -68,6 +68,7 @@ class LSX_TO_Reviews_Admin {
 		global $post, $typenow, $current_screen;
 
 		$post_type = false;
+		// @phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if ( $post && $post->post_type ) {
 			$post_type = $post->post_type;
 		} elseif ( $typenow ) {
@@ -79,6 +80,7 @@ class LSX_TO_Reviews_Admin {
 		} elseif ( isset( $_REQUEST['post'] ) ) {
 			$post_type = get_post_type( sanitize_key( $_REQUEST['post'] ) );
 		}
+		// @phpcs:enable WordPress.Security.NonceVerification.Recommended
 		if ( false !== $post_type ) {
 			$fields[] = array(
 				'id' => 'review_to_' . $post_type,
