@@ -90,7 +90,8 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 		 * On plugin activation
 		 */
 		public function register_activation_hook() {
-			if ( ! is_network_admin() && ! isset( $_GET['activate-multi'] ) ) {
+
+			if ( ! is_network_admin() && ! isset( $_GET['activate-multi'] ) ) { // @phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				set_transient( '_tour_operators_reviews_flush_rewrite_rules', 1, 30 );
 			}
 		}

@@ -46,7 +46,7 @@ class LSX_TO_Reviews_Admin {
 	 * Load the plugin text domain for translation.
 	 */
 	public function load_plugin_textdomain() {
-		load_plugin_textdomain( 'to-reviews', basename( LSX_TO_REVIEWS_PATH ) . '/languages' );
+		load_plugin_textdomain( 'to-reviews', false, basename( LSX_TO_REVIEWS_PATH ) . '/languages' );
 	}
 
 	/**
