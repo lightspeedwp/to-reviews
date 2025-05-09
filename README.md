@@ -47,7 +47,7 @@ Anything you need to double check, or simply need a walkthrough for setting up t
 
 ## Tour Operator Reviews Help & Support
 
-We offer premium support for this plugin. Premium support that can be purchased [via our website](https://lightspeedwp.agency/contact/).
+We offer premium support for this plugin. Premium support that can be purchased [via our website](https://touroperator.solutions/support/).
 
 If you are experiencing issues with the Tour Operator Reviews Plugin & have experience with Github, please log any bug issues you are having on the [Tour Operator Reviews Github Issues](https://github.com/lightspeeddevelopment/to-reviews/issues/) page.
 
@@ -68,7 +68,7 @@ Visit the [Tour Operator Reviews Plugin on Github](https://github.com/lightspeed
 </p>
 <p align="center">
   <a href="https://www.lightspeedwp.agency">LightSpeed's Company Website</a> &nbsp;&middot;&nbsp;
-  <a href="https://www.lightspeedwp.agency/lsx/">LSX Product Website</a>
+  <a href="https://lsx.design/">LSX Design Product Website</a>
 </p>
 <p align="center">
   <a href="https://github.com/lightspeeddevelopment">GitHub</a> &nbsp;&middot;&nbsp;
