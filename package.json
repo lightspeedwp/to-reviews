@@ -4,7 +4,9 @@
   "description": "Tour Operators add-on for LSX",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+	"build-pot": "wp i18n make-pot . languages/to-reviews.pot",
+    "build-mopo": "rm -R languages/to-reviews-en_EN.mo && cp languages/to-reviews.pot languages/to-reviews-en_EN.po && wp i18n make-mo languages",
+    "translate-US": "cp languages/to-reviews-en_EN.po languages/to-reviews-en_US.po && cp languages/to-reviews-en_EN.mo languages/to-reviews-en_US.mo"
   },
   "repository": {
     "type": "git",
