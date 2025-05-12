@@ -55,7 +55,9 @@ Visit the [Tour Operator Reviews Plugin on Github](https://github.com/lightspeed
 
 == Screenshots ==
 
-
+1. **Reviews Landing:** Customer reviews and testimonials featured on TourPress Pro’s Reviews page, showcasing user satisfaction and real travel experiences.
+2. **Single Review:** A clean, layout the review information and the tours, accommodation or destination its connected to.
+3. **Display Connected Reviews:** Connect your reviews to tours, accommodation and destinations and feature them on the page.
 
 
 == Frequently Asked Questions ==
