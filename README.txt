@@ -62,7 +62,7 @@ Visit the [Tour Operator Reviews Plugin on Github](https://github.com/lightspeed
 
 == Frequently Asked Questions ==
 
-Take a look at all our [Frequently Asked Questions](https://www.lightspeedwp.agency/lsx/documentation/lsx-theme/lsx-theme-faqs/), we are sure you'll find what you're looking for. 
+Take a look at all our [Frequently Asked Questions](https://lsx.design/), we are sure you'll find what you're looking for. 
 
 = First question? =
 First answer
