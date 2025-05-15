@@ -48,19 +48,3 @@ function lsx_to_review_dates( $before = '', $after = '', $echo = true ) {
 		}
 	}
 }
-
-/**
- * Gets the current specials connected reviews
- *
- * @param		$before	| string
- * @param		$after	| string
- * @param		$echo	| boolean
- * @return		string
- *
- * @package 	tour-operator
- * @subpackage	template-tags
- * @category 	connections
- */
-function lsx_to_connected_reviews( $before = '', $after = '', $echo = true ) {
-	lsx_to_connected_items_query( 'review', get_post_type(), $before, $after, $echo );
-}
