@@ -66,6 +66,3 @@ Take a look at all our [Frequently Asked Questions](https://lsx.design/), we are
 == Changelog == 
 
 [Lastest changelogs can be found on GitHub](https://github.com/lightspeeddevelopment/to-reviews/blob/master/changelog.md).
-
-== Upgrade Notice == 
-
