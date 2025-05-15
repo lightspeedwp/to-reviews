@@ -1,4 +1,4 @@
-<p align="center"><a target="_blank" href="https://touroperator.solutions/reviews/"><img src="https://www.lightspeedwp.agency/lsx/wp-content/uploads/2020/09/tour-operator-reviews-banner-1544x500-1.jpg" alt="Tour Operator Reviews Extension"></a>
+<p align="center"><a target="_blank" href="https://touroperator.solutions/reviews/"><img src="https://ps.w.org/tour-operator-reviews/assets/banner-1544x500.jpg" alt="Tour Operator Reviews Extension"></a>
 </p>
 <h1 align="center">Tour Operator Reviews</h1>
 
@@ -7,7 +7,6 @@
   <a href="https://lightspeedwp.agency/lsx/"><img src="https://www.lightspeedwp.agency/lsx/wp-content/uploads/2019/06/Designed-for-LSX-Theme-blue.png" alt="Made for LSX Theme"></a>
 	<a href="https://touroperator.solutions/"><img src="https://www.lightspeedwp.agency/lsx/wp-content/uploads/2019/06/Designed-for-Tour-Operator-plugin-1098ad.png" alt="Tour Operator"></a>
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://poser.pugx.org/woocommerce/woocommerce/license" alt="license"></a>
-  <a href="http://gulpjs.com/"><img src="https://img.shields.io/badge/built%20with-gulp.js-green.svg" alt="Built with gulp.js"></a> 
 </p>  
 <p align="center">
       <a href="https://codeclimate.com/github/lightspeeddevelopment/to-team"><img src="https://codeclimate.com/github/lightspeeddevelopment/to-team/badges/gpa.svg" alt="Code Climate"></a>
