@@ -57,6 +57,8 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 			$this->frontend = new LSX_TO_Reviews_Frontend();
 
 			require_once LSX_TO_REVIEWS_PATH . '/includes/template-tags.php';
+			
+			require_once LSX_TO_REVIEWS_PATH . '/classes/class-to-reviews-templates.php';
 
 			// Make TO last plugin to load.
 			add_action( 'activated_plugin', array( $this, 'activated_plugin' ) );
