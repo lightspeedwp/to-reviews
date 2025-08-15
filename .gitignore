@@ -6,3 +6,4 @@ package-lock.json
 vendor
 wp-content
 .wordpress-org/.DS_Store
+.DS_Store
