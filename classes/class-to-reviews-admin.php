@@ -85,7 +85,7 @@ class LSX_TO_Reviews_Admin {
 		if ( false !== $post_type ) {
 			$fields[] = array(
 				'id' => 'review_to_' . $post_type,
-				'name' => 'Reviews related with this ' . $post_type,
+				'name' => __( 'Related Reviews', 'to-reviews' ),
 				'type' => 'pw_multiselect',
 				'use_ajax'   => false,
 				'repeatable' => false,
