@@ -9,10 +9,10 @@
 /**
  * Gets the current reviews rating
  *
- * @param		$before	| string
- * @param		$after	| string
- * @param		$echo	| boolean
- * @return		string
+ * @param string  $before HTML before the output.
+ * @param string  $after  HTML after the output.
+ * @param boolean $echo   Whether to echo or return the output.
+ * @return string|void
  */
 function lsx_to_review_rating( $before = '', $after = '', $echo = true ) {
 	lsx_to_custom_field_query( 'rating', $before, $after, $echo );
@@ -21,10 +21,10 @@ function lsx_to_review_rating( $before = '', $after = '', $echo = true ) {
 /**
  * Outputs the reviews dates
  *
- * @param		$before	| string
- * @param		$after	| string
- * @param		$echo	| boolean
- * @return		string
+ * @param string  $before HTML before the output.
+ * @param string  $after  HTML after the output.
+ * @param boolean $echo   Whether to echo or return the output.
+ * @return string|void
  */
 function lsx_to_review_dates( $before = '', $after = '', $echo = true ) {
 	$valid_from = get_post_meta( get_the_ID(), 'date_of_visit_start', true );

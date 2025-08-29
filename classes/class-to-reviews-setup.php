@@ -10,7 +10,7 @@
  */
 
 /**
- * Main plugin class.
+ * Main setup class for LSX TO Reviews.
  *
  * @package LSX_TO_Reviews_Setup
  * @author  LightSpeed
@@ -19,35 +19,45 @@
 class LSX_TO_Reviews_Setup {
 
 	/**
-	 * The post types the plugin registers
+	 * The post types the plugin registers.
+	 *
+	 * @var array
 	 */
-	public $post_types = [];	
+	public $post_types = array();
 
 	/**
-	 * The singular post types the plugin registers
+	 * The singular post types the plugin registers.
+	 *
+	 * @var array
 	 */
-	public $post_types_singular = '';	
+	public $post_types_singular = array();
 
 	/**
-	 * An array of the post types slugs plugin registers
+	 * An array of the post types slugs plugin registers.
+	 *
+	 * @var array
 	 */
-	public $post_type_slugs = [];			
+	public $post_type_slugs = array();
 
 	/**
-	 * The taxonomies the plugin registers
+	 * The taxonomies the plugin registers.
+	 *
+	 * @var array
 	 */
-	public $taxonomies = [];			
+	public $taxonomies = array();
 
 	/**
-	 * The taxonomies the plugin registers (plural)
+	 * The taxonomies the plugin registers (plural).
+	 *
+	 * @var array
 	 */
-	public $taxonomies_plural = [];		
+	public $taxonomies_plural = array();
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 */
 	public function __construct() {
-		//Set the variables
+		// Set the variables.
 		$this->set_vars();
 		
 		add_filter( 'lsx_to_post_types', array( $this, 'post_types_filter' ) );
@@ -58,20 +68,23 @@ class LSX_TO_Reviews_Setup {
 	}
 
 	/**
-	 * Sets the plugins variables
+	 * Sets the plugin variables.
 	 */
 	public function set_vars() {
 		$this->post_types = array(
-			'review'	=>	__('Reviews','to-reviews')
+			'review' => __( 'Reviews', 'to-reviews' ),
 		);
 		$this->post_types_singular = array(
-			'review'	=>	__('Review','to-reviews')
+			'review' => __( 'Review', 'to-reviews' ),
 		);
-		$this->post_type_slugs = array_keys( $this->post_types );			
+		$this->post_type_slugs = array_keys( $this->post_types );
 	}
 
 	/**
-	 * Adds our post types to an array via a filter
+	 * Adds our post types to an array via a filter.
+	 *
+	 * @param array $post_types The existing post types.
+	 * @return array
 	 */
 	public function post_types_filter( $post_types ) {
 		if ( is_array( $post_types ) && is_array( $this->post_types ) ) {
@@ -80,10 +93,13 @@ class LSX_TO_Reviews_Setup {
 			$post_types = $this->post_types;
 		}
 		return $post_types;
-	}	
+	}
 
 	/**
-	 * Adds our post types to an array via a filter
+	 * Adds our singular post types to an array via a filter.
+	 *
+	 * @param array $post_types_singular The existing singular post types.
+	 * @return array
 	 */
 	public function post_types_singular_filter( $post_types_singular ) {
 		if ( is_array( $post_types_singular ) && is_array( $this->post_types_singular ) ) {
@@ -92,10 +108,13 @@ class LSX_TO_Reviews_Setup {
 			$post_types_singular = $this->post_types_singular;
 		}
 		return $post_types_singular;
-	}	
+	}
 
 	/**
-	 * Adds our taxonomies to an array via a filter
+	 * Adds our taxonomies to an array via a filter.
+	 *
+	 * @param array $taxonomies The existing taxonomies.
+	 * @return array
 	 */
 	public function taxonomies_filter( $taxonomies ) {
 		if ( is_array( $taxonomies ) && is_array( $this->taxonomies ) ) {
@@ -107,7 +126,10 @@ class LSX_TO_Reviews_Setup {
 	}
 
 	/**
-	 * Adds our taxonomies_plural to an array via a filter
+	 * Adds our taxonomies_plural to an array via a filter.
+	 *
+	 * @param array $taxonomies_plural The existing plural taxonomies.
+	 * @return array
 	 */
 	public function taxonomies_plural_filter( $taxonomies_plural ) {
 		if ( is_array( $taxonomies_plural ) && is_array( $this->taxonomies_plural ) ) {

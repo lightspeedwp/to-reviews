@@ -10,7 +10,7 @@
  */
 
 /**
- * Main plugin class.
+ * Main admin class for LSX TO Reviews.
  *
  * @package LSX_TO_Reviews_Admin
  * @author  LightSpeed
@@ -19,14 +19,14 @@
 class LSX_TO_Reviews_Admin {
 
 	/**
-	 * The post type slug
+	 * The post type slug.
 	 *
 	 * @var string
 	 */
 	public $post_type = 'review';
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
