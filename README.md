@@ -56,6 +56,39 @@ If you're a developer who's spotted a bug issue and have a fix, or simply have t
 
 Visit the [Tour Operator Reviews Plugin on Github](https://github.com/lightspeeddevelopment/to-reviews/) and submit a Pull Request with your updates.
 
+## Development & Coding Standards
+
+This plugin follows the [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/) to ensure code quality and consistency:
+
+### PHP Standards
+- **PHP Coding Standards**: Follows [WordPress PHP Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/)
+- **Documentation**: All functions and classes include proper PHPDoc blocks
+- **Arrays**: Uses `array()` syntax instead of short array syntax `[]` for WordPress compatibility
+- **Spacing**: Consistent spacing around operators and function parameters
+
+### JavaScript Standards  
+- **JavaScript Coding Standards**: Follows [WordPress JavaScript Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/)
+- **Documentation**: JSDoc documentation blocks for all functions
+- **Modern JavaScript**: Uses ES6+ features like `const` and `let` where appropriate
+
+### Development Tools
+- **PHPCS**: Configured with WordPress standards in `.phpcs.xml`
+- **Gulp**: Build tools for asset compilation and translation files
+- **npm/Composer**: Dependency management
+
+### Running Quality Checks
+```bash
+# Install dependencies
+composer install
+npm install
+
+# Run PHP CodeSniffer (when available)
+vendor/bin/phpcs
+
+# Build translation files
+gulp wordpress-lang
+```
+
 
 
 ---
