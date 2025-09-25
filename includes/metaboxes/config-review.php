@@ -24,52 +24,52 @@ if ( ! class_exists( 'LSX_Banners' ) ) {
 }
 
 $metabox['fields'][] = array(
-	'id'	=> 'no_adults',
-	'name'	=> esc_html__( 'No of Adults', 'to-reviews' ),
-	'type'	=> 'text',
-	'cols'	=> 6,
+	'id'   => 'no_adults',
+	'name' => esc_html__( 'No of Adults', 'to-reviews' ),
+	'type' => 'text',
+	'cols' => 6,
 );
 
 $metabox['fields'][] = array(
-	'id'	=> 'no_children',
-	'name'	=> esc_html__( 'No of Children', 'to-reviews' ),
-	'type'	=> 'text',
-	'cols'	=> 6,
+	'id'   => 'no_children',
+	'name' => esc_html__( 'No of Children', 'to-reviews' ),
+	'type' => 'text',
+	'cols' => 6,
 );
 
 $metabox['fields'][] = array(
-	'id'	=> 'reviewer_name',
-	'name'	=> esc_html__( 'Reviewer Name', 'to-reviews' ),
-	'type'	=> 'text',
-	'cols'	=> 6,
+	'id'   => 'reviewer_name',
+	'name' => esc_html__( 'Reviewer Name', 'to-reviews' ),
+	'type' => 'text',
+	'cols' => 6,
 );
 
 $metabox['fields'][] = array(
-	'id'	=> 'reviewer_email',
-	'name'	=> esc_html__( 'Reviewer Email', 'to-reviews' ),
-	'type'	=> 'text',
-	'cols'	=> 6,
+	'id'   => 'reviewer_email',
+	'name' => esc_html__( 'Reviewer Email', 'to-reviews' ),
+	'type' => 'text',
+	'cols' => 6,
 );
 
 $metabox['fields'][] = array(
-	'id'		 => 'rating',
-	'name'		 => esc_html__( 'Rating', 'to-reviews' ),
-	'type'		 => 'select',
-	'options'	 => array( '0', '1', '2', '3', '4', '5' ),
+	'id'         => 'rating',
+	'name'       => esc_html__( 'Rating', 'to-reviews' ),
+	'type'       => 'select',
+	'options'    => array( '0', '1', '2', '3', '4', '5' ),
 	'allow_none' => true,
 );
 $metabox['fields'][] = array(
-	'id'	=> 'date_of_visit_start',
-	'name'	=> esc_html__( 'Start date of visit', 'to-reviews' ),
-	'type'	=> 'text_date_timestamp',
-	'cols'	=> 6,
+	'id'   => 'date_of_visit_start',
+	'name' => esc_html__( 'Start date of visit', 'to-reviews' ),
+	'type' => 'text_date_timestamp',
+	'cols' => 6,
 );
 
 $metabox['fields'][] = array(
-	'id'	=> 'date_of_visit_end',
-	'name'	=> esc_html__( 'End date of visit', 'to-reviews' ),
-	'type'	=> 'text_date_timestamp',
-	'cols'	=> 6,
+	'id'   => 'date_of_visit_end',
+	'name' => esc_html__( 'End date of visit', 'to-reviews' ),
+	'type' => 'text_date_timestamp',
+	'cols' => 6,
 );
 
 if ( class_exists( 'LSX_TO_Team' ) ) {
@@ -79,7 +79,7 @@ if ( class_exists( 'LSX_TO_Team' ) ) {
 		'type'       => 'pw_multiselect',
 		'use_ajax'   => false,
 		'allow_none' => true,
-		'options'  => array(
+		'options'    => array(
 			'post_type_args' => 'team',
 		),
 	);
@@ -92,15 +92,15 @@ $metabox['fields'][] = array(
 );
 
 $metabox['fields'][] = array(
-    'name' => esc_html__( 'Gallery', 'to-reviews' ),
-	'desc' => esc_html__( 'Add images related to the review to be displayed in the Reviews\'s gallery.', 'to-reviews' ),
-    'id'   => 'gallery',
-    'type' => 'file_list',
-    'preview_size' => 'thumbnail', // Image size to use when previewing in the admin.
-    'query_args' => array( 'type' => 'image' ), // Only images attachment
-    'text' => array(
-        'add_upload_files_text' => esc_html__( 'Add new image', 'to-reviews' ), // default: "Add or Upload Files"
-    ),
+	'name'         => esc_html__( 'Gallery', 'to-reviews' ),
+	'desc'         => esc_html__( 'Add images related to the review to be displayed in the Reviews\'s gallery.', 'to-reviews' ),
+	'id'           => 'gallery',
+	'type'         => 'file_list',
+	'preview_size' => 'thumbnail', // Image size to use when previewing in the admin.
+	'query_args'   => array( 'type' => 'image' ), // Only images attachment
+	'text'         => array(
+		'add_upload_files_text' => esc_html__( 'Add new image', 'to-reviews' ), // default: "Add or Upload Files"
+	),
 );
 
 $metabox['fields'][] = array(
@@ -124,7 +124,7 @@ foreach ( $post_types as $slug => $label ) {
 		'use_ajax'   => false,
 		'repeatable' => false,
 		'allow_none' => true,
-		'options'  => array(
+		'options'    => array(
 			'post_type_args' => $slug,
 		),
 	);
