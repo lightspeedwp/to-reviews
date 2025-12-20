@@ -26,7 +26,7 @@ class LSX_TO_Reviews_Frontend {
 	public $page_links = false;
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 */
 	public function __construct() {
 		add_filter( 'lsx_to_custom_field_query', array( $this, 'rating' ), 5, 10 );
@@ -34,7 +34,14 @@ class LSX_TO_Reviews_Frontend {
 	}
 
 	/**
-	 * Filter and make the star ratings
+	 * Filter and make the star ratings.
+	 *
+	 * @param string $html     The HTML to filter.
+	 * @param string $meta_key The meta key.
+	 * @param string $value    The meta value.
+	 * @param string $before   HTML before the output.
+	 * @param string $after    HTML after the output.
+	 * @return string
 	 */
 	public function rating( $html = '', $meta_key = false, $value = false, $before = '', $after = '' ) {
 		if ( get_post_type() === 'review' && 'rating' === $meta_key ) {

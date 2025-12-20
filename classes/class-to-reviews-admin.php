@@ -10,7 +10,7 @@
  */
 
 /**
- * Main plugin class.
+ * Main admin class for LSX TO Reviews.
  *
  * @package LSX_TO_Reviews_Admin
  * @author  LightSpeed
@@ -19,20 +19,21 @@
 class LSX_TO_Reviews_Admin {
 
 	/**
-	 * The post type slug
+	 * The post type slug.
 	 *
 	 * @var string
 	 */
 	public $post_type = 'review';
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'register_cmb2_fields' ) );
 
+		add_filter( 'lsx_to_post_custom_fields', array( $this, 'custom_fields' ) );
 		add_filter( 'lsx_to_destination_custom_fields', array( $this, 'custom_fields' ) );
 		add_filter( 'lsx_to_tour_custom_fields', array( $this, 'custom_fields' ) );
 		add_filter( 'lsx_to_accommodation_custom_fields', array( $this, 'custom_fields' ) );
@@ -84,7 +85,7 @@ class LSX_TO_Reviews_Admin {
 		if ( false !== $post_type ) {
 			$fields[] = array(
 				'id' => 'review_to_' . $post_type,
-				'name' => 'Reviews related with this ' . $post_type,
+				'name' => __( 'Related Reviews', 'to-reviews' ),
 				'type' => 'pw_multiselect',
 				'use_ajax'   => false,
 				'repeatable' => false,

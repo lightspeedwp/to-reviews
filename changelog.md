@@ -1,5 +1,38 @@
 # Change log
 
+## [[2.1]](https://github.com/lightspeeddevelopment/to-reviews/releases/tag/2.1) - 2025-12-20
+
+### Description
+This release introduces comprehensive block editor template support, code quality improvements, and enhanced custom field configurations for better Tour Operator 2.0 compatibility.
+
+### Added
+- Block editor templates for review archive and single pages (`templates/archive-review.html` and `templates/single-review.html`)
+- New `LSX_TO_Reviews_Templates` class for proper template registration and fallback handling
+- Comprehensive README.md with development guidelines and setup instructions
+- Enhanced documentation in gulpfile.js for development workflows
+
+### Updated
+- Post field support with improved CMB2 configurations
+- Array formatting consistency across all metabox configurations
+- Field titles and descriptions for better user guidance
+- Plugin version to 2.1 across all files
+
+### Fixed
+- All PHP coding standards violations (PHPCS compliance)
+- JavaScript coding standards violations
+- Template loading logic for better theme compatibility
+- Code readability and inline documentation
+
+### Changed
+- Improved class structure and organization
+- Enhanced template handling with proper fallback system
+- Better integration with WordPress block editor
+
+### Security
+- Tested with WordPress 6.9
+- Tested with PHP 8.0+
+- Code quality improvements for better security
+
 ## [[2.0.1]](https://github.com/lightspeeddevelopment/to-reviews/releases/tag/2.0.1) - 2025-05-15
 
 ### Updated

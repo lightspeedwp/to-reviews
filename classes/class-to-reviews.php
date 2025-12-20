@@ -8,7 +8,7 @@
  * @link      
  * @copyright 2016 LightSpeedDevelopment
  */
-if (!class_exists( 'LSX_TO_Reviews' ) ) {
+if ( ! class_exists( 'LSX_TO_Reviews' ) ) {
 	/**
 	 * Main plugin class.
 	 *
@@ -18,33 +18,35 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 	class LSX_TO_Reviews {
 		
 		/**
-		 * The plugins id
+		 * The plugin slug/id.
+		 *
+		 * @var string
 		 */
 		public $plugin_slug = 'to-reviews';
 
 		/**
-		 * Holds the setup class
+		 * Holds the setup class.
 		 *
-		 * @var object
+		 * @var LSX_TO_Reviews_Setup
 		 */
 		public $setup;
 
 		/**
-		 * Holds the admin class
+		 * Holds the admin class.
 		 *
-		 * @var object
+		 * @var LSX_TO_Reviews_Admin
 		 */
 		public $admin;
 
 		/**
-		 * Holds the frontend class
+		 * Holds the frontend class.
 		 *
-		 * @var object
+		 * @var LSX_TO_Reviews_Frontend
 		 */
 		public $frontend;
 
 		/**
-		 * Constructor
+		 * Constructor.
 		 */
 		public function __construct() {
 			require_once LSX_TO_REVIEWS_PATH . '/classes/class-to-reviews-setup.php';
@@ -57,6 +59,8 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 			$this->frontend = new LSX_TO_Reviews_Frontend();
 
 			require_once LSX_TO_REVIEWS_PATH . '/includes/template-tags.php';
+			
+			require_once LSX_TO_REVIEWS_PATH . '/classes/class-to-reviews-templates.php';
 
 			// Make TO last plugin to load.
 			add_action( 'activated_plugin', array( $this, 'activated_plugin' ) );
@@ -64,8 +68,6 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 			// flush_rewrite_rules.
 			register_activation_hook( LSX_TO_REVIEWS_CORE, array( $this, 'register_activation_hook' ) );
 			add_action( 'admin_init', array( $this, 'register_activation_hook_check' ) );
-
-			
 		}
 
 		/**
@@ -87,7 +89,7 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 		}
 
 		/**
-		 * On plugin activation
+		 * On plugin activation.
 		 */
 		public function register_activation_hook() {
 
@@ -97,7 +99,7 @@ if (!class_exists( 'LSX_TO_Reviews' ) ) {
 		}
 
 		/**
-		 * On plugin activation (check)
+		 * On plugin activation (check).
 		 */
 		public function register_activation_hook_check() {
 			if ( ! get_transient( '_tour_operators_reviews_flush_rewrite_rules' ) ) {
