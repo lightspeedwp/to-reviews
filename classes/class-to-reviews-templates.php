@@ -18,68 +18,72 @@
 class LSX_TO_Reviews_Templates {
 
 	/**
-	 * The slug for this plugin
+	 * Holds array of out templates to be registered.
 	 *
-	 * @var      string
+	 * @var array
 	 */
-	protected $plugin_slug = 'to-reviews';
-
-	/**
-	 * The active template path
-	 *
-	 * @var      string
-	 */
-	protected $path = false;
+	public $templates = [];
 
 	/**
 	 * Initialize the plugin by setting localization, filters, and administration functions.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @access private
 	 */
 	public function __construct() {
-		$this->path = LSX_TO_REVIEWS_PATH;
-		
-		add_action( 'init', array( $this, 'init' ) );
-		add_filter( 'template_include', array( $this, 'single_template_include' ), 20, 1 );
-		add_filter( 'template_include', array( $this, 'archive_template_include' ), 20, 1 );
+		add_action( 'init', [ $this, 'register_post_type_templates' ] );
 	}
 
 	/**
-	 * Initializes the variables we need.
-	 */
-	public function init() {
-		$this->path = LSX_TO_REVIEWS_PATH;
-	}
-
-	/**
-	 * Load the single template from the plugin if its not found in the theme
+	 * Registers our plugins templates.
 	 *
-	 * @param string $template The template file.
-	 * @return string
+	 * @return void
 	 */
-	public function single_template_include( $template ) {
-		if ( is_main_query() && is_singular( 'review' ) ) {
-			if ( empty( locate_template( array( 'single-review.php' ) ) ) ) {
-				$template = $this->path . 'templates/single-review.php';
+	public function register_post_type_templates() {
+
+		/**
+		 * The slugs of the built in post types we are using.
+		 */
+		$post_types = [
+			'single-review'  => [
+				'title'       => __( 'Single Review', 'to-reviews' ),
+				'description' => __( 'Displays a single review', 'to-reviews' ),
+				'post_types'  => ['review'],
+			],
+			'archive-review' => [
+				'title'       => __( 'Reviews Archive', 'to-reviews' ),
+				'description' => __( 'Displays all the reviews.', 'to-reviews' ),
+				'post_types'  => ['review'],
+			],
+		];
+
+		foreach ( $post_types as $key => $labels ) {
+			$args = [
+				'title'       => $labels['title'],
+				'description' => $labels['description'],
+				'content'     => $this->get_template_content( $key . '.html' ),
+			];
+			if ( isset( $labels['post_types'] ) ) {
+				$args['post_types'] = $labels['post_types'];
+			}
+
+			if ( function_exists( 'register_block_template' ) ) {
+				register_block_template( 'lsx-tour-operator//' . $key, $args );
 			}
 		}
-		return $template;
 	}
 
 	/**
-	 * Load the archive template from the plugin if its not found in the theme
+	 * Gets the PHP template file and returns the content.
 	 *
-	 * @param string $template The template file.
-	 * @return string
+	 * @param [type] $template
+	 * @return void
 	 */
-	public function archive_template_include( $template ) {
-		$post_type = 'review';
-		if ( is_main_query() && is_post_type_archive( $post_type ) ) {
-			if ( empty( locate_template( array( 'archive-' . $post_type . '.php' ) ) ) ) {
-				$template = $this->path . 'templates/archive-' . $post_type . '.php';
-			}
-		}
-		return $template;
+	protected function get_template_content( $template ) {
+		ob_start();
+		include LSX_TO_REVIEWS_PATH . "/templates/{$template}";
+		return ob_get_clean();
 	}
 }
 
