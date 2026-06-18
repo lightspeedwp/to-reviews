@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "textdomain": "to-reviews",
+  "name": "lsx-tour-operator/review-to-accommodation",
+  "title": "Review to Accommodation",
+  "category": "lsx-tour-operator",
+  "editorScript": "file:index.js",
+  "description": "Displays the accommodations connected to this review.",
+  "icon": "admin-home",
+  "keywords": [
+    "accommodation",
+    "review",
+    "connection",
+    "lodging"
+  ]
+}

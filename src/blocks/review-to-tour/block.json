@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "textdomain": "to-reviews",
+  "name": "lsx-tour-operator/review-to-tour",
+  "title": "Review to Tour",
+  "category": "lsx-tour-operator",
+  "editorScript": "file:index.js",
+  "description": "Displays the tours connected to this review.",
+  "icon": "location-alt",
+  "keywords": [
+    "tour",
+    "review",
+    "connection",
+    "itinerary"
+  ]
+}
