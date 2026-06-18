@@ -62,6 +62,9 @@ if ( ! class_exists( 'LSX_TO_Reviews' ) ) {
 			
 			require_once LSX_TO_REVIEWS_PATH . '/classes/class-to-reviews-templates.php';
 
+			require_once LSX_TO_REVIEWS_PATH . '/classes/class-to-reviews-blocks.php';
+			new LSX_TO_Reviews_Blocks();
+
 			// Make TO last plugin to load.
 			add_action( 'activated_plugin', array( $this, 'activated_plugin' ) );
 
