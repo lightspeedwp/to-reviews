@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "textdomain": "to-reviews",
+  "name": "lsx-tour-operator/review-rating",
+  "title": "Review Rating",
+  "category": "lsx-tour-operator",
+  "editorScript": "file:index.js",
+  "description": "Displays the rating for this review.",
+  "icon": "star-filled",
+  "keywords": [
+    "rating",
+    "review",
+    "stars",
+    "score"
+  ]
+}

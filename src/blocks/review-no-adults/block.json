@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "textdomain": "to-reviews",
+  "name": "lsx-tour-operator/review-no-adults",
+  "title": "Review Number of Adults",
+  "category": "lsx-tour-operator",
+  "editorScript": "file:index.js",
+  "description": "Displays the number of adults on this review.",
+  "icon": "admin-users",
+  "keywords": [
+    "adults",
+    "guests",
+    "review",
+    "pax"
+  ]
+}
