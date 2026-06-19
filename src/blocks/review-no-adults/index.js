@@ -32,7 +32,7 @@ wp.domReady(() => {
                 metadata: {
                     name: __('Review Number of Adults', 'to-reviews'),
                 },
-                className: 'lsx-review-no-adults-wrapper',
+                className: 'lsx-no-adults-wrapper',
                 layout: {
                     type: 'flex',
                     flexWrap: 'nowrap',

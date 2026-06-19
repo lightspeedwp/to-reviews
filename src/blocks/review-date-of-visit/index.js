@@ -32,7 +32,7 @@ wp.domReady(() => {
                 metadata: {
                     name: __('Review Date of Visit', 'to-reviews'),
                 },
-                className: 'lsx-review-date-of-visit-wrapper',
+                className: 'lsx-date-of-visit-wrapper',
                 layout: {
                     type: 'flex',
                     flexWrap: 'nowrap',

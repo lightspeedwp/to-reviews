@@ -31,7 +31,7 @@ function registerReviewRelatedDestinationVariation() {
             metadata: {
                 name: __('Related Reviews', 'to-reviews'),
             },
-            className: 'lsx-review-related-destination-query-wrapper',
+            className: 'lsx-related-destination-query-wrapper',
             align: 'full',
             backgroundColor: 'primary-200',
             layout: {
@@ -259,9 +259,9 @@ function registerReviewRelatedDestinationVariation() {
         },
         isActive: (blockAttributes) => {
             return (
-                blockAttributes.className === 'lsx-review-related-destination-query-wrapper' ||
+                blockAttributes.className === 'lsx-related-destination-query-wrapper' ||
                 (blockAttributes.className &&
-                    blockAttributes.className.includes('lsx-review-related-destination-query-wrapper'))
+                    blockAttributes.className.includes('lsx-related-destination-query-wrapper'))
             );
         },
     });

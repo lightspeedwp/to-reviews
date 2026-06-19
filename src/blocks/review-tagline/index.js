@@ -31,7 +31,7 @@ wp.domReady(() => {
                 metadata: {
                     name: __('Review Tagline', 'to-reviews'),
                 },
-                className: 'lsx-review-tagline-wrapper',
+                className: 'lsx-tagline-wrapper',
                 layout: {
                     type: 'flex',
                     flexWrap: 'nowrap',

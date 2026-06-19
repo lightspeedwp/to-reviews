@@ -31,7 +31,7 @@ function registerReviewRelatedTourVariation() {
             metadata: {
                 name: __('Related Reviews', 'to-reviews'),
             },
-            className: 'lsx-review-related-tour-query-wrapper',
+            className: 'lsx-related-tour-query-wrapper',
             align: 'full',
             layout: {
                 type: 'constrained',
@@ -258,9 +258,9 @@ function registerReviewRelatedTourVariation() {
         },
         isActive: (blockAttributes) => {
             return (
-                blockAttributes.className === 'lsx-review-related-tour-query-wrapper' ||
+                blockAttributes.className === 'lsx-related-tour-query-wrapper' ||
                 (blockAttributes.className &&
-                    blockAttributes.className.includes('lsx-review-related-tour-query-wrapper'))
+                    blockAttributes.className.includes('lsx-related-tour-query-wrapper'))
             );
         },
     });

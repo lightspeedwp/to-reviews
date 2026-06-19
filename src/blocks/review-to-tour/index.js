@@ -32,7 +32,7 @@ wp.domReady(() => {
                 metadata: {
                     name: __('Review to Tour', 'to-reviews'),
                 },
-                className: 'lsx-review-to-tour-wrapper',
+                className: 'lsx-to-tour-wrapper',
                 layout: {
                     type: 'flex',
                     flexWrap: 'nowrap',
