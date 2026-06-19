@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "textdomain": "to-reviews",
+  "name": "lsx-tour-operator/review-no-children",
+  "title": "Review Number of Children",
+  "category": "lsx-tour-operator",
+  "editorScript": "file:index.js",
+  "description": "Displays the number of children on this review.",
+  "icon": "groups",
+  "keywords": [
+    "children",
+    "kids",
+    "review",
+    "pax"
+  ]
+}

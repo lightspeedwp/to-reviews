@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "textdomain": "to-reviews",
+  "name": "lsx-tour-operator/review-to-team",
+  "title": "Review to Team",
+  "category": "lsx-tour-operator",
+  "editorScript": "file:index.js",
+  "description": "Displays the team members connected to this review.",
+  "icon": "admin-users",
+  "keywords": [
+    "team",
+    "review",
+    "connection",
+    "guide"
+  ]
+}
