@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "textdomain": "to-reviews",
+  "name": "lsx-tour-operator/destination-related-review",
+  "title": "Related Reviews",
+  "category": "lsx-tour-operator",
+  "editorScript": "file:index.js",
+  "description": "Display reviews related to this destination.",
+  "icon": "star-filled",
+  "keywords": ["reviews", "destination", "related", "testimonials"]
+}

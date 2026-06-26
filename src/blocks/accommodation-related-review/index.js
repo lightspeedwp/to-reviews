@@ -1,10 +1,10 @@
 /**
- * Review Related Review Block Variation
+ * Accommodation Related Review Block Variation
  *
- * Registers a block variation for displaying other reviews.
- * Only available on review post type edit screens.
+ * Registers a block variation for displaying reviews related to the current accommodation.
+ * Only available on accommodation post type edit screens.
  *
- * @since 2.2.0
+ * @since 2.1.0
  * @package TO_Reviews
  */
 
@@ -12,24 +12,24 @@ import { __ } from '@wordpress/i18n';
 import { registerForPostTypesAndTemplates } from '@utils/conditional-block-registration.js';
 
 wp.domReady(() => {
-    const registerReviewRelatedReviewVariation = () => {
+    const registerAccommodationRelatedReviewVariation = () => {
         wp.blocks.registerBlockVariation('core/group', {
-            name: 'lsx-tour-operator/review-related-review',
+            name: 'lsx-tour-operator/accommodation-related-review',
             title: __('Related Reviews', 'to-reviews'),
             icon: 'star-filled',
-            description: __('Displays other reviews from the site.', 'to-reviews'),
+            description: __('Displays reviews related to this accommodation.', 'to-reviews'),
             category: 'lsx-tour-operator',
             keywords: [
                 __('reviews', 'to-reviews'),
+                __('accommodation', 'to-reviews'),
                 __('related', 'to-reviews'),
-                __('similar', 'to-reviews'),
                 __('testimonials', 'to-reviews'),
             ],
             attributes: {
                 metadata: {
                     name: __('Related Reviews', 'to-reviews'),
                 },
-                className: 'lsx-review-related-review-query-wrapper',
+                className: 'lsx-accommodation-related-review-query-wrapper',
                 align: 'full',
                 layout: {
                     type: 'constrained',
@@ -52,7 +52,7 @@ wp.domReady(() => {
                             'core/heading',
                             {
                                 textAlign: 'center',
-                                content: __('Related Reviews', 'to-reviews'),
+                                content: __('Reviews', 'to-reviews'),
                                 level: 2,
                             },
                         ],
@@ -70,12 +70,12 @@ wp.domReady(() => {
                             'core/query',
                             {
                                 metadata: {
-                                    name: __('Related Review Query', 'to-reviews'),
+                                    name: __('Related Reviews Query', 'to-reviews'),
                                 },
                                 query: {
                                     perPage: 8,
                                     postType: 'review',
-                                    order: 'asc',
+                                    order: 'desc',
                                     orderBy: 'date',
                                 },
                                 align: 'wide',
@@ -84,8 +84,8 @@ wp.domReady(() => {
                                 [
                                     'core/post-template',
                                     {
-                                        className: 'lsx-review-related-review-query',
-                                        layout: { type: 'grid', columnCount: 3 },
+                                        className: 'lsx-accommodation-related-review-query',
+                                        layout: { type: 'grid', columnCount: 2 },
                                     },
                                     [
                                         [
@@ -116,7 +116,7 @@ wp.domReady(() => {
                                 name: 'core/heading',
                                 attributes: {
                                     textAlign: 'center',
-                                    content: __('Related Reviews', 'to-reviews'),
+                                    content: __('Reviews', 'to-reviews'),
                                     level: 2,
                                 },
                             },
@@ -133,8 +133,8 @@ wp.domReady(() => {
                             {
                                 name: 'core/group',
                                 attributes: {
-                                    className: 'lsx-review-related-review-query',
-                                    layout: { type: 'grid', columnCount: 3 },
+                                    className: 'lsx-accommodation-related-review-query',
+                                    layout: { type: 'grid', columnCount: 2 },
                                 },
                                 innerBlocks: [
                                     {
@@ -144,8 +144,8 @@ wp.domReady(() => {
                                             style: { border: { width: '1px', style: 'solid', color: '#e2e8f0' }, spacing: { padding: '1.5rem' } },
                                         },
                                         innerBlocks: [
-                                            { name: 'core/heading', attributes: { content: __('Amazing Safari Experience', 'to-reviews'), level: 3 } },
-                                            { name: 'core/paragraph', attributes: { content: __('Our family had the most incredible time on the African safari. Knowledgeable guides and spectacular wildlife viewing.', 'to-reviews') } },
+                                            { name: 'core/heading', attributes: { content: __('Excellent Hotel Stay', 'to-reviews'), level: 3 } },
+                                            { name: 'core/paragraph', attributes: { content: __('The hotel exceeded our expectations with comfortable rooms, excellent service, and a fantastic location. The staff were friendly and helpful throughout our stay.', 'to-reviews') } },
                                             { name: 'core/paragraph', attributes: { content: __('— Sarah Johnson', 'to-reviews'), style: { typography: { fontStyle: 'italic' } } } },
                                         ],
                                     },
@@ -156,21 +156,9 @@ wp.domReady(() => {
                                             style: { border: { width: '1px', style: 'solid', color: '#e2e8f0' }, spacing: { padding: '1.5rem' } },
                                         },
                                         innerBlocks: [
-                                            { name: 'core/heading', attributes: { content: __('Perfect Beach Getaway', 'to-reviews'), level: 3 } },
-                                            { name: 'core/paragraph', attributes: { content: __('The resort was beautiful and the staff went above and beyond. Highly recommended!', 'to-reviews') } },
+                                            { name: 'core/heading', attributes: { content: __('Beautiful Resort Experience', 'to-reviews'), level: 3 } },
+                                            { name: 'core/paragraph', attributes: { content: __('Amazing resort with stunning ocean views, clean facilities, and top-notch amenities. Perfect for a romantic getaway. Would definitely return!', 'to-reviews') } },
                                             { name: 'core/paragraph', attributes: { content: __('— Michael Chen', 'to-reviews'), style: { typography: { fontStyle: 'italic' } } } },
-                                        ],
-                                    },
-                                    {
-                                        name: 'core/group',
-                                        attributes: {
-                                            className: 'lsx-review-card',
-                                            style: { border: { width: '1px', style: 'solid', color: '#e2e8f0' }, spacing: { padding: '1.5rem' } },
-                                        },
-                                        innerBlocks: [
-                                            { name: 'core/heading', attributes: { content: __('Unforgettable Wildlife Tour', 'to-reviews'), level: 3 } },
-                                            { name: 'core/paragraph', attributes: { content: __('An outstanding experience from start to finish. We saw the Big Five on our very first day!', 'to-reviews') } },
-                                            { name: 'core/paragraph', attributes: { content: __('— Amelia Williams', 'to-reviews'), style: { typography: { fontStyle: 'italic' } } } },
                                         ],
                                     },
                                 ],
@@ -186,9 +174,9 @@ wp.domReady(() => {
     };
 
     const conditionalRegister = registerForPostTypesAndTemplates(
-        ['review'],
-        ['review'],
-        registerReviewRelatedReviewVariation
+        ['accommodation'],
+        ['accommodation'],
+        registerAccommodationRelatedReviewVariation
     );
     conditionalRegister();
 });
