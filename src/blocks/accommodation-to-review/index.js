@@ -1,5 +1,5 @@
 /**
- * Review to Accommodation Block Variation
+ * Accommodation to Review Block Variation
  *
  * Registers a block variation for displaying accommodations connected to this review.
  * Only available on review post type edit screens.
@@ -12,10 +12,10 @@ import { __ } from '@wordpress/i18n';
 import { registerForPostTypesAndTemplates } from '@utils/conditional-block-registration.js';
 
 wp.domReady(() => {
-    const registerReviewToAccommodationVariation = () => {
+    const registerAccommodationToReviewVariation = () => {
         wp.blocks.registerBlockVariation('core/group', {
-            name: 'lsx-tour-operator/review-to-accommodation',
-            title: __('Review to Accommodation', 'to-reviews'),
+            name: 'lsx-tour-operator/accommodation-to-review',
+            title: __('Accommodation to Review', 'to-reviews'),
             icon: 'admin-home',
             category: 'lsx-tour-operator',
             description: __('Displays the accommodations connected to this review.', 'to-reviews'),
@@ -30,9 +30,9 @@ wp.domReady(() => {
             },
             attributes: {
                 metadata: {
-                    name: __('Review to Accommodation', 'to-reviews'),
+                    name: __('Accommodation to Review', 'to-reviews'),
                 },
-                className: 'lsx-to-accommodation-wrapper',
+                className: 'lsx-accommodation-to-review-wrapper',
                 layout: {
                     type: 'flex',
                     flexWrap: 'nowrap',
@@ -109,7 +109,7 @@ wp.domReady(() => {
     const conditionalRegister = registerForPostTypesAndTemplates(
         ['review'],
         ['review'],
-        registerReviewToAccommodationVariation
+        registerAccommodationToReviewVariation
     );
 
     conditionalRegister();

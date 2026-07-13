@@ -1,7 +1,7 @@
 /**
- * Review to Tour Block Variation
+ * Destination to Review Block Variation
  *
- * Registers a block variation for displaying tours connected to this review.
+ * Registers a block variation for displaying destinations connected to this review.
  * Only available on review post type edit screens.
  *
  * @since 2.2.0
@@ -12,27 +12,27 @@ import { __ } from '@wordpress/i18n';
 import { registerForPostTypesAndTemplates } from '@utils/conditional-block-registration.js';
 
 wp.domReady(() => {
-    const registerReviewToTourVariation = () => {
+    const registerDestinationToReviewVariation = () => {
         wp.blocks.registerBlockVariation('core/group', {
-            name: 'lsx-tour-operator/review-to-tour',
-            title: __('Review to Tour', 'to-reviews'),
-            icon: 'location-alt',
+            name: 'lsx-tour-operator/destination-to-review',
+            title: __('Destination to Review', 'to-reviews'),
+            icon: 'admin-site',
             category: 'lsx-tour-operator',
-            description: __('Displays the tours connected to this review.', 'to-reviews'),
+            description: __('Displays the destinations connected to this review.', 'to-reviews'),
             keywords: [
-                __('tour', 'to-reviews'),
+                __('destination', 'to-reviews'),
                 __('review', 'to-reviews'),
                 __('connection', 'to-reviews'),
-                __('itinerary', 'to-reviews'),
+                __('location', 'to-reviews'),
             ],
             isActive: (blockAttributes, variationAttributes) => {
                 return blockAttributes.className === variationAttributes.className;
             },
             attributes: {
                 metadata: {
-                    name: __('Review to Tour', 'to-reviews'),
+                    name: __('Destination to Review', 'to-reviews'),
                 },
-                className: 'lsx-to-tour-wrapper',
+                className: 'lsx-destination-to-review-wrapper',
                 layout: {
                     type: 'flex',
                     flexWrap: 'nowrap',
@@ -50,7 +50,7 @@ wp.domReady(() => {
                             'lsx-tour-operator/icons',
                             {
                                 iconType: 'solid',
-                                iconName: 'tourIcon',
+                                iconName: 'destinationIcon',
                             },
                         ],
                     ],
@@ -69,12 +69,12 @@ wp.domReady(() => {
                                         content: {
                                             source: 'lsx/post-connection',
                                             args: {
-                                                key: 'tour_to_review',
+                                                key: 'destination_to_review',
                                             },
                                         },
                                     },
                                 },
-                                prefix: __('Tour:', 'to-reviews'),
+                                prefix: __('Destination:', 'to-reviews'),
                                 prefixBold: true,
                             },
                         ],
@@ -91,12 +91,12 @@ wp.domReady(() => {
                         innerBlocks: [
                             {
                                 name: 'lsx-tour-operator/icons',
-                                attributes: { iconType: 'solid', iconName: 'tourIcon' },
+                                attributes: { iconType: 'solid', iconName: 'destinationIcon' },
                             },
                             {
                                 name: 'core/paragraph',
                                 attributes: {
-                                    content: '<strong>' + __('Tour: ', 'to-reviews') + '</strong>' + __('Big Five Safari', 'to-reviews'),
+                                    content: '<strong>' + __('Destination: ', 'to-reviews') + '</strong>' + __('Cape Town, South Africa', 'to-reviews'),
                                 },
                             },
                         ],
@@ -109,7 +109,7 @@ wp.domReady(() => {
     const conditionalRegister = registerForPostTypesAndTemplates(
         ['review'],
         ['review'],
-        registerReviewToTourVariation
+        registerDestinationToReviewVariation
     );
 
     conditionalRegister();

@@ -2,16 +2,16 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "textdomain": "to-reviews",
-  "name": "lsx-tour-operator/review-to-destination",
-  "title": "Review to Destination",
+  "name": "lsx-tour-operator/accommodation-to-review",
+  "title": "Accommodation to Review",
   "category": "lsx-tour-operator",
   "editorScript": "file:index.js",
-  "description": "Displays the destinations connected to this review.",
-  "icon": "admin-site",
+  "description": "Displays the accommodations connected to this review.",
+  "icon": "admin-home",
   "keywords": [
-    "destination",
+    "accommodation",
     "review",
     "connection",
-    "location"
+    "lodging"
   ]
 }

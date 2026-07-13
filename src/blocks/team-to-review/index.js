@@ -1,5 +1,5 @@
 /**
- * Review to Team Block Variation
+ * Team to Review Block Variation
  *
  * Registers a block variation for displaying team members connected to this review.
  * Only available on review post type edit screens.
@@ -12,10 +12,10 @@ import { __ } from '@wordpress/i18n';
 import { registerForPostTypesAndTemplates } from '@utils/conditional-block-registration.js';
 
 wp.domReady(() => {
-    const registerReviewToTeamVariation = () => {
+    const registerTeamToReviewVariation = () => {
         wp.blocks.registerBlockVariation('core/group', {
-            name: 'lsx-tour-operator/review-to-team',
-            title: __('Review to Team', 'to-reviews'),
+            name: 'lsx-tour-operator/team-to-review',
+            title: __('Team to Review', 'to-reviews'),
             icon: 'admin-users',
             category: 'lsx-tour-operator',
             description: __('Displays the team members connected to this review.', 'to-reviews'),
@@ -30,9 +30,9 @@ wp.domReady(() => {
             },
             attributes: {
                 metadata: {
-                    name: __('Review to Team', 'to-reviews'),
+                    name: __('Team to Review', 'to-reviews'),
                 },
-                className: 'lsx-to-team-wrapper',
+                className: 'lsx-team-to-review-wrapper',
                 layout: {
                     type: 'flex',
                     flexWrap: 'nowrap',
@@ -109,7 +109,7 @@ wp.domReady(() => {
     const conditionalRegister = registerForPostTypesAndTemplates(
         ['review'],
         ['review'],
-        registerReviewToTeamVariation
+        registerTeamToReviewVariation
     );
 
     conditionalRegister();

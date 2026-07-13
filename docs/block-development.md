@@ -45,10 +45,10 @@ All scoped to `review` post type and template.
 
 | Block Name | Connection Key | Icon |
 |---|---|---|
-| `lsx-tour-operator/review-to-accommodation` | `accommodation_to_review` | `accommodationIcon` |
-| `lsx-tour-operator/review-to-destination` | `destination_to_review` | `destinationIcon` |
-| `lsx-tour-operator/review-to-tour` | `tour_to_review` | `tourIcon` |
-| `lsx-tour-operator/review-to-team` | `team_to_review` | `teamIcon` |
+| `lsx-tour-operator/accommodation-to-review` | `accommodation_to_review` | `accommodationIcon` |
+| `lsx-tour-operator/destination-to-review` | `destination_to_review` | `destinationIcon` |
+| `lsx-tour-operator/tour-to-review` | `tour_to_review` | `tourIcon` |
+| `lsx-tour-operator/team-to-review` | `team_to_review` | `teamIcon` |
 
 ### Gallery
 
