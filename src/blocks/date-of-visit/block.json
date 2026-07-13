@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "textdomain": "to-reviews",
+  "name": "lsx-tour-operator/review-date-of-visit",
+  "title": "Review - Date of Visit",
+  "category": "lsx-tour-operator",
+  "editorScript": "file:index.js",
+  "description": "Displays the date of visit for this review.",
+  "icon": "calendar",
+  "keywords": [
+    "date",
+    "visit",
+    "review",
+    "travel"
+  ]
+}
