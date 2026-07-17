@@ -1,8 +1,8 @@
 /**
  * Destination Related Review Block Variation
  *
- * Registers a block variation for displaying reviews related to the current destination.
- * Only available on destination post types, destinations, country, and region template screens.
+ * Registers a block variation for displaying destination related to the current review.
+ * Only available on review post type edit screens.
  *
  * @since 2.1.0
  * @package TO_Reviews
@@ -15,19 +15,19 @@ wp.domReady(() => {
     const registerDestinationRelatedReviewVariation = () => {
         wp.blocks.registerBlockVariation('core/group', {
             name: 'lsx-tour-operator/destination-related-review',
-            title: __('Related Reviews', 'to-reviews'),
+            title: __('Related Destination', 'to-reviews'),
             icon: 'star-filled',
-            description: __('Displays reviews related to this destination.', 'to-reviews'),
+            description: __('Display destination related to this review.', 'to-reviews'),
             category: 'lsx-tour-operator',
             keywords: [
-                __('reviews', 'to-reviews'),
+                __('review', 'to-reviews'),
                 __('destination', 'to-reviews'),
                 __('related', 'to-reviews'),
-                __('testimonials', 'to-reviews'),
+                __('query', 'to-reviews'),
             ],
             attributes: {
                 metadata: {
-                    name: __('Related Reviews', 'to-reviews'),
+                    name: __('Related Destination', 'to-reviews'),
                 },
                 className: 'lsx-destination-related-review-query-wrapper',
                 align: 'full',
@@ -53,7 +53,7 @@ wp.domReady(() => {
                             'core/heading',
                             {
                                 textAlign: 'center',
-                                content: __('Reviews', 'to-reviews'),
+                                content: __('Related Destination', 'to-reviews'),
                                 level: 2,
                             },
                         ],
@@ -71,11 +71,11 @@ wp.domReady(() => {
                             'core/query',
                             {
                                 metadata: {
-                                    name: __('Related Reviews Query', 'to-reviews'),
+                                    name: __('Related destination query', 'to-reviews'),
                                 },
                                 query: {
                                     perPage: 8,
-                                    postType: 'review',
+                                    postType: 'destination',
                                     order: 'desc',
                                     orderBy: 'date',
                                 },
@@ -91,7 +91,7 @@ wp.domReady(() => {
                                     [
                                         [
                                             'core/pattern',
-                                            { slug: 'lsx-tour-operator/review-card' },
+                                            { slug: 'lsx-tour-operator/destination-card' },
                                         ],
                                     ],
                                 ],
@@ -117,7 +117,7 @@ wp.domReady(() => {
                                 name: 'core/heading',
                                 attributes: {
                                     textAlign: 'center',
-                                    content: __('Reviews', 'to-reviews'),
+                                    content: __('Related Destination', 'to-reviews'),
                                     level: 2,
                                 },
                             },
@@ -141,25 +141,23 @@ wp.domReady(() => {
                                     {
                                         name: 'core/group',
                                         attributes: {
-                                            className: 'lsx-review-card',
+                                            className: 'lsx-destination-card',
                                             style: { border: { width: '1px', style: 'solid', color: '#e2e8f0' }, spacing: { padding: '1.5rem' } },
                                         },
                                         innerBlocks: [
-                                            { name: 'core/heading', attributes: { content: __('Beautiful South Africa Experience', 'to-reviews'), level: 3 } },
-                                            { name: 'core/paragraph', attributes: { content: __('South Africa exceeded all expectations! The wildlife, landscapes, and culture were truly unforgettable.', 'to-reviews') } },
-                                            { name: 'core/paragraph', attributes: { content: __('— Sarah Johnson', 'to-reviews'), style: { typography: { fontStyle: 'italic' } } } },
+                                            { name: 'core/heading', attributes: { content: __('South Africa', 'to-reviews'), level: 3 } },
+                                            { name: 'core/paragraph', attributes: { content: __('Home to breathtaking landscapes, diverse wildlife, and a rich cultural heritage.', 'to-reviews') } },
                                         ],
                                     },
                                     {
                                         name: 'core/group',
                                         attributes: {
-                                            className: 'lsx-review-card',
+                                            className: 'lsx-destination-card',
                                             style: { border: { width: '1px', style: 'solid', color: '#e2e8f0' }, spacing: { padding: '1.5rem' } },
                                         },
                                         innerBlocks: [
-                                            { name: 'core/heading', attributes: { content: __('Amazing Zimbabwe Adventure', 'to-reviews'), level: 3 } },
-                                            { name: 'core/paragraph', attributes: { content: __('Zimbabwe offers a unique blend of natural beauty and cultural richness. The adventure was truly unforgettable.', 'to-reviews') } },
-                                            { name: 'core/paragraph', attributes: { content: __('— Michael Chen', 'to-reviews'), style: { typography: { fontStyle: 'italic' } } } },
+                                            { name: 'core/heading', attributes: { content: __('Zimbabwe', 'to-reviews'), level: 3 } },
+                                            { name: 'core/paragraph', attributes: { content: __('A destination known for its natural wonders and unforgettable wildlife adventures.', 'to-reviews') } },
                                         ],
                                     },
                                 ],
@@ -175,8 +173,8 @@ wp.domReady(() => {
     };
 
     const conditionalRegister = registerForPostTypesAndTemplates(
-        ['destination'],
-        ['destination', 'country', 'region'],
+        ['review'],
+        ['review'],
         registerDestinationRelatedReviewVariation
     );
     conditionalRegister();

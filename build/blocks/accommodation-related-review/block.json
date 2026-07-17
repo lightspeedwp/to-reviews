@@ -3,15 +3,15 @@
   "apiVersion": 3,
   "textdomain": "to-reviews",
   "name": "lsx-tour-operator/accommodation-related-review",
-  "title": "Related Reviews",
+  "title": "Related Accommodation",
   "category": "lsx-tour-operator",
   "editorScript": "file:index.js",
-  "description": "Displays reviews related to this accommodation.",
+  "description": "Display accommodation related to this review.",
   "icon": "star-filled",
   "keywords": [
-    "reviews",
+    "review",
     "accommodation",
     "related",
-    "testimonials"
+    "query"
   ]
 }

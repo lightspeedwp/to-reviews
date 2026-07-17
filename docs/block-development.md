@@ -10,12 +10,6 @@ All blocks use the `lsx-tour-operator/` namespace and are registered as **block 
 |---|---|---|---|
 | `lsx-tour-operator/featured-review` | `core/group` | Global | Query loop for featured reviews |
 
-### Related — Same Type
-
-| Block Name | Post Types | Templates | className |
-|---|---|---|---|
-| `lsx-tour-operator/review-related-review` | `review` | `review` | `lsx-review-related-review-query-wrapper` |
-
 ### Related — Cross Type
 
 These blocks were migrated from the parent tour-operator plugin in v2.2.

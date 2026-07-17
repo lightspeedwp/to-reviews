@@ -1,8 +1,8 @@
 /**
  * Accommodation Related Review Block Variation
  *
- * Registers a block variation for displaying reviews related to the current accommodation.
- * Only available on accommodation post type edit screens.
+ * Registers a block variation for displaying accommodation related to the current review.
+ * Only available on review post type edit screens.
  *
  * @since 2.1.0
  * @package TO_Reviews
@@ -15,19 +15,19 @@ wp.domReady(() => {
     const registerAccommodationRelatedReviewVariation = () => {
         wp.blocks.registerBlockVariation('core/group', {
             name: 'lsx-tour-operator/accommodation-related-review',
-            title: __('Related Reviews', 'to-reviews'),
+            title: __('Related Accommodation', 'to-reviews'),
             icon: 'star-filled',
-            description: __('Displays reviews related to this accommodation.', 'to-reviews'),
+            description: __('Display accommodation related to this review.', 'to-reviews'),
             category: 'lsx-tour-operator',
             keywords: [
-                __('reviews', 'to-reviews'),
+                __('review', 'to-reviews'),
                 __('accommodation', 'to-reviews'),
                 __('related', 'to-reviews'),
-                __('testimonials', 'to-reviews'),
+                __('query', 'to-reviews'),
             ],
             attributes: {
                 metadata: {
-                    name: __('Related Reviews', 'to-reviews'),
+                    name: __('Related Accommodation', 'to-reviews'),
                 },
                 className: 'lsx-accommodation-related-review-query-wrapper',
                 align: 'full',
@@ -52,7 +52,7 @@ wp.domReady(() => {
                             'core/heading',
                             {
                                 textAlign: 'center',
-                                content: __('Reviews', 'to-reviews'),
+                                content: __('Related Accommodation', 'to-reviews'),
                                 level: 2,
                             },
                         ],
@@ -70,11 +70,11 @@ wp.domReady(() => {
                             'core/query',
                             {
                                 metadata: {
-                                    name: __('Related Reviews Query', 'to-reviews'),
+                                    name: __('Related accommodation query', 'to-reviews'),
                                 },
                                 query: {
                                     perPage: 8,
-                                    postType: 'review',
+                                    postType: 'accommodation',
                                     order: 'desc',
                                     orderBy: 'date',
                                 },
@@ -90,7 +90,7 @@ wp.domReady(() => {
                                     [
                                         [
                                             'core/pattern',
-                                            { slug: 'lsx-tour-operator/review-card' },
+                                            { slug: 'lsx-tour-operator/accommodation-card' },
                                         ],
                                     ],
                                 ],
@@ -116,7 +116,7 @@ wp.domReady(() => {
                                 name: 'core/heading',
                                 attributes: {
                                     textAlign: 'center',
-                                    content: __('Reviews', 'to-reviews'),
+                                    content: __('Related Accommodation', 'to-reviews'),
                                     level: 2,
                                 },
                             },
@@ -140,25 +140,23 @@ wp.domReady(() => {
                                     {
                                         name: 'core/group',
                                         attributes: {
-                                            className: 'lsx-review-card',
+                                            className: 'lsx-accommodation-card',
                                             style: { border: { width: '1px', style: 'solid', color: '#e2e8f0' }, spacing: { padding: '1.5rem' } },
                                         },
                                         innerBlocks: [
-                                            { name: 'core/heading', attributes: { content: __('Excellent Hotel Stay', 'to-reviews'), level: 3 } },
-                                            { name: 'core/paragraph', attributes: { content: __('The hotel exceeded our expectations with comfortable rooms, excellent service, and a fantastic location. The staff were friendly and helpful throughout our stay.', 'to-reviews') } },
-                                            { name: 'core/paragraph', attributes: { content: __('— Sarah Johnson', 'to-reviews'), style: { typography: { fontStyle: 'italic' } } } },
+                                            { name: 'core/heading', attributes: { content: __('Oceanview Resort & Spa', 'to-reviews'), level: 3 } },
+                                            { name: 'core/paragraph', attributes: { content: __('A luxurious beachfront resort offering stunning ocean views, spacious rooms, and a full-service spa.', 'to-reviews') } },
                                         ],
                                     },
                                     {
                                         name: 'core/group',
                                         attributes: {
-                                            className: 'lsx-review-card',
+                                            className: 'lsx-accommodation-card',
                                             style: { border: { width: '1px', style: 'solid', color: '#e2e8f0' }, spacing: { padding: '1.5rem' } },
                                         },
                                         innerBlocks: [
-                                            { name: 'core/heading', attributes: { content: __('Beautiful Resort Experience', 'to-reviews'), level: 3 } },
-                                            { name: 'core/paragraph', attributes: { content: __('Amazing resort with stunning ocean views, clean facilities, and top-notch amenities. Perfect for a romantic getaway. Would definitely return!', 'to-reviews') } },
-                                            { name: 'core/paragraph', attributes: { content: __('— Michael Chen', 'to-reviews'), style: { typography: { fontStyle: 'italic' } } } },
+                                            { name: 'core/heading', attributes: { content: __('Mountain Lodge Retreat', 'to-reviews'), level: 3 } },
+                                            { name: 'core/paragraph', attributes: { content: __('A cosy lodge nestled in the mountains, perfect for travellers seeking a quiet, scenic getaway.', 'to-reviews') } },
                                         ],
                                     },
                                 ],
@@ -174,8 +172,8 @@ wp.domReady(() => {
     };
 
     const conditionalRegister = registerForPostTypesAndTemplates(
-        ['accommodation'],
-        ['accommodation'],
+        ['review'],
+        ['review'],
         registerAccommodationRelatedReviewVariation
     );
     conditionalRegister();

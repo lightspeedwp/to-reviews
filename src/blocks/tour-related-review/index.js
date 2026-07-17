@@ -1,8 +1,8 @@
 /**
  * Tour Related Review Block Variation
  *
- * Registers a block variation for displaying reviews related to the current tour.
- * Only available on tour post type edit screens.
+ * Registers a block variation for displaying tour related to the current review.
+ * Only available on review post type edit screens.
  *
  * @since 2.1.0
  * @package TO_Reviews
@@ -15,19 +15,19 @@ wp.domReady(() => {
     const registerTourRelatedReviewVariation = () => {
         wp.blocks.registerBlockVariation('core/group', {
             name: 'lsx-tour-operator/tour-related-review',
-            title: __('Related Reviews', 'to-reviews'),
+            title: __('Related Tour', 'to-reviews'),
             icon: 'star-filled',
-            description: __('Displays reviews related to this tour.', 'to-reviews'),
+            description: __('Display tour related to this review.', 'to-reviews'),
             category: 'lsx-tour-operator',
             keywords: [
-                __('reviews', 'to-reviews'),
+                __('review', 'to-reviews'),
                 __('tour', 'to-reviews'),
                 __('related', 'to-reviews'),
-                __('testimonials', 'to-reviews'),
+                __('query', 'to-reviews'),
             ],
             attributes: {
                 metadata: {
-                    name: __('Related Reviews', 'to-reviews'),
+                    name: __('Related Tour', 'to-reviews'),
                 },
                 className: 'lsx-tour-related-review-query-wrapper',
                 align: 'full',
@@ -52,7 +52,7 @@ wp.domReady(() => {
                             'core/heading',
                             {
                                 textAlign: 'center',
-                                content: __('Reviews', 'to-reviews'),
+                                content: __('Related Tour', 'to-reviews'),
                                 level: 2,
                             },
                         ],
@@ -70,11 +70,11 @@ wp.domReady(() => {
                             'core/query',
                             {
                                 metadata: {
-                                    name: __('Related Reviews Query', 'to-reviews'),
+                                    name: __('Related tour query', 'to-reviews'),
                                 },
                                 query: {
                                     perPage: 8,
-                                    postType: 'review',
+                                    postType: 'tour',
                                     order: 'desc',
                                     orderBy: 'date',
                                 },
@@ -90,7 +90,7 @@ wp.domReady(() => {
                                     [
                                         [
                                             'core/pattern',
-                                            { slug: 'lsx-tour-operator/review-card' },
+                                            { slug: 'lsx-tour-operator/tour-card' },
                                         ],
                                     ],
                                 ],
@@ -116,7 +116,7 @@ wp.domReady(() => {
                                 name: 'core/heading',
                                 attributes: {
                                     textAlign: 'center',
-                                    content: __('Reviews', 'to-reviews'),
+                                    content: __('Related Tour', 'to-reviews'),
                                     level: 2,
                                 },
                             },
@@ -140,25 +140,23 @@ wp.domReady(() => {
                                     {
                                         name: 'core/group',
                                         attributes: {
-                                            className: 'lsx-review-card',
+                                            className: 'lsx-tour-card',
                                             style: { border: { width: '1px', style: 'solid', color: '#e2e8f0' }, spacing: { padding: '1.5rem' } },
                                         },
                                         innerBlocks: [
-                                            { name: 'core/heading', attributes: { content: __('Amazing Safari Experience', 'to-reviews'), level: 3 } },
-                                            { name: 'core/paragraph', attributes: { content: __('Our family had the most incredible time on the African safari. The guides were knowledgeable and the wildlife viewing was spectacular.', 'to-reviews') } },
-                                            { name: 'core/paragraph', attributes: { content: __('— Sarah Johnson', 'to-reviews'), style: { typography: { fontStyle: 'italic' } } } },
+                                            { name: 'core/heading', attributes: { content: __('African Safari Adventure', 'to-reviews'), level: 3 } },
+                                            { name: 'core/paragraph', attributes: { content: __('A guided multi-day safari through some of Africa’s most iconic wildlife reserves.', 'to-reviews') } },
                                         ],
                                     },
                                     {
                                         name: 'core/group',
                                         attributes: {
-                                            className: 'lsx-review-card',
+                                            className: 'lsx-tour-card',
                                             style: { border: { width: '1px', style: 'solid', color: '#e2e8f0' }, spacing: { padding: '1.5rem' } },
                                         },
                                         innerBlocks: [
-                                            { name: 'core/heading', attributes: { content: __('Perfect Beach Getaway', 'to-reviews'), level: 3 } },
-                                            { name: 'core/paragraph', attributes: { content: __('The resort was beautiful and the staff went above and beyond to make our vacation memorable. Highly recommended!', 'to-reviews') } },
-                                            { name: 'core/paragraph', attributes: { content: __('— Michael Chen', 'to-reviews'), style: { typography: { fontStyle: 'italic' } } } },
+                                            { name: 'core/heading', attributes: { content: __('Coastal Beach Escape', 'to-reviews'), level: 3 } },
+                                            { name: 'core/paragraph', attributes: { content: __('A relaxing tour along the coastline, combining beach time with local sightseeing.', 'to-reviews') } },
                                         ],
                                     },
                                 ],
@@ -174,8 +172,8 @@ wp.domReady(() => {
     };
 
     const conditionalRegister = registerForPostTypesAndTemplates(
-        ['tour'],
-        ['tour'],
+        ['review'],
+        ['review'],
         registerTourRelatedReviewVariation
     );
     conditionalRegister();
