@@ -61,9 +61,9 @@ class LSX_TO_Schema_Review extends LSX_TO_Schema_Graph_Piece {
 		if ( false !== $rating_value && '' !== $rating_value ) {
 			$data['reviewRating'] = array(
 				'@type'       => 'Rating',
-				'ratingValue' => $rating_value,
-				'bestRating'  => '5',
-				'worstRating' => '1',
+				'ratingValue' => (int) $rating_value,
+				'bestRating'  => 5,
+				'worstRating' => 1,
 			);
 		}
 
