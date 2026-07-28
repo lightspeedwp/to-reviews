@@ -86,7 +86,7 @@ wp.domReady(() => {
                                     'core/post-template',
                                     {
                                         className: 'lsx-destination-related-review-query',
-                                        layout: { type: 'grid', columnCount: 2 },
+                                        layout: { type: 'grid', columnCount: 3 },
                                     },
                                     [
                                         [
@@ -135,7 +135,7 @@ wp.domReady(() => {
                                 name: 'core/group',
                                 attributes: {
                                     className: 'lsx-destination-related-review-query',
-                                    layout: { type: 'grid', columnCount: 2 },
+                                    layout: { type: 'grid', columnCount: 3 },
                                 },
                                 innerBlocks: [
                                     {

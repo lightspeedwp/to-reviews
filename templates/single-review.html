@@ -1,41 +1,258 @@
 <!-- wp:template-part {"slug":"header"} /-->
+<!-- wp:lsx-tour-operator/sticky-menu {"menuItems":[{"id":"gallery","title":"Gallery"},{"id":"related-accommodation","title":"Accommodation"},{"id":"related-tour","title":"Tours"},{"id":"related-destinations","title":"Destinations"},{"id":"related-team","title":"Team"},{"id":"related-specials","title":"Specials"}]} -->
+<div class="wp-block-lsx-tour-operator-sticky-menu"><nav class="lsx-to-sticky-menu-nav is-layout-constrained has-global-padding" aria-label="Page section navigation"><ul class="lsx-to-sticky-menu-list alignwide" aria-label="Page sections"><li class="lsx-to-sticky-menu-item" data-section-id="gallery"><a class="lsx-to-sticky-menu-button" href="#gallery" data-section-id="gallery" aria-current="false">Gallery</a></li><li class="lsx-to-sticky-menu-item" data-section-id="related-accommodation"><a class="lsx-to-sticky-menu-button" href="#related-accommodation" data-section-id="related-accommodation" aria-current="false">Accommodation</a></li><li class="lsx-to-sticky-menu-item" data-section-id="related-tour"><a class="lsx-to-sticky-menu-button" href="#related-tour" data-section-id="related-tour" aria-current="false">Tours</a></li><li class="lsx-to-sticky-menu-item" data-section-id="related-destinations"><a class="lsx-to-sticky-menu-button" href="#related-destinations" data-section-id="related-destinations" aria-current="false">Destinations</a></li><li class="lsx-to-sticky-menu-item" data-section-id="related-team"><a class="lsx-to-sticky-menu-button" href="#related-team" data-section-id="related-team" aria-current="false">Team</a></li><li class="lsx-to-sticky-menu-item" data-section-id="related-specials"><a class="lsx-to-sticky-menu-button" href="#related-specials" data-section-id="related-specials" aria-current="false">Specials</a></li></ul></nav></div>
+<!-- /wp:lsx-tour-operator/sticky-menu -->
 
-<!-- wp:template-part {"slug":"breadcrumbs","area":"uncategorized","align":"full"} /-->
+<!-- wp:group {"metadata":{"name":"Review"},"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|medium","bottom":"var:preset|spacing|medium","left":"var:preset|spacing|x-small","right":"var:preset|spacing|x-small"},"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"primary-bg","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide has-primary-bg-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--medium);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--medium);padding-left:var(--wp--preset--spacing--x-small)"><!-- wp:columns {"align":"wide"} -->
+<div class="wp-block-columns alignwide"><!-- wp:column {"width":"15%","style":{"spacing":{"blockGap":"0"}}} -->
+<div class="wp-block-column" style="flex-basis:15%"><!-- wp:post-featured-image {"aspectRatio":"1","style":{"border":{"radius":"999px"}}} /--></div>
+<!-- /wp:column -->
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:post-title {"level":1} /-->
+<!-- wp:column {"width":"85%"} -->
+<div class="wp-block-column" style="flex-basis:85%"><!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"right":"var:preset|spacing|x-small","left":"var:preset|spacing|x-small","top":"var:preset|spacing|x-small","bottom":"var:preset|spacing|x-small"}},"border":{"radius":"8px"}},"backgroundColor":"base","layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide has-base-background-color has-background" style="border-radius:8px;padding-top:var(--wp--preset--spacing--x-small);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--x-small);padding-left:var(--wp--preset--spacing--x-small)"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"className":"is-style-subheading-3"} -->
+<p class="is-style-subheading-3"><strong>Reviewer: </strong></p>
+<!-- /wp:paragraph -->
 
-<!-- wp:post-featured-image {"aspectRatio":"3/2"} /-->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"lsx/post-meta","args":{"key":"reviewer_name"}}}},"className":"is-style-subheading-3"} -->
+<p class="is-style-subheading-3"></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
 
-<!-- wp:post-content {"align":"full","layout":{"type":"constrained"}} /-->
+<!-- wp:post-content {"align":"wide","layout":{"type":"default"}} /-->
 
-<!-- wp:group {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"default"}} -->
-<div class="wp-block-group alignwide" style="margin-top:var(--wp--preset--spacing--60);margin-bottom:var(--wp--preset--spacing--60)"><!-- wp:separator -->
+<!-- wp:paragraph {"className":"is-style-subheading-3"} -->
+<p class="is-style-subheading-3"><strong>Trip Details</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group"><!-- wp:group {"metadata":{"name":"Tour to Review"},"className":"lsx-tour-to-review-wrapper","layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+<div class="wp-block-group lsx-tour-to-review-wrapper"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"middle"}} -->
+<div class="wp-block-group"><!-- wp:lsx-tour-operator/icons {"iconType":"solid","iconName":"tourIcon"} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"lsx/post-connection","args":{"key":"tour_to_review"}}}},"prefix":"Tour:","prefixBold":true} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"metadata":{"name":"Review - Rating"},"className":"lsx-rating-wrapper","layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+<div class="wp-block-group lsx-rating-wrapper"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:lsx-tour-operator/icons {"iconType":"solid","iconName":"ratingIcon"} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"lsx/post-meta","args":{"key":"rating"}}}},"prefix":"Rating:","prefixBold":true} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"metadata":{"name":"Review - Date of Visit"},"className":"lsx-date-of-visit-wrapper","layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+<div class="wp-block-group lsx-date-of-visit-wrapper"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:lsx-tour-operator/icons {"iconType":"solid","iconName":"calendarIcon"} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"flex","orientation":"horizontal","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"lsx/post-meta","args":{"key":"date_of_visit_start"}}}},"prefix":"Travel Dates:","prefixBold":true} -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"lsx-date-of-visit-end-wrapper"} -->
+<p class="lsx-date-of-visit-end-wrapper">-</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"lsx/post-meta","args":{"key":"date_of_visit_end"}}}}} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"metadata":{"name":"Accommodation to Review"},"className":"lsx-accommodation-to-review-wrapper","layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+<div class="wp-block-group lsx-accommodation-to-review-wrapper"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"middle"}} -->
+<div class="wp-block-group"><!-- wp:lsx-tour-operator/icons {"iconType":"solid","iconName":"accommodationIcon"} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"lsx/post-connection","args":{"key":"accommodation_to_review"}}}},"prefix":"Accommodation:","prefixBold":true} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"metadata":{"name":"Destination to Review"},"className":"lsx-destination-to-review-wrapper","layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"top"}} -->
+<div class="wp-block-group lsx-destination-to-review-wrapper"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"middle"}} -->
+<div class="wp-block-group"><!-- wp:lsx-tour-operator/icons {"iconType":"solid","iconName":"destinationIcon"} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"lsx/post-connection","args":{"key":"destination_to_review"}}}},"prefix":"Destination:","prefixBold":true} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","metadata":{"name":"Gallery"},"className":"lsx-gallery-wrapper","style":{"spacing":{"margin":{"top":"0","bottom":"0"},"padding":{"top":"var:preset|spacing|medium","bottom":"var:preset|spacing|medium","left":"var:preset|spacing|x-small","right":"var:preset|spacing|x-small"}}},"layout":{"type":"constrained"},"anchor":"gallery","addToStickyMenu":true,"stickyMenuId":"gallery","stickyMenuTitle":"Gallery"} -->
+<section id="gallery" class="wp-block-group lsx-gallery-wrapper lsx-to-sticky-menu-section" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--medium);padding-right:var(--wp--preset--spacing--x-small);padding-bottom:var(--wp--preset--spacing--medium);padding-left:var(--wp--preset--spacing--x-small)" data-sticky-menu-section="true" data-section-title="Gallery" role="region" aria-labelledby="gallery-header"><!-- wp:group {"align":"wide","style":{"spacing":{"margin":{"top":"0","bottom":"0"},"padding":{"top":"0","bottom":"var:preset|spacing|small","left":"0","right":"0"},"blockGap":"var:preset|spacing|small"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group alignwide" style="margin-top:0;margin-bottom:0;padding-top:0;padding-right:0;padding-bottom:var(--wp--preset--spacing--small);padding-left:0"><!-- wp:separator {"style":{"layout":{"selfStretch":"fill","flexSize":null}},"backgroundColor":"primary"} -->
+<hr class="wp-block-separator has-text-color has-primary-color has-alpha-channel-opacity has-primary-background-color has-background"/>
+<!-- /wp:separator -->
+
+<!-- wp:heading {"style":{"typography":{"textAlign":"center"}}} -->
+<h2 class="wp-block-heading has-text-align-center">Gallery</h2>
+<!-- /wp:heading -->
+
+<!-- wp:separator {"style":{"layout":{"selfStretch":"fill","flexSize":null}},"backgroundColor":"primary"} -->
+<hr class="wp-block-separator has-text-color has-primary-color has-alpha-channel-opacity has-primary-background-color has-background"/>
+<!-- /wp:separator --></div>
+<!-- /wp:group -->
+
+<!-- wp:gallery {"linkTo":"none","sizeSlug":"thumbnail","metadata":{"name":"TO Gallery","bindings":{"content":{"source":"lsx/gallery"}}},"align":"wide"} -->
+<figure class="wp-block-gallery alignwide has-nested-images columns-default is-cropped"><!-- wp:image -->
+<figure class="wp-block-image"><a href="/wp-content/plugins/tour-operator/assets/img/placeholders/placeholder-general-350x350.jpg"><img alt="Gallery image 1"/></a></figure>
+<!-- /wp:image -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><a href="/wp-content/plugins/tour-operator/assets/img/placeholders/placeholder-general-350x350.jpg"><img alt="Gallery image 2"/></a></figure>
+<!-- /wp:image -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><a href="/wp-content/plugins/tour-operator/assets/img/placeholders/placeholder-general-350x350.jpg"><img alt="Gallery image 3"/></a></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery --></section>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"tagName":"section","metadata":{"name":"Accommodation"},"align":"full","className":"lsx-accommodation-related-review-query-wrapper","layout":{"type":"constrained"},"anchor":"related-accommodation","addToStickyMenu":true,"stickyMenuId":"related-accommodation","stickyMenuTitle":"Accommodation"} -->
+<section class="wp-block-group alignfull lsx-accommodation-related-review-query-wrapper lsx-to-sticky-menu-section" id="related-accommodation" data-sticky-menu-section="true" data-section-title="Accommodation" role="region" aria-labelledby="related-accommodation-header"><!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group alignwide"><!-- wp:separator {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
 <hr class="wp-block-separator has-alpha-channel-opacity"/>
 <!-- /wp:separator -->
 
-<!-- wp:group {"tagName":"nav","align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"},"ariaLabel":"Post navigation"} -->
-<nav class="wp-block-group alignwide" aria-label="Post navigation" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)"><!-- wp:post-navigation-link {"type":"previous","showTitle":true,"arrow":"arrow"} /-->
-
-<!-- wp:post-navigation-link {"showTitle":true,"arrow":"arrow"} /--></nav>
-<!-- /wp:group --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group -->
-
-<!-- wp:group {"align":"wide","className":"is-style-section-1","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide is-style-section-1" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading {"align":"wide"} -->
-<h2 class="wp-block-heading alignwide">More posts</h2>
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Related Accommodation</h2>
 <!-- /wp:heading -->
 
-<!-- wp:query {"queryId":444,"query":{"perPage":4,"pages":0,"offset":0,"postType":"review","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"align":"wide","layout":{"type":"default"}} -->
-<div class="wp-block-query alignwide"><!-- wp:post-template {"align":"full","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"default"}} -->
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30"}},"border":{"bottom":{"color":"var:preset|color|accent-6","width":"1px"},"top":[],"right":[],"left":[]}},"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"center","justifyContent":"space-between"}} -->
-<div class="wp-block-group alignfull" style="border-bottom-color:var(--wp--preset--color--accent-6);border-bottom-width:1px;padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)"><!-- wp:post-title {"level":3,"isLink":true} /-->
-
-<!-- wp:post-date {"textAlign":"right","isLink":true} /--></div>
+<!-- wp:separator {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></div>
 <!-- /wp:group -->
+
+<!-- wp:group {"align":"wide","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide"><!-- wp:query {"queryId":4,"query":{"perPage":8,"postType":"accommodation","order":"desc","orderBy":"date"},"metadata":{"name":"Related accommodation query"},"align":"wide"} -->
+<div class="wp-block-query alignwide"><!-- wp:post-template {"className":"lsx-accommodation-related-review-query","layout":{"type":"grid","columnCount":3}} -->
+<!-- wp:pattern {"slug":"lsx-tour-operator/accommodation-card"} /-->
 <!-- /wp:post-template --></div>
 <!-- /wp:query --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","metadata":{"name":"Tours"},"align":"full","className":"lsx-tour-related-review-query-wrapper","layout":{"type":"constrained"},"anchor":"related-tour","addToStickyMenu":true,"stickyMenuId":"related-tour","stickyMenuTitle":"Tours"} -->
+<section class="wp-block-group alignfull lsx-tour-related-review-query-wrapper lsx-to-sticky-menu-section" id="related-tour" data-sticky-menu-section="true" data-section-title="Tours" role="region" aria-labelledby="related-tour-header"><!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group alignwide"><!-- wp:separator {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Tour</h2>
+<!-- /wp:heading -->
+
+<!-- wp:separator {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"wide","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide"><!-- wp:query {"queryId":7,"query":{"perPage":6,"postType":"tour","order":"desc","orderBy":"date","offset":0,"inherit":false},"metadata":{"name":"Related tour query"},"align":"wide","layout":{"type":"default"}} -->
+<div class="wp-block-query alignwide"><!-- wp:post-template {"className":"lsx-tour-related-review-query","layout":{"type":"grid","columnCount":3}} -->
+<!-- wp:pattern {"slug":"lsx-tour-operator/tour-card"} /-->
+<!-- /wp:post-template --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","metadata":{"name":"Destinations"},"align":"full","className":"lsx-destination-related-review-query-wrapper","backgroundColor":"primary-200","layout":{"type":"constrained"},"anchor":"related-destinations","addToStickyMenu":true,"stickyMenuId":"related-destinations","stickyMenuTitle":"Destinations"} -->
+<section class="wp-block-group alignfull lsx-destination-related-review-query-wrapper has-primary-200-background-color has-background lsx-to-sticky-menu-section" id="related-destinations" data-sticky-menu-section="true" data-section-title="Destinations" role="region" aria-labelledby="related-destinations-header"><!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group alignwide"><!-- wp:separator {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Related Destination</h2>
+<!-- /wp:heading -->
+
+<!-- wp:separator {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"wide","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide"><!-- wp:query {"queryId":6,"query":{"perPage":8,"postType":"destination","order":"desc","orderBy":"date"},"metadata":{"name":"Related destination query"},"align":"wide"} -->
+<div class="wp-block-query alignwide"><!-- wp:post-template {"className":"lsx-destination-related-review-query","layout":{"type":"grid","columnCount":3}} -->
+<!-- wp:pattern {"slug":"lsx-tour-operator/destination-card"} /-->
+<!-- /wp:post-template --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","metadata":{"name":"Team"},"align":"full","className":"lsx-team-related-review-query-wrapper","layout":{"type":"constrained"},"anchor":"related-team","addToStickyMenu":true,"stickyMenuId":"related-team","stickyMenuTitle":"Team"} -->
+<section class="wp-block-group alignfull lsx-team-related-review-query-wrapper lsx-to-sticky-menu-section" id="related-team" data-sticky-menu-section="true" data-section-title="Team" role="region" aria-labelledby="related-team-header"><!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group alignwide"><!-- wp:separator {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Team</h2>
+<!-- /wp:heading -->
+
+<!-- wp:separator {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"wide","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide"><!-- wp:query {"queryId":3,"query":{"perPage":8,"postType":"team","order":"desc","orderBy":"date"},"metadata":{"name":"Related team query"},"align":"wide"} -->
+<div class="wp-block-query alignwide"><!-- wp:post-template {"className":"lsx-team-related-review-query","layout":{"type":"grid","columnCount":3}} -->
+<!-- wp:pattern {"slug":"lsx-tour-operator/team-card"} /-->
+<!-- /wp:post-template --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","metadata":{"name":"Specials"},"align":"full","className":"lsx-special-related-review-query-wrapper","layout":{"type":"constrained"},"anchor":"related-specials","addToStickyMenu":true,"stickyMenuId":"related-specials","stickyMenuTitle":"Specials"} -->
+<section class="wp-block-group alignfull lsx-special-related-review-query-wrapper lsx-to-sticky-menu-section" id="related-specials" data-sticky-menu-section="true" data-section-title="Specials" role="region" aria-labelledby="related-specials-header"><!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group alignwide"><!-- wp:separator {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Specials</h2>
+<!-- /wp:heading -->
+
+<!-- wp:separator {"style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"wide","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide"><!-- wp:query {"queryId":4,"query":{"perPage":8,"postType":"special","order":"desc","orderBy":"date"},"metadata":{"name":"Related special query"},"align":"wide"} -->
+<div class="wp-block-query alignwide"><!-- wp:post-template {"className":"lsx-special-related-review-query","layout":{"type":"grid","columnCount":3}} -->
+<!-- wp:pattern {"slug":"lsx-tour-operator/special-card"} /-->
+<!-- /wp:post-template --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group --></section>
 <!-- /wp:group -->
 
 <!-- wp:template-part {"slug":"footer"} /-->

@@ -58,7 +58,7 @@ wp.domReady(() => {
                 [
                     'core/group',
                     {
-                        layout: { type: 'flex', orientation: 'vertical', flexWrap: 'nowrap' },
+                        layout: { type: 'flex', orientation: 'horizontal', flexWrap: 'nowrap' },
                     },
                     [
                         [
@@ -74,8 +74,15 @@ wp.domReady(() => {
                                         },
                                     },
                                 },
-                                prefix: __('Visit From:', 'to-reviews'),
+                                prefix: __('Travel Dates:', 'to-reviews'),
                                 prefixBold: true,
+                            },
+                        ],
+                        [
+                            'core/paragraph',
+                            {
+                                className: 'lsx-date-of-visit-end-wrapper',
+                                content: '-',
                             },
                         ],
                         [
@@ -91,8 +98,6 @@ wp.domReady(() => {
                                         },
                                     },
                                 },
-                                prefix: __('Visit To:', 'to-reviews'),
-                                prefixBold: true,
                             },
                         ],
                     ],
@@ -113,13 +118,20 @@ wp.domReady(() => {
                             {
                                 name: 'core/paragraph',
                                 attributes: {
-                                    content: '<strong>' + __('Visit From: ', 'to-reviews') + '</strong>' + __('January 2024', 'to-reviews'),
+                                    content: '<strong>' + __('Travel Dates: ', 'to-reviews') + '</strong>' + __('January 2024', 'to-reviews'),
                                 },
                             },
                             {
                                 name: 'core/paragraph',
                                 attributes: {
-                                    content: '<strong>' + __('Visit To: ', 'to-reviews') + '</strong>' + __('February 2024', 'to-reviews'),
+                                    className: 'lsx-date-of-visit-end-wrapper',
+                                    content: '-',
+                                },
+                            },
+                            {
+                                name: 'core/paragraph',
+                                attributes: {
+                                    content: __('February 2024', 'to-reviews'),
                                 },
                             },
                         ],
