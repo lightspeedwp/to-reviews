@@ -16,6 +16,25 @@ class LSX_TO_Reviews_Blocks {
 
 		// Register our block patterns.
 		add_action( 'init', array( $this, 'register_block_patterns' ), 11 );
+
+		
+		// BLock Helpers
+		add_filter( 'lsx_to_multi_field_wrappers', array( $this, 'register_multi_field_wrappers' ) );
+	}
+
+	/**
+	 * Register review block wrappers that group multiple meta fields.
+	 * The social-links wrapper should be hidden only when every social field is empty.
+	 *
+	 * @param array $wrappers
+	 * @return array
+	 */
+	public function register_multi_field_wrappers( $wrappers ) {
+		$wrappers['date-of-visit'] = array(
+			'date_of_visit_start',
+			'date_of_visit_end',
+		);
+		return $wrappers;
 	}
 
 	/**
