@@ -32,7 +32,7 @@ class LSX_TO_Schema_Review extends LSX_TO_Schema_Graph_Piece {
 		$review_author       = get_post_meta( $post->ID, 'reviewer_name', true );
 		$review_email        = get_post_meta( $post->ID, 'reviewer_email', true );
 		$rating_value        = get_post_meta( $post->ID, 'rating', true );
-		$description         = \lsx\schema\Helpers::strip_to_text( apply_filters( 'the_content', $post->post_content ) );
+		$description         = \lsx\schema\Helpers::strip_to_text( apply_filters( 'the_content', $post->post_content ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 		$tour_list           = get_post_meta( $post->ID, 'tour_to_review', false );
 		$accom_list          = get_post_meta( $post->ID, 'accommodation_to_review', false );
 		$comment_count       = get_comment_count( $this->context->id );
