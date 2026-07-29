@@ -17,7 +17,6 @@ class LSX_TO_Reviews_Blocks {
 		// Register our block patterns.
 		add_action( 'init', array( $this, 'register_block_patterns' ), 11 );
 
-		
 		// BLock Helpers
 		add_filter( 'lsx_to_multi_field_wrappers', array( $this, 'register_multi_field_wrappers' ) );
 	}
