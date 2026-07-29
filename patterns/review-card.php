@@ -45,7 +45,7 @@ return array(
 
 <!-- wp:group {"metadata":{"name":"' . esc_attr__( 'Author', 'tour-operator' ) . '"},"style":"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center","verticalAlignment":"center"}} -->
 <div class="wp-block-group"><!-- wp:group {"metadata":{"name":"' . esc_attr__( 'Author Details', 'tour-operator' ) . '"},"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","flexWrap":"nowrap","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
-<div class="wp-block-group"><!-- wp:post-title {"textAlign":"center","level":3,"isLink":false,"fontSize":"large","fontFamily":"heading"} /-->
+<div class="wp-block-group"><!-- wp:post-title {"textAlign":"center","level":3,"isLink":true,"fontSize":"large","fontFamily":"heading"} /-->
 
 <!-- wp:paragraph {"align":"center","metadata":{"bindings":{"content":{"source":"lsx/post-meta","args":{"key":"reviewer_name"}}}},"fontSize":"medium","fontFamily":"heading"} -->
 <p class="has-text-align-center has-heading-font-family has-medium-font-size"></p>
