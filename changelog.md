@@ -22,8 +22,20 @@ This release introduces comprehensive block support for the Reviews post type, i
 - `classes/class-to-reviews-frontend.php` — added `travel_dates()` filter to format stored date-of-visit timestamps using the site's configured date format
 - Plugin version bumped to `2.2.0`
 
+### Fixed
+- Schema: replaced duplicate `itemReviewed` keys (tour + accommodation were silently overwriting each other) with a new `add_items_reviewed()` method that merges both into a single array.
+- Schema: `ratingValue` is now cast to `(int)` to match Schema.org convention; `bestRating` is fixed at `5` and `worstRating` at `1`; the `reviewRating` block is now conditional on a non-empty rating value.
+- Schema: review `@id` updated from `#review` to `#/schema/review/{id}` to avoid collisions on pages with multiple reviews.
+- Schema: `email` removed from the nested `author` `Person` object to prevent exposure of reviewer contact data.
+- Schema: `taxonomy` field mapped from `reviewSection` → `about` for `category` terms.
+- Schema: description now uses `\lsx\schema\Helpers::strip_to_text()` on filtered content instead of a bare `wp_strip_all_tags()` call.
+- Schema: date-of-visit range now formatted as an ISO 8601 interval (`start/end`) using `\lsx\schema\Helpers::format_iso_date()`; falls back to an `additionalProperty` `PropertyValue` when only one date is present.
+- Schema: destinations typed as `TouristDestination` (was Country/State based on post parent check); tours typed as `TouristTrip`; accommodation typed as `LodgingBusiness`.
+- Schema: replaced `get_the_ID()` calls with explicit `$post->ID` for consistency in meta queries.
+- Schema: added `url` property to the root Review node.
+
 ### Security
-- Tested with WordPress 6.9
+- Tested with WordPress 7.0
 - Tested with PHP 8.0+
 
 ## [[2.1]](https://github.com/lightspeeddevelopment/to-reviews/releases/tag/2.1) - 2025-12-20
