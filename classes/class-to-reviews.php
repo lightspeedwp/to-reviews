@@ -5,9 +5,14 @@
  * @package   LSX_TO_Reviews
  * @author    LightSpeed
  * @license   GPL-3.0+
- * @link      
+ * @link
  * @copyright 2016 LightSpeedDevelopment
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( 'LSX_TO_Reviews' ) ) {
 	/**
 	 * Main plugin class.
@@ -16,7 +21,7 @@ if ( ! class_exists( 'LSX_TO_Reviews' ) ) {
 	 * @author  LightSpeed
 	 */
 	class LSX_TO_Reviews {
-		
+
 		/**
 		 * The plugin slug/id.
 		 *
@@ -59,7 +64,7 @@ if ( ! class_exists( 'LSX_TO_Reviews' ) ) {
 			$this->frontend = new LSX_TO_Reviews_Frontend();
 
 			require_once LSX_TO_REVIEWS_PATH . '/includes/template-tags.php';
-			
+
 			require_once LSX_TO_REVIEWS_PATH . '/classes/class-to-reviews-templates.php';
 
 			require_once LSX_TO_REVIEWS_PATH . '/classes/class-to-reviews-blocks.php';

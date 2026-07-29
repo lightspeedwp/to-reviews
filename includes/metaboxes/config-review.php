@@ -9,6 +9,10 @@
  * @copyright 2017 LightSpeedDevelopment
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $metabox = array(
 	'title'  => esc_html__( 'Tour Operator Plugin', 'to-reviews' ),
 	'pages'  => 'review',
