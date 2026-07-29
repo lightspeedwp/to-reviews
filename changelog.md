@@ -1,5 +1,31 @@
 # Change log
 
+## [[2.2]](https://github.com/lightspeedwp/to-reviews/releases/tag/2.2) - 2026-07-29
+
+### Description
+This release introduces comprehensive block support for the Reviews post type, including new meta blocks, block variations for connecting reviews to core Tour Operator post types, a review card pattern, and updated block-based templates for archive and single review pages.
+
+### Added
+- New `LSX_TO_Reviews_Blocks` class for centralised block and pattern registration (`classes/class-to-reviews-blocks.php`)
+- Meta blocks for review fields: `date-of-visit`, `rating`, `reviewer-name`, `tagline`, `gallery`, `no-adults`, `no-children`
+- Connection blocks for linking reviews to other post types: `accommodation-to-review`, `destination-to-review`, `team-to-review`, `tour-to-review`
+- Related review query blocks for core post types: `accommodation-related-review`, `destination-related-review`, `tour-related-review`
+- Featured review block (`featured-review`) for highlighting a single review
+- Block variations for reviews registered on accommodation, destination, team, and tour post types
+- Review card block pattern (`patterns/review-card.php`) for displaying testimonials in query loops
+- Conditional block registration utility (`src/utils/conditional-block-registration.js`)
+- Post type JSON definition (`post-types/review.json`) with full field schema
+
+### Updated
+- `templates/single-review.html` — rebuilt with new meta blocks and connection blocks
+- `templates/archive-review.html` — updated to use review card pattern in query loop
+- `classes/class-to-reviews-frontend.php` — added `travel_dates()` filter to format stored date-of-visit timestamps using the site's configured date format
+- Plugin version bumped to `2.2.0`
+
+### Security
+- Tested with WordPress 6.9
+- Tested with PHP 8.0+
+
 ## [[2.1]](https://github.com/lightspeeddevelopment/to-reviews/releases/tag/2.1) - 2025-12-20
 
 ### Description
