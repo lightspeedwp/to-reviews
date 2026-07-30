@@ -1,0 +1,122 @@
+{
+	"type": "postType",
+	"postType": "review",
+	"slug": "review",
+	"label": "Review",
+	"pluralLabel": "Reviews",
+	"icon": "editor-ul",
+	"hasArchive": "reviews",
+	"hierarchical": false,
+	"showInRest": true,
+	"showInMenu": "tour-operator",
+	"menuPosition": 31,
+	"template": [],
+	"fields": [
+		{
+			"slug": "tagline",
+			"type": "string",
+			"label": "Tagline",
+			"description": "",
+			"visible": true
+		},
+		{
+			"slug": "reviewer_name",
+			"type": "string",
+			"label": "Reviewer Name",
+			"description": "The name of the person who wrote the review.",
+			"visible": true
+		},
+		{
+			"slug": "reviewer_email",
+			"type": "string",
+			"label": "Reviewer Email",
+			"description": "The email address of the reviewer.",
+			"visible": false
+		},
+		{
+			"slug": "rating",
+			"type": "select",
+			"label": "Rating",
+			"description": "Select the star rating given by the reviewer.",
+			"visible": true,
+			"options": [
+				{ "label": "0", "value": "0" },
+				{ "label": "1", "value": "1" },
+				{ "label": "2", "value": "2" },
+				{ "label": "3", "value": "3" },
+				{ "label": "4", "value": "4" },
+				{ "label": "5", "value": "5" }
+			]
+		},
+		{
+			"slug": "no_adults",
+			"type": "string",
+			"label": "Number of Adults",
+			"description": "Number of adults in the travel party.",
+			"visible": true
+		},
+		{
+			"slug": "no_children",
+			"type": "string",
+			"label": "Number of Children",
+			"description": "Number of children in the travel party.",
+			"visible": true
+		},
+		{
+			"slug": "date_of_visit_start",
+			"type": "date",
+			"label": "Start Date of Visit",
+			"description": "The start date of the reviewed trip or stay.",
+			"visible": true
+		},
+		{
+			"slug": "date_of_visit_end",
+			"type": "date",
+			"label": "End Date of Visit",
+			"description": "The end date of the reviewed trip or stay.",
+			"visible": true
+		},
+		{
+			"slug": "gallery",
+			"type": "file_list",
+			"label": "Gallery",
+			"description": "Images uploaded by the reviewer.",
+			"visible": true
+		},
+		{
+			"slug": "team_to_review",
+			"type": "multiselect",
+			"label": "Reviewed By (Team Member)",
+			"description": "The team member who authored or is associated with this review.",
+			"visible": true
+		},
+		{
+			"slug": "accommodation_to_review",
+			"type": "multiselect",
+			"label": "Related Accommodation",
+			"description": "Accommodation posts this review is connected to.",
+			"visible": true
+		},
+		{
+			"slug": "destination_to_review",
+			"type": "multiselect",
+			"label": "Related Destinations",
+			"description": "Destination posts this review is connected to.",
+			"visible": true
+		},
+		{
+			"slug": "tour_to_review",
+			"type": "multiselect",
+			"label": "Related Tours",
+			"description": "Tour posts this review is connected to.",
+			"visible": true
+		},
+		{
+			"slug": "post_to_review",
+			"type": "multiselect",
+			"label": "Related Posts",
+			"description": "Blog posts this review is connected to.",
+			"visible": true
+		}
+	]
+}

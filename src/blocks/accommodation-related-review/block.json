@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "textdomain": "to-reviews",
+  "name": "lsx-tour-operator/accommodation-related-review",
+  "title": "Related Accommodation",
+  "category": "lsx-tour-operator",
+  "editorScript": "file:index.js",
+  "description": "Display accommodation related to this review.",
+  "icon": "star-filled",
+  "keywords": ["review", "accommodation", "related", "query"]
+}

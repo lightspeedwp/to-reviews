@@ -6,6 +6,10 @@
  * @license   GPL-2.0+
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Gets the current reviews rating
  *
