@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "textdomain": "to-reviews",
+  "name": "lsx-tour-operator/review-gallery",
+  "title": "Review - Gallery",
+  "category": "lsx-tour-operator",
+  "editorScript": "file:index.js",
+  "description": "Displays the gallery images for this review.",
+  "icon": "format-gallery",
+  "keywords": [
+    "gallery",
+    "images",
+    "review",
+    "photos"
+  ]
+}

@@ -1,156 +1,995 @@
-# Copyright (C) 2025 LightSpeed
+# Copyright (C) 2026 LightSpeed
 # This file is distributed under the GPL3+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Tour Operator Reviews 2.0.0\n"
+"Project-Id-Version: Tour Operator Reviews 2.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/to-reviews\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-09T12:29:18+00:00\n"
+"POT-Creation-Date: 2026-07-30T07:27:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: to-reviews\n"
 
 #. Plugin Name of the plugin
+#: to-reviews.php
 msgid "Tour Operator Reviews"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: to-reviews.php
 msgid "https://touroperator.solutions/plugins/reviews/"
 msgstr ""
 
 #. Description of the plugin
+#: to-reviews.php
 msgid "The Tour Operator Reviews extension adds the “Reviews” post type, which you can assign to our Tour Operator core post types: Tours, accommodations and destinations."
 msgstr ""
 
 #. Author of the plugin
+#: to-reviews.php
 msgid "LightSpeed"
 msgstr ""
 
 #. Author URI of the plugin
+#: to-reviews.php
 msgid "https://www.lightspeedwp.agency/"
 msgstr ""
 
-#: classes/class-to-reviews-setup.php:65
-#: includes/post-types/config-review.php:16
-#: includes/post-types/config-review.php:22
-#: includes/post-types/config-review.php:28
+#: classes/class-to-review-schema.php:129
+msgid "Date of Visit"
+msgstr ""
+
+#: classes/class-to-reviews-admin.php:80
+msgid "Related Reviews"
+msgstr ""
+
+#: classes/class-to-reviews-setup.php:75
+#: includes/post-types/config-review.php:20
+#: includes/post-types/config-review.php:26
+#: includes/post-types/config-review.php:32
 msgid "Reviews"
 msgstr ""
 
-#: classes/class-to-reviews-setup.php:68
-#: includes/post-types/config-review.php:17
+#: classes/class-to-reviews-setup.php:78
+#: includes/post-types/config-review.php:21
 msgid "Review"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:13
+#: classes/class-to-reviews-templates.php:54
+msgid "Single Review"
+msgstr ""
+
+#: classes/class-to-reviews-templates.php:55
+msgid "Displays a single review"
+msgstr ""
+
+#: classes/class-to-reviews-templates.php:59
+msgid "Reviews Archive"
+msgstr ""
+
+#: classes/class-to-reviews-templates.php:60
+msgid "Displays all the reviews."
+msgstr ""
+
+#: includes/metaboxes/config-review.php:17
 msgid "Tour Operator Plugin"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:21
+#: includes/metaboxes/config-review.php:25
 msgid "Tagline"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:28
+#: includes/metaboxes/config-review.php:32
 msgid "No of Adults"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:35
+#: includes/metaboxes/config-review.php:39
 msgid "No of Children"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:42
+#: includes/metaboxes/config-review.php:46
+#: src/blocks/reviewer-name/index.js:18
+#: src/blocks/reviewer-name/index.js:33
 msgid "Reviewer Name"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:49
+#: includes/metaboxes/config-review.php:53
 msgid "Reviewer Email"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:56
+#: includes/metaboxes/config-review.php:60
 msgid "Rating"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:63
+#: includes/metaboxes/config-review.php:67
 msgid "Start date of visit"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:70
+#: includes/metaboxes/config-review.php:74
 msgid "End date of visit"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:78
+#: includes/metaboxes/config-review.php:82
 msgid "Reviewed By"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:90
-#: includes/metaboxes/config-review.php:95
+#: includes/metaboxes/config-review.php:94
+#: includes/metaboxes/config-review.php:99
 msgid "Gallery"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:96
+#: includes/metaboxes/config-review.php:100
 msgid "Add images related to the review to be displayed in the Reviews's gallery."
 msgstr ""
 
-#: includes/metaboxes/config-review.php:102
+#: includes/metaboxes/config-review.php:106
 msgid "Add new image"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:108
+#: includes/metaboxes/config-review.php:112
 msgid "Related"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:113
+#: includes/metaboxes/config-review.php:117
 msgid "Posts"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:114
+#: includes/metaboxes/config-review.php:118
 msgid "Accommodation"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:115
+#: includes/metaboxes/config-review.php:119
 msgid "Destinations"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:116
+#: includes/metaboxes/config-review.php:120
 msgid "Tours"
 msgstr ""
 
-#: includes/metaboxes/config-review.php:122
+#: includes/metaboxes/config-review.php:126
 msgid " related with this review"
 msgstr ""
 
-#: includes/post-types/config-review.php:18
+#: includes/post-types/config-review.php:22
 msgid "Add New"
 msgstr ""
 
-#: includes/post-types/config-review.php:19
+#: includes/post-types/config-review.php:23
 msgid "Add New Review"
 msgstr ""
 
-#: includes/post-types/config-review.php:20
+#: includes/post-types/config-review.php:24
 msgid "Edit Review"
 msgstr ""
 
-#: includes/post-types/config-review.php:21
+#: includes/post-types/config-review.php:25
 msgid "New Reviews"
 msgstr ""
 
-#: includes/post-types/config-review.php:23
+#: includes/post-types/config-review.php:27
 msgid "View Review"
 msgstr ""
 
-#: includes/post-types/config-review.php:24
+#: includes/post-types/config-review.php:28
 msgid "Search Reviews"
 msgstr ""
 
-#: includes/post-types/config-review.php:25
+#: includes/post-types/config-review.php:29
 msgid "No reviews found"
 msgstr ""
 
-#: includes/post-types/config-review.php:26
+#: includes/post-types/config-review.php:30
 msgid "No reviews found in Trash"
+msgstr ""
+
+#: src/blocks/accommodation-related-review/index.js:18
+#: src/blocks/accommodation-related-review/index.js:30
+#: src/blocks/accommodation-related-review/index.js:55
+#: src/blocks/accommodation-related-review/index.js:119
+msgid "Related Accommodation"
+msgstr ""
+
+#: src/blocks/accommodation-related-review/index.js:20
+msgid "Display accommodation related to this review."
+msgstr ""
+
+#: src/blocks/accommodation-related-review/index.js:23
+#: src/blocks/accommodation-to-review/index.js:24
+#: src/blocks/date-of-visit/index.js:25
+#: src/blocks/destination-related-review/index.js:23
+#: src/blocks/destination-to-review/index.js:24
+#: src/blocks/gallery/index.js:25
+#: src/blocks/no-adults/index.js:25
+#: src/blocks/no-children/index.js:25
+#: src/blocks/rating/index.js:24
+#: src/blocks/reviewer-name/index.js:26
+#: src/blocks/tagline/index.js:24
+#: src/blocks/team-to-review/index.js:24
+#: src/blocks/tour-related-review/index.js:23
+#: src/blocks/tour-to-review/index.js:24
+msgid "review"
+msgstr ""
+
+#: src/blocks/accommodation-related-review/index.js:24
+#: src/blocks/accommodation-to-review/index.js:23
+msgid "accommodation"
+msgstr ""
+
+#: src/blocks/accommodation-related-review/index.js:25
+#: src/blocks/destination-related-review/index.js:25
+#: src/blocks/tour-related-review/index.js:25
+msgid "related"
+msgstr ""
+
+#: src/blocks/accommodation-related-review/index.js:26
+#: src/blocks/destination-related-review/index.js:26
+#: src/blocks/tour-related-review/index.js:26
+msgid "query"
+msgstr ""
+
+#: src/blocks/accommodation-related-review/index.js:73
+msgid "Related accommodation query"
+msgstr ""
+
+#: src/blocks/accommodation-related-review/index.js:147
+msgid "Oceanview Resort & Spa"
+msgstr ""
+
+#: src/blocks/accommodation-related-review/index.js:148
+msgid "A luxurious beachfront resort offering stunning ocean views, spacious rooms, and a full-service spa."
+msgstr ""
+
+#: src/blocks/accommodation-related-review/index.js:158
+msgid "Mountain Lodge Retreat"
+msgstr ""
+
+#: src/blocks/accommodation-related-review/index.js:159
+msgid "A cosy lodge nestled in the mountains, perfect for travellers seeking a quiet, scenic getaway."
+msgstr ""
+
+#: src/blocks/accommodation-to-review/index.js:18
+#: src/blocks/accommodation-to-review/index.js:33
+msgid "Accommodation to Review"
+msgstr ""
+
+#: src/blocks/accommodation-to-review/index.js:21
+msgid "Displays the accommodations connected to this review."
+msgstr ""
+
+#: src/blocks/accommodation-to-review/index.js:25
+#: src/blocks/destination-to-review/index.js:25
+#: src/blocks/team-to-review/index.js:25
+#: src/blocks/tour-to-review/index.js:25
+msgid "connection"
+msgstr ""
+
+#: src/blocks/accommodation-to-review/index.js:26
+msgid "lodging"
+msgstr ""
+
+#: src/blocks/accommodation-to-review/index.js:77
+msgid "Accommodation:"
+msgstr ""
+
+#: src/blocks/accommodation-to-review/index.js:99
+msgid "Accommodation: "
+msgstr ""
+
+#: src/blocks/accommodation-to-review/index.js:99
+msgid "Serengeti Safari Lodge"
+msgstr ""
+
+#: src/blocks/date-of-visit/index.js:18
+#: src/blocks/date-of-visit/index.js:33
+msgid "Review - Date of Visit"
+msgstr ""
+
+#: src/blocks/date-of-visit/index.js:21
+msgid "Displays the date of visit for this review."
+msgstr ""
+
+#: src/blocks/date-of-visit/index.js:23
+msgid "date"
+msgstr ""
+
+#: src/blocks/date-of-visit/index.js:24
+msgid "visit"
+msgstr ""
+
+#: src/blocks/date-of-visit/index.js:26
+msgid "travel"
+msgstr ""
+
+#: src/blocks/date-of-visit/index.js:77
+msgid "Travel Dates:"
+msgstr ""
+
+#: src/blocks/date-of-visit/index.js:121
+msgid "Travel Dates: "
+msgstr ""
+
+#: src/blocks/date-of-visit/index.js:121
+msgid "January 2024"
+msgstr ""
+
+#: src/blocks/date-of-visit/index.js:134
+msgid "February 2024"
+msgstr ""
+
+#: src/blocks/destination-related-review/index.js:18
+#: src/blocks/destination-related-review/index.js:30
+#: src/blocks/destination-related-review/index.js:56
+#: src/blocks/destination-related-review/index.js:120
+msgid "Related Destination"
+msgstr ""
+
+#: src/blocks/destination-related-review/index.js:20
+msgid "Display destination related to this review."
+msgstr ""
+
+#: src/blocks/destination-related-review/index.js:24
+#: src/blocks/destination-to-review/index.js:23
+msgid "destination"
+msgstr ""
+
+#: src/blocks/destination-related-review/index.js:74
+msgid "Related destination query"
+msgstr ""
+
+#: src/blocks/destination-related-review/index.js:148
+msgid "South Africa"
+msgstr ""
+
+#: src/blocks/destination-related-review/index.js:149
+msgid "Home to breathtaking landscapes, diverse wildlife, and a rich cultural heritage."
+msgstr ""
+
+#: src/blocks/destination-related-review/index.js:159
+msgid "Zimbabwe"
+msgstr ""
+
+#: src/blocks/destination-related-review/index.js:160
+msgid "A destination known for its natural wonders and unforgettable wildlife adventures."
+msgstr ""
+
+#: src/blocks/destination-to-review/index.js:18
+#: src/blocks/destination-to-review/index.js:33
+msgid "Destination to Review"
+msgstr ""
+
+#: src/blocks/destination-to-review/index.js:21
+msgid "Displays the destinations connected to this review."
+msgstr ""
+
+#: src/blocks/destination-to-review/index.js:26
+msgid "location"
+msgstr ""
+
+#: src/blocks/destination-to-review/index.js:77
+msgid "Destination:"
+msgstr ""
+
+#: src/blocks/destination-to-review/index.js:99
+msgid "Destination: "
+msgstr ""
+
+#: src/blocks/destination-to-review/index.js:99
+msgid "Cape Town, South Africa"
+msgstr ""
+
+#: src/blocks/featured-review/index.js:16
+#: src/blocks/featured-review/index.js:56
+msgid "Featured Reviews"
+msgstr ""
+
+#: src/blocks/featured-review/index.js:18
+msgid "Displays Reviews with the Featured tag."
+msgstr ""
+
+#: src/blocks/featured-review/index.js:21
+msgid "featured"
+msgstr ""
+
+#: src/blocks/featured-review/index.js:22
+msgid "reviews"
+msgstr ""
+
+#: src/blocks/featured-review/index.js:23
+msgid "testimonials"
+msgstr ""
+
+#: src/blocks/gallery/index.js:18
+#: src/blocks/gallery/index.js:30
+msgid "Review - Gallery"
+msgstr ""
+
+#: src/blocks/gallery/index.js:21
+msgid "Display the gallery images for this review."
+msgstr ""
+
+#: src/blocks/gallery/index.js:23
+msgid "gallery"
+msgstr ""
+
+#: src/blocks/gallery/index.js:24
+msgid "images"
+msgstr ""
+
+#: src/blocks/gallery/index.js:26
+msgid "photos"
+msgstr ""
+
+#: src/blocks/no-adults/index.js:18
+#: src/blocks/no-adults/index.js:33
+msgid "Review - Number of Adults"
+msgstr ""
+
+#: src/blocks/no-adults/index.js:21
+msgid "Displays the number of adults on this review."
+msgstr ""
+
+#: src/blocks/no-adults/index.js:23
+msgid "adults"
+msgstr ""
+
+#: src/blocks/no-adults/index.js:24
+msgid "guests"
+msgstr ""
+
+#: src/blocks/no-adults/index.js:26
+#: src/blocks/no-children/index.js:26
+msgid "pax"
+msgstr ""
+
+#: src/blocks/no-adults/index.js:77
+msgid "Adults:"
+msgstr ""
+
+#: src/blocks/no-adults/index.js:99
+msgid "Adults: "
+msgstr ""
+
+#: src/blocks/no-children/index.js:18
+#: src/blocks/no-children/index.js:33
+msgid "Review - Number of Children"
+msgstr ""
+
+#: src/blocks/no-children/index.js:21
+msgid "Displays the number of children on this review."
+msgstr ""
+
+#: src/blocks/no-children/index.js:23
+msgid "children"
+msgstr ""
+
+#: src/blocks/no-children/index.js:24
+msgid "kids"
+msgstr ""
+
+#: src/blocks/no-children/index.js:77
+msgid "Children:"
+msgstr ""
+
+#: src/blocks/no-children/index.js:99
+msgid "Children: "
+msgstr ""
+
+#: src/blocks/rating/index.js:18
+#: src/blocks/rating/index.js:33
+msgid "Review - Rating"
+msgstr ""
+
+#: src/blocks/rating/index.js:21
+msgid "Displays the rating for this review."
+msgstr ""
+
+#: src/blocks/rating/index.js:23
+msgid "rating"
+msgstr ""
+
+#: src/blocks/rating/index.js:25
+msgid "stars"
+msgstr ""
+
+#: src/blocks/rating/index.js:26
+msgid "score"
+msgstr ""
+
+#: src/blocks/rating/index.js:83
+msgid "Rating:"
+msgstr ""
+
+#: src/blocks/rating/index.js:105
+msgid "Rating: "
+msgstr ""
+
+#: src/blocks/reviewer-name/index.js:21
+msgid "Displays the reviewer name for this review."
+msgstr ""
+
+#: src/blocks/reviewer-name/index.js:23
+msgid "reviewer"
+msgstr ""
+
+#: src/blocks/reviewer-name/index.js:24
+msgid "name"
+msgstr ""
+
+#: src/blocks/reviewer-name/index.js:25
+msgid "author"
+msgstr ""
+
+#: src/blocks/reviewer-name/index.js:77
+msgid "Reviewer:"
+msgstr ""
+
+#: src/blocks/reviewer-name/index.js:99
+msgid "Reviewer: "
+msgstr ""
+
+#: src/blocks/reviewer-name/index.js:99
+msgid "Jane Smith"
+msgstr ""
+
+#: src/blocks/tagline/index.js:18
+#: src/blocks/tagline/index.js:32
+msgid "Review - Tagline"
+msgstr ""
+
+#: src/blocks/tagline/index.js:21
+msgid "Displays the tagline for this review."
+msgstr ""
+
+#: src/blocks/tagline/index.js:23
+msgid "tagline"
+msgstr ""
+
+#: src/blocks/tagline/index.js:25
+msgid "subtitle"
+msgstr ""
+
+#: src/blocks/tagline/index.js:55
+msgid "Tagline:"
+msgstr ""
+
+#: src/blocks/tagline/index.js:65
+msgid "Tagline: "
+msgstr ""
+
+#: src/blocks/tagline/index.js:65
+msgid "A wonderful experience"
+msgstr ""
+
+#: src/blocks/team-to-review/index.js:18
+#: src/blocks/team-to-review/index.js:33
+msgid "Team to Review"
+msgstr ""
+
+#: src/blocks/team-to-review/index.js:21
+msgid "Displays the team members connected to this review."
+msgstr ""
+
+#: src/blocks/team-to-review/index.js:23
+msgid "team"
+msgstr ""
+
+#: src/blocks/team-to-review/index.js:26
+msgid "guide"
+msgstr ""
+
+#: src/blocks/team-to-review/index.js:77
+msgid "Guide:"
+msgstr ""
+
+#: src/blocks/team-to-review/index.js:99
+msgid "Guide: "
+msgstr ""
+
+#: src/blocks/team-to-review/index.js:99
+msgid "John Safari Guide"
+msgstr ""
+
+#: src/blocks/tour-related-review/index.js:18
+#: src/blocks/tour-related-review/index.js:30
+#: src/blocks/tour-related-review/index.js:55
+#: src/blocks/tour-related-review/index.js:119
+msgid "Related Tour"
+msgstr ""
+
+#: src/blocks/tour-related-review/index.js:20
+msgid "Display tour related to this review."
+msgstr ""
+
+#: src/blocks/tour-related-review/index.js:24
+#: src/blocks/tour-to-review/index.js:23
+msgid "tour"
+msgstr ""
+
+#: src/blocks/tour-related-review/index.js:73
+msgid "Related tour query"
+msgstr ""
+
+#: src/blocks/tour-related-review/index.js:147
+msgid "African Safari Adventure"
+msgstr ""
+
+#: src/blocks/tour-related-review/index.js:148
+msgid "A guided multi-day safari through some of Africa’s most iconic wildlife reserves."
+msgstr ""
+
+#: src/blocks/tour-related-review/index.js:158
+msgid "Coastal Beach Escape"
+msgstr ""
+
+#: src/blocks/tour-related-review/index.js:159
+msgid "A relaxing tour along the coastline, combining beach time with local sightseeing."
+msgstr ""
+
+#: src/blocks/tour-to-review/index.js:18
+#: src/blocks/tour-to-review/index.js:33
+msgid "Tour to Review"
+msgstr ""
+
+#: src/blocks/tour-to-review/index.js:21
+msgid "Displays the tours connected to this review."
+msgstr ""
+
+#: src/blocks/tour-to-review/index.js:26
+msgid "itinerary"
+msgstr ""
+
+#: src/blocks/tour-to-review/index.js:77
+msgid "Tour:"
+msgstr ""
+
+#: src/blocks/tour-to-review/index.js:99
+msgid "Tour: "
+msgstr ""
+
+#: src/blocks/tour-to-review/index.js:99
+msgid "Big Five Safari"
+msgstr ""
+
+#: src/blocks/accommodation-related-review/block.json
+msgctxt "block title"
+msgid "Related Accommodation"
+msgstr ""
+
+#: src/blocks/accommodation-related-review/block.json
+msgctxt "block description"
+msgid "Display accommodation related to this review."
+msgstr ""
+
+#: src/blocks/accommodation-related-review/block.json
+#: src/blocks/accommodation-to-review/block.json
+#: src/blocks/date-of-visit/block.json
+#: src/blocks/destination-related-review/block.json
+#: src/blocks/destination-to-review/block.json
+#: src/blocks/featured-review/block.json
+#: src/blocks/gallery/block.json
+#: src/blocks/no-adults/block.json
+#: src/blocks/no-children/block.json
+#: src/blocks/rating/block.json
+#: src/blocks/reviewer-name/block.json
+#: src/blocks/tagline/block.json
+#: src/blocks/team-to-review/block.json
+#: src/blocks/tour-related-review/block.json
+#: src/blocks/tour-to-review/block.json
+msgctxt "block keyword"
+msgid "review"
+msgstr ""
+
+#: src/blocks/accommodation-related-review/block.json
+#: src/blocks/accommodation-to-review/block.json
+msgctxt "block keyword"
+msgid "accommodation"
+msgstr ""
+
+#: src/blocks/accommodation-related-review/block.json
+#: src/blocks/destination-related-review/block.json
+#: src/blocks/tour-related-review/block.json
+msgctxt "block keyword"
+msgid "related"
+msgstr ""
+
+#: src/blocks/accommodation-related-review/block.json
+#: src/blocks/destination-related-review/block.json
+#: src/blocks/tour-related-review/block.json
+msgctxt "block keyword"
+msgid "query"
+msgstr ""
+
+#: src/blocks/accommodation-to-review/block.json
+msgctxt "block title"
+msgid "Accommodation to Review"
+msgstr ""
+
+#: src/blocks/accommodation-to-review/block.json
+msgctxt "block description"
+msgid "Displays the accommodations connected to this review."
+msgstr ""
+
+#: src/blocks/accommodation-to-review/block.json
+#: src/blocks/destination-to-review/block.json
+#: src/blocks/team-to-review/block.json
+#: src/blocks/tour-to-review/block.json
+msgctxt "block keyword"
+msgid "connection"
+msgstr ""
+
+#: src/blocks/accommodation-to-review/block.json
+msgctxt "block keyword"
+msgid "lodging"
+msgstr ""
+
+#: src/blocks/date-of-visit/block.json
+msgctxt "block title"
+msgid "Review - Date of Visit"
+msgstr ""
+
+#: src/blocks/date-of-visit/block.json
+msgctxt "block description"
+msgid "Displays the date of visit for this review."
+msgstr ""
+
+#: src/blocks/date-of-visit/block.json
+msgctxt "block keyword"
+msgid "date"
+msgstr ""
+
+#: src/blocks/date-of-visit/block.json
+msgctxt "block keyword"
+msgid "visit"
+msgstr ""
+
+#: src/blocks/date-of-visit/block.json
+msgctxt "block keyword"
+msgid "travel"
+msgstr ""
+
+#: src/blocks/destination-related-review/block.json
+msgctxt "block title"
+msgid "Related Destination"
+msgstr ""
+
+#: src/blocks/destination-related-review/block.json
+msgctxt "block description"
+msgid "Display destination related to this review."
+msgstr ""
+
+#: src/blocks/destination-related-review/block.json
+#: src/blocks/destination-to-review/block.json
+msgctxt "block keyword"
+msgid "destination"
+msgstr ""
+
+#: src/blocks/destination-to-review/block.json
+msgctxt "block title"
+msgid "Destination to Review"
+msgstr ""
+
+#: src/blocks/destination-to-review/block.json
+msgctxt "block description"
+msgid "Displays the destinations connected to this review."
+msgstr ""
+
+#: src/blocks/destination-to-review/block.json
+msgctxt "block keyword"
+msgid "location"
+msgstr ""
+
+#: src/blocks/featured-review/block.json
+msgctxt "block title"
+msgid "Featured Reviews"
+msgstr ""
+
+#: src/blocks/featured-review/block.json
+msgctxt "block description"
+msgid "Displays Reviews with the Featured tag."
+msgstr ""
+
+#: src/blocks/featured-review/block.json
+msgctxt "block keyword"
+msgid "featured"
+msgstr ""
+
+#: src/blocks/featured-review/block.json
+msgctxt "block keyword"
+msgid "testimonial"
+msgstr ""
+
+#: src/blocks/gallery/block.json
+msgctxt "block title"
+msgid "Review - Gallery"
+msgstr ""
+
+#: src/blocks/gallery/block.json
+msgctxt "block description"
+msgid "Displays the gallery images for this review."
+msgstr ""
+
+#: src/blocks/gallery/block.json
+msgctxt "block keyword"
+msgid "gallery"
+msgstr ""
+
+#: src/blocks/gallery/block.json
+msgctxt "block keyword"
+msgid "images"
+msgstr ""
+
+#: src/blocks/gallery/block.json
+msgctxt "block keyword"
+msgid "photos"
+msgstr ""
+
+#: src/blocks/no-adults/block.json
+msgctxt "block title"
+msgid "Review - Number of Adults"
+msgstr ""
+
+#: src/blocks/no-adults/block.json
+msgctxt "block description"
+msgid "Displays the number of adults on this review."
+msgstr ""
+
+#: src/blocks/no-adults/block.json
+msgctxt "block keyword"
+msgid "adults"
+msgstr ""
+
+#: src/blocks/no-adults/block.json
+msgctxt "block keyword"
+msgid "guests"
+msgstr ""
+
+#: src/blocks/no-adults/block.json
+#: src/blocks/no-children/block.json
+msgctxt "block keyword"
+msgid "pax"
+msgstr ""
+
+#: src/blocks/no-children/block.json
+msgctxt "block title"
+msgid "Review - Number of Children"
+msgstr ""
+
+#: src/blocks/no-children/block.json
+msgctxt "block description"
+msgid "Displays the number of children on this review."
+msgstr ""
+
+#: src/blocks/no-children/block.json
+msgctxt "block keyword"
+msgid "children"
+msgstr ""
+
+#: src/blocks/no-children/block.json
+msgctxt "block keyword"
+msgid "kids"
+msgstr ""
+
+#: src/blocks/rating/block.json
+msgctxt "block title"
+msgid "Review - Rating"
+msgstr ""
+
+#: src/blocks/rating/block.json
+msgctxt "block description"
+msgid "Displays the rating for this review."
+msgstr ""
+
+#: src/blocks/rating/block.json
+msgctxt "block keyword"
+msgid "rating"
+msgstr ""
+
+#: src/blocks/rating/block.json
+msgctxt "block keyword"
+msgid "stars"
+msgstr ""
+
+#: src/blocks/rating/block.json
+msgctxt "block keyword"
+msgid "score"
+msgstr ""
+
+#: src/blocks/reviewer-name/block.json
+msgctxt "block title"
+msgid "Reviewer Name"
+msgstr ""
+
+#: src/blocks/reviewer-name/block.json
+msgctxt "block description"
+msgid "Displays the reviewer name for this review."
+msgstr ""
+
+#: src/blocks/reviewer-name/block.json
+msgctxt "block keyword"
+msgid "reviewer"
+msgstr ""
+
+#: src/blocks/reviewer-name/block.json
+msgctxt "block keyword"
+msgid "name"
+msgstr ""
+
+#: src/blocks/reviewer-name/block.json
+msgctxt "block keyword"
+msgid "author"
+msgstr ""
+
+#: src/blocks/tagline/block.json
+msgctxt "block title"
+msgid "Review - Tagline"
+msgstr ""
+
+#: src/blocks/tagline/block.json
+msgctxt "block description"
+msgid "Displays the tagline for this review."
+msgstr ""
+
+#: src/blocks/tagline/block.json
+msgctxt "block keyword"
+msgid "tagline"
+msgstr ""
+
+#: src/blocks/tagline/block.json
+msgctxt "block keyword"
+msgid "subtitle"
+msgstr ""
+
+#: src/blocks/team-to-review/block.json
+msgctxt "block title"
+msgid "Team to Review"
+msgstr ""
+
+#: src/blocks/team-to-review/block.json
+msgctxt "block description"
+msgid "Displays the team members connected to this review."
+msgstr ""
+
+#: src/blocks/team-to-review/block.json
+msgctxt "block keyword"
+msgid "team"
+msgstr ""
+
+#: src/blocks/team-to-review/block.json
+msgctxt "block keyword"
+msgid "guide"
+msgstr ""
+
+#: src/blocks/tour-related-review/block.json
+msgctxt "block title"
+msgid "Related Tour"
+msgstr ""
+
+#: src/blocks/tour-related-review/block.json
+msgctxt "block description"
+msgid "Display tour related to this review."
+msgstr ""
+
+#: src/blocks/tour-related-review/block.json
+#: src/blocks/tour-to-review/block.json
+msgctxt "block keyword"
+msgid "tour"
+msgstr ""
+
+#: src/blocks/tour-to-review/block.json
+msgctxt "block title"
+msgid "Tour to Review"
+msgstr ""
+
+#: src/blocks/tour-to-review/block.json
+msgctxt "block description"
+msgid "Displays the tours connected to this review."
+msgstr ""
+
+#: src/blocks/tour-to-review/block.json
+msgctxt "block keyword"
+msgid "itinerary"
 msgstr ""

@@ -29,7 +29,6 @@ class LSX_TO_Reviews_Admin {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'register_cmb2_fields' ) );
 
@@ -40,14 +39,7 @@ class LSX_TO_Reviews_Admin {
 
 		add_filter( 'lsx_to_team_custom_fields', array( $this, 'custom_fields' ) );
 		add_filter( 'lsx_to_special_custom_fields', array( $this, 'custom_fields' ) );
-		add_filter( 'lsx_to_activity_custom_fields', array( $this, 'custom_fields' ) );	
-	}
-
-	/**
-	 * Load the plugin text domain for translation.
-	 */
-	public function load_plugin_textdomain() {
-		load_plugin_textdomain( 'to-reviews', false, basename( LSX_TO_REVIEWS_PATH ) . '/languages' );
+		add_filter( 'lsx_to_activity_custom_fields', array( $this, 'custom_fields' ) );
 	}
 
 	/**

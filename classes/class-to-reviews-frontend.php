@@ -30,6 +30,7 @@ class LSX_TO_Reviews_Frontend {
 	 */
 	public function __construct() {
 		add_filter( 'lsx_to_custom_field_query', array( $this, 'rating' ), 5, 10 );
+		add_filter( 'lsx_to_custom_field_query', array( $this, 'travel_dates' ), 5, 10 );
 		add_filter( 'wpseo_schema_graph_pieces', array( $this, 'add_graph_pieces' ), 11, 2 );
 	}
 
@@ -65,6 +66,27 @@ class LSX_TO_Reviews_Frontend {
 					$value --;
 				}
 				$html = $before . implode( '', $ratings_array ) . $after;
+			}
+		}
+		return $html;
+	}
+
+	/**
+	 * Filter the travel date start/end custom fields, formatting the stored
+	 * timestamp using the date format configured in WordPress (Settings > General).
+	 *
+	 * @param string $html     The HTML to filter.
+	 * @param string $meta_key The meta key.
+	 * @param string $value    The meta value.
+	 * @param string $before   HTML before the output.
+	 * @param string $after    HTML after the output.
+	 * @return string
+	 */
+	public function travel_dates( $html = '', $meta_key = false, $value = false, $before = '', $after = '' ) {
+		if ( get_post_type() === 'review' && in_array( $meta_key, array( 'date_of_visit_start', 'date_of_visit_end' ), true ) ) {
+			if ( '' !== $value && false !== $value ) {
+				$formatted_date = date_i18n( get_option( 'date_format' ), (int) $value );
+				$html           = $before . $formatted_date . $after;
 			}
 		}
 		return $html;

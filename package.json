@@ -38,15 +38,15 @@
   },
   "homepage": "https://github.com/lightspeedwp/to-reviews/#readme",
   "devDependencies": {
-    "@playwright/test": "^1.49.0",
-    "@wordpress/eslint-plugin": "^22.17.0",
-    "@wordpress/scripts": "^30.24.0",
-    "@wordpress/stylelint-config": "^23.23.0",
+    "@playwright/test": "^1.62.0",
+    "@wordpress/eslint-plugin": "^25.8.0",
+    "@wordpress/scripts": "^34.0.0",
+    "@wordpress/stylelint-config": "^24.1.0",
     "webpack-remove-empty-scripts": "^1.1.1"
   },
   "dependencies": {
-    "lodash": "^4.17.5",
-    "minimatch": "^10.0.1",
+    "lodash": "^4.18.1",
+    "minimatch": "^10.2.6",
     "randomatic": "^3.0.0"
   },
   "engines": {

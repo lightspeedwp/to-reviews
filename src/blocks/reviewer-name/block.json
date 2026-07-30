@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "textdomain": "to-reviews",
+  "name": "lsx-tour-operator/review-reviewer-name",
+  "title": "Reviewer Name",
+  "category": "lsx-tour-operator",
+  "editorScript": "file:index.js",
+  "description": "Displays the reviewer name for this review.",
+  "icon": "admin-users",
+  "keywords": [
+    "reviewer",
+    "name",
+    "author",
+    "review"
+  ]
+}
