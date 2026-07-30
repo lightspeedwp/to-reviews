@@ -68,5 +68,7 @@ Take a look at all our [Frequently Asked Questions](https://lsx.design/), we are
 = 2.2 =
 * Added Gutenberg block variations: featured review, related reviews, post meta blocks (tagline, rating, reviewer name, date of visit, no. adults, no. children), post connection blocks (to accommodation, destination, tour, team), and gallery block.
 * Migrated review-related-destination, review-related-accommodation, review-related-tour blocks from parent tour-operator plugin.
+* Added breadcrumbs and a hero section to the single review template, and updated the sticky menu with customizable colors and improved spacing.
+* Addressed Plugin Check and WPCS issues, including ABSPATH direct-access checks.
 
 [Lastest changelogs can be found on GitHub](https://github.com/lightspeeddevelopment/to-reviews/blob/master/changelog.md).

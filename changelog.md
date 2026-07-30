@@ -15,11 +15,16 @@ This release introduces comprehensive block support for the Reviews post type, i
 - Review card block pattern (`patterns/review-card.php`) for displaying testimonials in query loops
 - Conditional block registration utility (`src/utils/conditional-block-registration.js`)
 - Post type JSON definition (`post-types/review.json`) with full field schema
+- Breadcrumbs (Yoast SEO breadcrumbs block) and a hero/cover section with post title and tagline to `templates/single-review.html`
 
 ### Updated
 - `templates/single-review.html` — rebuilt with new meta blocks and connection blocks
+- `templates/single-review.html` — sticky menu now supports customizable active/hover background and text colors and font size; padding adjusted across review sections and the sticky menu; breadcrumbs section styling refined for layout and readability
+- `templates/single-review.html` — removed the standalone "Reviewer:" label/value block (reviewer name is still shown via post meta elsewhere in the template)
 - `templates/archive-review.html` — updated to use review card pattern in query loop
+- `patterns/review-card.php` — post title in the review card is now a link (`isLink: true`)
 - `classes/class-to-reviews-frontend.php` — added `travel_dates()` filter to format stored date-of-visit timestamps using the site's configured date format
+- `README.txt` — "Tested up to" bumped to WordPress 7.0
 - Plugin version bumped to `2.2.0`
 
 ### Fixed
@@ -35,6 +40,10 @@ This release introduces comprehensive block support for the Reviews post type, i
 - Schema: added `url` property to the root Review node.
 
 ### Security
+- Added `ABSPATH` checks to prevent direct file access in `classes/class-to-reviews.php`, `classes/class-to-reviews-templates.php`, `includes/post-types/config-review.php`, `includes/template-tags.php`, and `patterns/review-card.php`
+- Removed an unnecessary `load_plugin_textdomain` action in `classes/class-to-reviews-admin.php`
+- Renamed metabox variable for consistency and clarity in `includes/metaboxes/config-review.php`
+- Addressed Plugin Check and WPCS issues flagged for the plugin (LS-1952)
 - Tested with WordPress 7.0
 - Tested with PHP 8.0+
 
