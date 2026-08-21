@@ -2,18 +2,20 @@ name: PHP syntax
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, develop ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, develop ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@master
-    - name: Checking PHP syntax error
-      uses: overtrue/phplint@master
+      uses: actions/checkout@v4
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
       with:
-        path: .
-        options: --exclude=*.log
+        php-version: "8.0"
+    - name: Checking PHP syntax error
+      run: |
+        find . -name "*.php" -type f ! -path "./vendor/*" ! -path "./node_modules/*" ! -path "./build/*" -exec php -l {} \; | grep -i "parse error" && exit 1 || exit 0
