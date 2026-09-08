@@ -3,7 +3,7 @@
  * Plugin Name: Tour Operator Reviews
  * Plugin URI:  https://touroperator.solutions/plugins/reviews/
  * Description: The Tour Operator Reviews extension adds the “Reviews” post type, which you can assign to our Tour Operator core post types: Tours, accommodations and destinations.
- * Version:     2.2
+ * Version:     2.2.0
  * Author:      LightSpeed
  * Author URI:  https://www.lightspeedwp.agency/
  * License:     GPL3+
