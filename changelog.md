@@ -1,5 +1,19 @@
 # Change log
 
+## Unreleased
+
+### Fixed
+- Schema: rebuilt the `Review` schema piece as a self-contained class on the Tour Operator core 2.2 schema helpers. It no longer depends on the legacy `LSX_TO_Schema_Graph_Piece` base class, which core is removing; without this change, review pages emit no Review schema with the new core. ([TO-216](https://linear.app/lightspeedwp/issue/TO-216))
+- Schema: the Review schema is only registered when the core 2.2 schema helpers are available (no fatal error on older core), and a standalone JSON-LD block is printed when Yoast SEO is inactive.
+- Schema: `reviewRating` is only output for whole ratings from 1 to 5. A stored rating of "0" no longer produces an invalid rating.
+- Schema: `itemReviewed` and `spatialCoverage` include each item's URL, list published items only, and remove duplicates. Relationship fields stored as a single serialised array are now read correctly.
+- Schema: a visit end date before the start date falls back to a "Date of Visit" property instead of an invalid `temporalCoverage` interval.
+- Schema: categories are output as `about` Thing nodes, replacing the invalid `reviewSection`. Empty `about` and `keywords` are no longer output.
+- Schema: the headline, author name and item names are plain text, with HTML entities decoded. The reviewer email is never output, and `offers` is no longer output.
+
+### Added
+- PHPUnit regression tests for the Review schema (`composer test`).
+
 ## [[2.2]](https://github.com/lightspeedwp/to-reviews/releases/tag/2.2) - 2026-07-29
 
 ### Description
