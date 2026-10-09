@@ -37,6 +37,8 @@ Other gaps found during the audit:
 
 - **Inherited `offers` output**: The Review node still calls the shared core "offers" builder. When a Special is linked to a Review, that builder emits an Offer with a mis-cased `PriceSpecification` plain string, which is the defect TO-217 removes from Specials. `offers` is not part of the approved Review mapping.
 - **Core version dependency**: The schema piece relies on shared helpers that ship only with Tour Operator core 2.2+. The loader checks only for the older base class, so running this extension with core 2.1 would cause a fatal error on Review pages.
+- **Legacy base classes removed from core** *(added 2026-10-09)*: Core commit `f62d3b5dd` deletes the legacy schema base class and utilities that the Review piece extends. With that core build, Review pages currently emit **no Review node at all**, which was confirmed on the local site. The piece must stop depending on those classes (see FR-014 and [plan.md](./plan.md)).
+- **Relationship storage** *(added 2026-10-09)*: Related tours, accommodation and destinations are stored as one serialised array per key. The legacy code read them as separate meta rows, so it was handed nested arrays rather than post IDs.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -120,7 +122,7 @@ A reviewer approving the PR needs repeatable evidence that the output matches th
 - **Rating outside 1–5** from imported data: omit `reviewRating` rather than emit an out-of-range value.
 - **Reviewer name empty**: omit `author.name`. If no identifying author data remains, omit `author`. The email must still never be emitted.
 - **Only one visit date**, or an invalid date: emit the "Date of Visit" property with the valid date only, or omit it. Never emit a malformed interval.
-- **Visit end before start**: emit as entered and treat it as content QA. Recorded as an assumption.
+- **Visit end before start**, as on the local reference review: do not emit a reversed `temporalCoverage` interval. Fall back to the "Date of Visit" property with both dates as entered, and leave the correction to content QA.
 - **No linked tours or accommodation**: omit `itemReviewed`. The Review stays valid schema.org even though it is not eligible for Google review rich results. Recorded as an assumption.
 - **Exactly one reviewed item**: `itemReviewed` is a single object, not a one-item list.
 - **Only the default category**: omit `about`.
@@ -138,13 +140,13 @@ A reviewer approving the PR needs repeatable evidence that the output matches th
 - **FR-005**: `reviewRating` MUST be omitted when the stored rating is empty, `0` or outside the 1–5 range.
 - **FR-006**: Linked tours and accommodation MUST be merged into one `itemReviewed` value, typed `TouristTrip` and `LodgingBusiness` respectively. Neither list may overwrite the other, duplicate links MUST be removed, and only published products may be included.
 - **FR-007**: Each `itemReviewed` entry MUST include the product's public URL, in addition to its name and type.
-- **FR-008**: Date of visit MUST be emitted as an ISO 8601 `temporalCoverage` interval when both dates are valid. Otherwise it MUST be a "Date of Visit" `additionalProperty`, or be omitted.
+- **FR-008**: Date of visit MUST be emitted as an ISO 8601 `temporalCoverage` interval when both dates are valid and the end is not before the start. Otherwise it MUST be a "Date of Visit" `additionalProperty` with the valid dates as entered, or be omitted.
 - **FR-009**: `reviewSection` MUST NOT be emitted. Categories MUST map to `about` as one structured `Thing` entry per category, excluding the default "Uncategorised" category.
 - **FR-010**: The Review node MUST NOT emit `offers` from linked Specials. *(Default chosen: `offers` is not in the approved Review mapping and currently carries the TO-217 price-specification defect. Confirm in `/speckit-clarify`.)*
 - **FR-011**: Linked destinations MUST map to `spatialCoverage` as `TouristDestination` entries.
 - **FR-012**: `publisher` MUST reference the site organisation whenever one is configured.
 - **FR-013**: The image MUST continue to be emitted through the shared schema image utility.
-- **FR-014**: The Reviews schema piece MUST only register when the Tour Operator core schema helpers it depends on are available. Otherwise it MUST register nothing and raise no errors.
+- **FR-014**: The Reviews schema piece MUST only register when the Tour Operator core schema helpers it depends on are available. Otherwise it MUST register nothing and raise no errors. It MUST NOT depend on the legacy core schema base classes, and it MUST emit the Review node both with and without Yoast SEO active.
 - **FR-015**: The plugin MUST include at least one automated regression check covering FR-003, FR-004/FR-005, FR-006 and FR-009.
 - **FR-016**: The PR MUST include documented manual QA evidence for one fully populated Review: validator results, captured JSON-LD and the email search result.
 - **FR-017**: Aggregate rating output that core consumes for tours, accommodation and destinations MUST NOT change as a result of this work.
@@ -174,7 +176,7 @@ A reviewer approving the PR needs repeatable evidence that the output matches th
 - **QA approach**: Schema.org Validator plus the Google Rich Results Test, run against a fully populated Review on `tour-operator.lightspeedwp.dev`.
 - **Author `@id` hash**: The existing core helper builds `author.@id` from a site-salted one-way hash of name and email. This is treated as compliant with FR-003 because the email cannot be recovered from it.
 - **Reviews with no linked product** remain valid schema.org output. Google rich-result eligibility for them is not a goal of this ticket.
-- **Date-order errors** are content problems and are reported as entered.
+- **Date-order errors** are content problems. The dates are reported as entered in the "Date of Visit" property rather than as a reversed interval.
 - **Cross-node `@id` linking** to core `TouristTrip`/`LodgingBusiness` nodes needs core changes and is out of scope. URLs (FR-007) are the agreed linking mechanism.
 - **Core defects noted, not fixed here**: Core's offered/reviewed item helper discards its own de-duplication result, and core's Special offer builder emits a mis-cased `PriceSpecification` string. FR-006 and FR-010 can be met within this extension. Matching core fixes should be raised separately against `tour-operator`.
 
