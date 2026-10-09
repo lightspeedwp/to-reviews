@@ -38,7 +38,8 @@ Other gaps found during the audit:
 - **Inherited `offers` output**: The Review node still calls the shared core "offers" builder. When a Special is linked to a Review, that builder emits an Offer with a mis-cased `PriceSpecification` plain string, which is the defect TO-217 removes from Specials. `offers` is not part of the approved Review mapping.
 - **Core version dependency**: The schema piece relies on shared helpers that ship only with Tour Operator core 2.2+. The loader checks only for the older base class, so running this extension with core 2.1 would cause a fatal error on Review pages.
 - **Legacy base classes removed from core** *(added 2026-10-09)*: Core commit `f62d3b5dd` deletes the legacy schema base class and utilities that the Review piece extends. With that core build, Review pages currently emit **no Review node at all**, which was confirmed on the local site. The piece must stop depending on those classes (see FR-014 and [plan.md](./plan.md)).
-- **Relationship storage** *(added 2026-10-09)*: Related tours, accommodation and destinations are stored as one serialised array per key. The legacy code read them as separate meta rows, so it was handed nested arrays rather than post IDs.
+- **Relationship storage** *(added 2026-10-09)*: Related tours, accommodation and destinations are stored as one serialised array per key. The legacy code read them as separate meta rows, so it was handed nested arrays rather than post IDs and dropped every item. This is why an audit found **44 reviews with no `itemReviewed`**, although 44 of 45 local reviews are linked to at least one item.
+- **Missing author** *(added 2026-10-09)*: 8 reviews have no reviewer name, so they had no `author`, which Google requires. Each of them has a WordPress post author to fall back on.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -120,10 +121,10 @@ A reviewer approving the PR needs repeatable evidence that the output matches th
 
 - **No rating, or a stored rating of `0`**: omit `reviewRating` entirely. A rating of 0 on a 1–5 scale is invalid.
 - **Rating outside 1–5** from imported data: omit `reviewRating` rather than emit an out-of-range value.
-- **Reviewer name empty**: omit `author.name`. If no identifying author data remains, omit `author`. The email must still never be emitted.
+- **Reviewer name empty**: fall back to the review post's WordPress author (display name) as the `author` Person. Omit `author` only when neither is available. The email must still never be emitted.
 - **Only one visit date**, or an invalid date: emit the "Date of Visit" property with the valid date only, or omit it. Never emit a malformed interval.
 - **Visit end before start**, as on the local reference review: do not emit a reversed `temporalCoverage` interval. Fall back to the "Date of Visit" property with both dates as entered, and leave the correction to content QA.
-- **No linked tours or accommodation**: omit `itemReviewed`. The Review stays valid schema.org even though it is not eligible for Google review rich results. Recorded as an assumption.
+- **No linked tour, accommodation or destination** (or only unpublished ones): omit `itemReviewed`. The Review stays valid schema.org, but Google cannot use it for review rich results; the fix is content (link the review to what it is about).
 - **Exactly one reviewed item**: `itemReviewed` is a single object, not a one-item list.
 - **Only the default category**: omit `about`.
 - **Yoast SEO inactive, or no site organisation configured**: omit `publisher`. No errors.
@@ -135,15 +136,15 @@ A reviewer approving the PR needs repeatable evidence that the output matches th
 
 - **FR-001**: Each public Review page MUST emit exactly one node with `@type` `Review` and an `@id` unique to that Review.
 - **FR-002**: The Review MUST include `url`, `headline`, `reviewBody` (filtered, markup-free), `datePublished`, `dateModified`, `commentCount` and `mainEntityOfPage`.
-- **FR-003**: `author` MUST be a Person carrying the reviewer name. The reviewer email MUST NOT appear anywhere in the page output in plain text, encoded or reversible form. A one-way keyed hash used only to build a stable `author.@id` is acceptable.
+- **FR-003**: `author` MUST be a Person carrying the reviewer name, falling back to the display name of the review post's WordPress author when no reviewer name is set (Google requires `author`). The reviewer email MUST NOT appear anywhere in the page output in plain text, encoded or reversible form. A one-way keyed hash used only to build a stable `author.@id` is acceptable.
 - **FR-004**: `reviewRating` MUST be a Rating with `ratingValue` set to the stored rating, `bestRating` 5 and `worstRating` 1.
 - **FR-005**: `reviewRating` MUST be omitted when the stored rating is empty, `0` or outside the 1–5 range.
-- **FR-006**: Linked tours and accommodation MUST be merged into one `itemReviewed` value, typed `TouristTrip` and `LodgingBusiness` respectively. Neither list may overwrite the other, duplicate links MUST be removed, and only published products may be included.
-- **FR-007**: Each `itemReviewed` entry MUST include the product's public URL, in addition to its name and type.
+- **FR-006**: Linked tours, accommodation and destinations MUST be merged into one `itemReviewed` value, typed `TouristTrip`, `LodgingBusiness` and `TouristDestination` respectively. No list may overwrite another, duplicate links MUST be removed, and only published items may be included. *(Destinations added 2026-10-09: Google requires `itemReviewed`, and most reviews link a destination.)*
+- **FR-007**: Each `itemReviewed` entry MUST include the item's public URL, in addition to its name and type.
 - **FR-008**: Date of visit MUST be emitted as an ISO 8601 `temporalCoverage` interval when both dates are valid and the end is not before the start. Otherwise it MUST be a "Date of Visit" `additionalProperty` with the valid dates as entered, or be omitted.
 - **FR-009**: `reviewSection` MUST NOT be emitted. Categories MUST map to `about` as one structured `Thing` entry per category, excluding the default "Uncategorised" category.
 - **FR-010**: The Review node MUST NOT emit `offers` from linked Specials. *(Default chosen: `offers` is not in the approved Review mapping and currently carries the TO-217 price-specification defect. Confirm in `/speckit-clarify`.)*
-- **FR-011**: Linked destinations MUST map to `spatialCoverage` as `TouristDestination` entries.
+- **FR-011**: Linked destinations MUST also map to `spatialCoverage` as `TouristDestination` entries (approved mapping), in addition to `itemReviewed`.
 - **FR-012**: `publisher` MUST reference the site organisation whenever one is configured.
 - **FR-013**: The image MUST continue to be emitted through the shared schema image utility.
 - **FR-014**: The Reviews schema piece MUST only register when the Tour Operator core schema helpers it depends on are available. Otherwise it MUST register nothing and raise no errors. It MUST NOT depend on the legacy core schema base classes, and it MUST emit the Review node both with and without Yoast SEO active.
@@ -165,7 +166,7 @@ A reviewer approving the PR needs repeatable evidence that the output matches th
 - **SC-001**: The reference Review on the QA site returns **0 errors** in the Schema.org Validator and the Google Rich Results Test, with no warnings for any property this spec covers.
 - **SC-002**: **0** occurrences of any reviewer email address in the rendered HTML of every Review page tested.
 - **SC-003**: **100%** of the rows in the approved Reviews mapping are present and correctly typed in the captured JSON-LD for the reference Review.
-- **SC-004**: A Review linked to N distinct published products lists exactly N `itemReviewed` entries, for every N from 0 to 10 tested.
+- **SC-004**: A Review linked to N distinct published tours, accommodation and destinations lists exactly N `itemReviewed` entries, for every N from 0 to 10 tested.
 - **SC-005**: **0** PHP fatal errors, warnings or notices on Review pages across core 2.1 and 2.2, with Yoast SEO active and inactive.
 - **SC-006**: The automated regression check fails when any one of the FR-015 defects is reintroduced, and passes on the delivered code.
 
