@@ -4,7 +4,7 @@
 
 **Created**: 2026-10-09
 
-**Status**: Draft
+**Status**: Implemented, external QA pending (2026-10-09)
 
 **Tracking**: [TO-216](https://linear.app/lightspeedwp/issue/TO-216/align-reviews-schema-with-approved-schema-20-mappings) · [lightspeedwp/to-reviews#220](https://github.com/lightspeedwp/to-reviews/issues/220)
 
@@ -40,6 +40,34 @@ Other gaps found during the audit:
 - **Legacy base classes removed from core** *(added 2026-10-09)*: Core commit `f62d3b5dd` deletes the legacy schema base class and utilities that the Review piece extends. With that core build, Review pages currently emit **no Review node at all**, which was confirmed on the local site. The piece must stop depending on those classes (see FR-014 and [plan.md](./plan.md)).
 - **Relationship storage** *(added 2026-10-09)*: Related tours, accommodation and destinations are stored as one serialised array per key. The legacy code read them as separate meta rows, so it was handed nested arrays rather than post IDs and dropped every item. This is why an audit found **44 reviews with no `itemReviewed`**, although 44 of 45 local reviews are linked to at least one item.
 - **Missing author** *(added 2026-10-09)*: 8 reviews have no reviewer name, so they had no `author`, which Google requires. Each of them has a WordPress post author to fall back on.
+
+## Implementation Status (2026-10-09)
+
+The baseline table above records the starting point. Every gap marked there has been closed on this branch.
+
+### Requirements
+
+- [x] FR-001 / FR-002: one `Review` node with unique `@id`, `url`, headline, body, dates, comment count
+- [x] FR-003: `author` from the reviewer name, falling back to the post author; the email is never output
+- [x] FR-004 / FR-005: `reviewRating` on a 1–5 scale, omitted for empty, zero or out-of-range ratings
+- [x] FR-006 / FR-007: `itemReviewed` merges tours, accommodation and destinations, each with a URL, published only and unique
+- [x] FR-008: ISO `temporalCoverage` when the dates are ordered, otherwise a "Date of Visit" property
+- [x] FR-009: `about` as `Thing` nodes, with no `reviewSection`
+- [x] FR-010: no `offers`
+- [x] FR-011: destinations also in `spatialCoverage`
+- [x] FR-012: `publisher` from the site organisation
+- [x] FR-013: image via the Yoast primary image or the featured image
+- [x] FR-014: self-contained piece, registered only when core 2.2 helpers exist, standalone output without Yoast
+- [x] FR-015: PHPUnit regression tests (21 tests)
+- [x] FR-017: core aggregate rating untouched
+- [ ] FR-016: manual QA. The local capture and the 45-review audit are done (see [quickstart.md](./quickstart.md)); external validators, the no-Yoast check and the core 2.1 check are still outstanding
+
+### Key commits
+
+- `a241e2d`: rebuild the Review piece without the legacy core base class
+- `3f933ec`: rating, itemReviewed, date-of-visit and `about` fixes
+- `1bef045`: regression tests
+- `1a68d80`: destinations in itemReviewed, post-author fallback
 
 ## User Scenarios & Testing *(mandatory)*
 
