@@ -54,6 +54,7 @@ function lsx_to_test_reset() {
 		'posts'    => array(),
 		'meta'     => array(),
 		'terms'    => array(),
+		'users'    => array(),
 		'singular' => '',
 		'currency' => 'USD',
 	);
@@ -75,6 +76,7 @@ function lsx_to_test_add_post( $id, array $args = array() ) {
 			'post_status'       => 'publish',
 			'post_content'      => '',
 			'post_excerpt'      => '',
+			'post_author'       => 0,
 			'post_date_gmt'     => '2026-01-02 03:04:05',
 			'post_modified_gmt' => '2026-02-03 04:05:06',
 		),
@@ -111,6 +113,21 @@ function lsx_to_test_add_terms( $id, $taxonomy, array $names ) {
 		);
 	}
 	$GLOBALS['lsx_to_test']['terms'][ $id ][ $taxonomy ] = $terms;
+}
+
+/**
+ * Adds a user fixture.
+ *
+ * @param int    $id           User ID.
+ * @param string $user_login   Login name.
+ * @param string $display_name Display name.
+ */
+function lsx_to_test_add_user( $id, $user_login, $display_name ) {
+	$GLOBALS['lsx_to_test']['users'][ $id ] = (object) array(
+		'ID'           => $id,
+		'user_login'   => $user_login,
+		'display_name' => $display_name,
+	);
 }
 
 // -----------------------------------------------------------------------------
@@ -222,4 +239,8 @@ function wp_hash( $data, $scheme = 'auth' ) {
 
 function home_url( $path = '' ) {
 	return 'https://example.test' . $path;
+}
+
+function get_userdata( $user_id ) {
+	return $GLOBALS['lsx_to_test']['users'][ (int) $user_id ] ?? false;
 }

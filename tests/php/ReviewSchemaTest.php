@@ -84,7 +84,32 @@ class ReviewSchemaTest extends TestCase {
 		$this->assertStringNotContainsString( 'guest.private', $json );
 	}
 
-	public function test_author_is_omitted_without_a_reviewer_name() {
+	public function test_author_falls_back_to_the_post_author_without_a_reviewer_name() {
+		lsx_to_test_add_user( 7, 'editor', 'Sam &amp; Co' );
+		$GLOBALS['lsx_to_test']['posts'][ self::REVIEW_ID ]->post_author = 7;
+		lsx_to_test_add_meta( self::REVIEW_ID, array( 'reviewer_name' => '' ) );
+
+		$data = $this->generate();
+
+		$this->assertSame(
+			array(
+				'@type' => 'Person',
+				'@id'   => 'https://example.test/#/schema/person/' . wp_hash( 'editor7' ),
+				'name'  => 'Sam & Co',
+			),
+			$data['author']
+		);
+		$this->assertStringNotContainsString( self::EMAIL, (string) json_encode( $data ) );
+	}
+
+	public function test_reviewer_name_takes_precedence_over_the_post_author() {
+		lsx_to_test_add_user( 7, 'editor', 'Site Editor' );
+		$GLOBALS['lsx_to_test']['posts'][ self::REVIEW_ID ]->post_author = 7;
+
+		$this->assertSame( 'Rachel & Nigel', $this->generate()['author']['name'] );
+	}
+
+	public function test_author_is_omitted_without_a_reviewer_name_or_post_author() {
 		lsx_to_test_add_meta( self::REVIEW_ID, array( 'reviewer_name' => '' ) );
 
 		$this->assertArrayNotHasKey( 'author', $this->generate() );
@@ -128,16 +153,18 @@ class ReviewSchemaTest extends TestCase {
 		$this->assertArrayNotHasKey( 'reviewRating', $this->generate() );
 	}
 
-	public function test_tours_and_accommodation_are_merged_without_overwriting() {
+	public function test_tours_accommodation_and_destinations_are_merged_without_overwriting() {
 		lsx_to_test_add_post( 20, array( 'post_title' => 'Cape &#8211; Safari', 'post_type' => 'tour' ) );
 		lsx_to_test_add_post( 21, array( 'post_title' => 'Draft Tour', 'post_type' => 'tour', 'post_status' => 'draft' ) );
 		lsx_to_test_add_post( 30, array( 'post_title' => 'River Lodge', 'post_type' => 'accommodation' ) );
+		lsx_to_test_add_post( 40, array( 'post_title' => 'Namibia', 'post_type' => 'destination' ) );
 		lsx_to_test_add_meta(
 			self::REVIEW_ID,
 			array(
 				// Stored as one serialised array, as CMB2 relationship fields do.
 				'tour_to_review'          => array( array( '20', '21', '20' ) ),
 				'accommodation_to_review' => array( array( '30', '30' ) ),
+				'destination_to_review'   => array( array( '40', '999' ) ),
 			)
 		);
 
@@ -153,9 +180,34 @@ class ReviewSchemaTest extends TestCase {
 					'name'  => 'River Lodge',
 					'url'   => 'https://example.test/accommodation/30/',
 				),
+				array(
+					'@type' => 'TouristDestination',
+					'name'  => 'Namibia',
+					'url'   => 'https://example.test/destination/40/',
+				),
 			),
 			$this->generate()['itemReviewed']
 		);
+	}
+
+	public function test_a_destination_alone_is_the_reviewed_item() {
+		lsx_to_test_add_post( 40, array( 'post_title' => 'Namibia', 'post_type' => 'destination' ) );
+		lsx_to_test_add_meta( self::REVIEW_ID, array( 'destination_to_review' => array( 40 ) ) );
+
+		$this->assertSame(
+			array(
+				'@type' => 'TouristDestination',
+				'name'  => 'Namibia',
+				'url'   => 'https://example.test/destination/40/',
+			),
+			$this->generate()['itemReviewed']
+		);
+	}
+
+	public function test_item_reviewed_is_omitted_when_only_missing_posts_are_linked() {
+		lsx_to_test_add_meta( self::REVIEW_ID, array( 'accommodation_to_review' => array( array( '10787' ) ) ) );
+
+		$this->assertArrayNotHasKey( 'itemReviewed', $this->generate() );
 	}
 
 	public function test_single_reviewed_item_is_an_object() {

@@ -133,28 +133,39 @@ class LSX_TO_Schema_Review {
 	}
 
 	/**
-	 * Adds the review author. The reviewer email only feeds a one-way keyed
-	 * hash (wp_hash(), salted per site) for a stable author @id; the email
-	 * itself is never output. The author is omitted when no name is set.
+	 * Adds the review author: the reviewer, falling back to the WordPress
+	 * author of the review post. Google requires an author.
+	 *
+	 * The reviewer email only feeds a one-way keyed hash (wp_hash(), salted
+	 * per site) for a stable author @id; the email itself is never output.
+	 * The post-author fallback uses Yoast's user Person @id scheme so it
+	 * matches Person nodes Yoast outputs elsewhere on the site.
 	 *
 	 * @param array $data Review data.
 	 * @return array
 	 */
 	protected function add_author( array $data ) {
-		$name  = Helpers::strip_to_text( Helpers::get_meta( $this->post_id, 'reviewer_name' ) );
-		$email = Helpers::get_meta( $this->post_id, 'reviewer_email' );
+		$site_url = ( null !== $this->context && ! empty( $this->context->site_url ) ) ? $this->context->site_url : home_url( '/' );
+		$name     = Helpers::strip_to_text( Helpers::get_meta( $this->post_id, 'reviewer_name' ) );
 
-		if ( '' === $name ) {
+		if ( '' !== $name ) {
+			$email          = Helpers::get_meta( $this->post_id, 'reviewer_email' );
+			$data['author'] = array(
+				'@type' => 'Person',
+				'@id'   => $site_url . '#/schema/person/' . wp_hash( $name . $email ),
+				'name'  => $name,
+			);
 			return $data;
 		}
 
-		$site_url = ( null !== $this->context && ! empty( $this->context->site_url ) ) ? $this->context->site_url : home_url( '/' );
-
-		$data['author'] = array(
-			'@type' => 'Person',
-			'@id'   => $site_url . '#/schema/person/' . wp_hash( $name . $email ),
-			'name'  => $name,
-		);
+		$user = get_userdata( (int) $this->post->post_author );
+		if ( $user && '' !== Helpers::strip_to_text( $user->display_name ) ) {
+			$data['author'] = array(
+				'@type' => 'Person',
+				'@id'   => $site_url . '#/schema/person/' . wp_hash( $user->user_login . $user->ID ),
+				'name'  => Helpers::strip_to_text( $user->display_name ),
+			);
+		}
 
 		return $data;
 	}
@@ -180,8 +191,9 @@ class LSX_TO_Schema_Review {
 	}
 
 	/**
-	 * Merges the related tours and accommodation into a single itemReviewed
-	 * value, typed appropriately, without overwriting each other.
+	 * Merges the related tours, accommodation and destinations into a single
+	 * itemReviewed value, typed appropriately, without overwriting each other.
+	 * Google requires itemReviewed for review rich results.
 	 *
 	 * @param array $data Review data.
 	 * @return array
@@ -189,7 +201,8 @@ class LSX_TO_Schema_Review {
 	protected function add_items_reviewed( array $data ) {
 		$items = array_merge(
 			$this->get_related_items( 'tour_to_review', 'TouristTrip' ),
-			$this->get_related_items( 'accommodation_to_review', 'LodgingBusiness' )
+			$this->get_related_items( 'accommodation_to_review', 'LodgingBusiness' ),
+			$this->get_related_items( 'destination_to_review', 'TouristDestination' )
 		);
 
 		if ( ! empty( $items ) ) {
