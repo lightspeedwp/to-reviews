@@ -38,3 +38,7 @@ gulpfile.js
 # Environment files
 .env
 .env.local
+
+# PHPUnit
+.phpunit.result.cache
+.phpunit.cache
