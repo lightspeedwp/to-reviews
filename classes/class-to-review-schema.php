@@ -91,7 +91,7 @@ class LSX_TO_Schema_Review {
 			'@type'            => 'Review',
 			'@id'              => $this->canonical . '#/schema/review/' . $this->post_id,
 			'url'              => $this->canonical,
-			'headline'         => get_the_title( $this->post_id ),
+			'headline'         => $this->get_plain_title( $this->post_id ),
 			'datePublished'    => mysql2date( DATE_W3C, $this->post->post_date_gmt, false ),
 			'dateModified'     => mysql2date( DATE_W3C, $this->post->post_modified_gmt, false ),
 			'commentCount'     => (int) $comment_count['approved'],
@@ -109,8 +109,8 @@ class LSX_TO_Schema_Review {
 
 		$data = $this->add_date_of_visit( $data );
 		$data = $this->add_image( $data );
-		$data = $this->add_terms( $data, 'keywords', 'post_tag' );
-		$data = $this->add_terms( $data, 'about', 'category' );
+		$data = $this->add_keywords( $data );
+		$data = $this->add_about( $data );
 		$data = $this->add_destinations( $data );
 
 		/**
@@ -123,15 +123,30 @@ class LSX_TO_Schema_Review {
 	}
 
 	/**
+	 * Gets a post title as plain text, with texturised entities decoded.
+	 *
+	 * @param int $post_id Post ID.
+	 * @return string
+	 */
+	protected function get_plain_title( $post_id ) {
+		return Helpers::strip_to_text( get_the_title( $post_id ) );
+	}
+
+	/**
 	 * Adds the review author. The reviewer email only feeds a one-way keyed
-	 * hash for a stable author @id; it is never output.
+	 * hash (wp_hash(), salted per site) for a stable author @id; the email
+	 * itself is never output. The author is omitted when no name is set.
 	 *
 	 * @param array $data Review data.
 	 * @return array
 	 */
 	protected function add_author( array $data ) {
-		$name  = Helpers::get_meta( $this->post_id, 'reviewer_name' );
+		$name  = Helpers::strip_to_text( Helpers::get_meta( $this->post_id, 'reviewer_name' ) );
 		$email = Helpers::get_meta( $this->post_id, 'reviewer_email' );
+
+		if ( '' === $name ) {
+			return $data;
+		}
 
 		$site_url = ( null !== $this->context && ! empty( $this->context->site_url ) ) ? $this->context->site_url : home_url( '/' );
 
@@ -145,14 +160,15 @@ class LSX_TO_Schema_Review {
 	}
 
 	/**
-	 * Adds the review rating on a 1–5 scale.
+	 * Adds the review rating on a 1–5 scale. Empty, zero and out-of-range
+	 * ratings are omitted, since they cannot be expressed on that scale.
 	 *
 	 * @param array $data Review data.
 	 * @return array
 	 */
 	protected function add_rating( array $data ) {
-		$rating = Helpers::get_meta( $this->post_id, 'rating' );
-		if ( '' !== $rating ) {
+		$rating = trim( Helpers::get_meta( $this->post_id, 'rating' ) );
+		if ( ctype_digit( $rating ) && (int) $rating >= 1 && (int) $rating <= 5 ) {
 			$data['reviewRating'] = array(
 				'@type'       => 'Rating',
 				'ratingValue' => (int) $rating,
@@ -185,6 +201,7 @@ class LSX_TO_Schema_Review {
 
 	/**
 	 * Builds typed nodes for the posts linked through a relationship field.
+	 * Only published posts are included, each once, with their public URL.
 	 *
 	 * @param string $meta_key Relationship meta key.
 	 * @param string $type     Schema.org type for the nodes.
@@ -192,12 +209,17 @@ class LSX_TO_Schema_Review {
 	 */
 	protected function get_related_items( $meta_key, $type ) {
 		$items = array();
-		foreach ( Helpers::get_meta_array( $this->post_id, $meta_key ) as $related_id ) {
-			$title = get_the_title( (int) $related_id );
+		$ids   = array_unique( array_map( 'intval', Helpers::get_meta_array( $this->post_id, $meta_key ) ) );
+		foreach ( $ids as $related_id ) {
+			if ( $related_id < 1 || 'publish' !== get_post_status( $related_id ) ) {
+				continue;
+			}
+			$title = $this->get_plain_title( $related_id );
 			if ( '' !== $title ) {
 				$items[] = array(
 					'@type' => $type,
 					'name'  => $title,
+					'url'   => (string) get_permalink( $related_id ),
 				);
 			}
 		}
@@ -206,7 +228,9 @@ class LSX_TO_Schema_Review {
 
 	/**
 	 * Adds the date of visit as an ISO 8601 temporalCoverage interval when both
-	 * dates are available, falling back to an additionalProperty otherwise.
+	 * dates are valid and in order. Otherwise the valid dates are reported as
+	 * entered in a "Date of Visit" additionalProperty, so a reversed or
+	 * partial range never produces an invalid interval.
 	 *
 	 * @param array $data Review data.
 	 * @return array
@@ -215,43 +239,80 @@ class LSX_TO_Schema_Review {
 		$start = Helpers::format_iso_date( Helpers::get_meta( $this->post_id, 'date_of_visit_start' ) );
 		$end   = Helpers::format_iso_date( Helpers::get_meta( $this->post_id, 'date_of_visit_end' ) );
 
-		if ( '' !== $start && '' !== $end ) {
+		if ( '' !== $start && '' !== $end && $start <= $end ) {
 			$data['temporalCoverage'] = $start . '/' . $end;
 		} elseif ( '' !== $start || '' !== $end ) {
-			$data['additionalProperty'][] = Helpers::make_property_value( __( 'Date of Visit', 'to-reviews' ), trim( $start . ' ' . $end ) );
+			$dates                        = array_filter( array( $start, $end ) );
+			$data['additionalProperty'][] = Helpers::make_property_value( __( 'Date of Visit', 'to-reviews' ), implode( ' – ', $dates ) );
 		}
 
 		return $data;
 	}
 
 	/**
-	 * Adds taxonomy term names as a comma-separated value.
+	 * Gets the plain-text term names for a taxonomy, excluding the default
+	 * "Uncategorized" term.
 	 *
-	 * @param array  $data     Review data.
-	 * @param string $data_key Schema property.
 	 * @param string $taxonomy Taxonomy name.
-	 * @return array
+	 * @return string[]
 	 */
-	protected function add_terms( array $data, $data_key, $taxonomy ) {
+	protected function get_term_names( $taxonomy ) {
 		$terms = get_the_terms( $this->post_id, $taxonomy );
 		if ( ! is_array( $terms ) ) {
-			return $data;
+			return array();
 		}
 
 		$names = array();
 		foreach ( $terms as $term ) {
+			// Compare against the WordPress core translation of the default term.
 			// phpcs:ignore WordPress.WP.I18n.MissingArgDomainDefault
 			if ( __( 'Uncategorized' ) !== $term->name ) {
-				$names[] = $term->name;
+				$names[] = Helpers::strip_to_text( $term->name );
 			}
 		}
 
-		$data[ $data_key ] = implode( ',', $names );
+		return array_values( array_filter( array_unique( $names ) ) );
+	}
+
+	/**
+	 * Adds the post tags as keywords.
+	 *
+	 * @param array $data Review data.
+	 * @return array
+	 */
+	protected function add_keywords( array $data ) {
+		$names = $this->get_term_names( 'post_tag' );
+		if ( ! empty( $names ) ) {
+			$data['keywords'] = implode( ', ', $names );
+		}
 		return $data;
 	}
 
 	/**
-	 * Adds the destinations attached to the review as spatialCoverage.
+	 * Adds the categories as `about` Thing nodes, replacing the invalid
+	 * reviewSection property used previously.
+	 *
+	 * @param array $data Review data.
+	 * @return array
+	 */
+	protected function add_about( array $data ) {
+		$about = array();
+		foreach ( $this->get_term_names( 'category' ) as $name ) {
+			$about[] = array(
+				'@type' => 'Thing',
+				'name'  => $name,
+			);
+		}
+
+		if ( ! empty( $about ) ) {
+			$data['about'] = 1 === count( $about ) ? $about[0] : $about;
+		}
+		return $data;
+	}
+
+	/**
+	 * Adds the published destinations attached to the review as
+	 * spatialCoverage, typed as TouristDestination.
 	 *
 	 * @param array $data Review data.
 	 * @return array
