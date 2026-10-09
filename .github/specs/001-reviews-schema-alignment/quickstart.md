@@ -11,7 +11,7 @@ composer test
 TO_CORE_PATH=/path/to/tour-operator vendor/bin/phpunit -c phpunit.xml.dist
 ```
 
-Expected result: `OK (17 tests)`. Twelve of the tests fail against the pre-fix piece (`a241e2d`).
+Expected result: `OK (21 tests)`. Twelve of the original tests fail against the pre-fix piece (`a241e2d`). The three destination and author-fallback tests fail against `3d96704`.
 
 ## Manual QA
 
@@ -70,5 +70,23 @@ Environment: `https://beta.local`, Tour Operator 2.2.0 (`fix/itinerary-schema-fi
 - The reference review has its visit end (2025-06-19) **before** its start (2025-09-05). The schema correctly falls back to the "Date of Visit" property, and the content should be corrected.
 - The review is linked to a Special (ID 210). No `offers` is emitted.
 - Email search: 0 occurrences of the reviewer email in the page HTML. No PHP errors from TO Reviews.
+
+### Google requirements audit (2026-10-09)
+
+An audit reported 44 reviews with no `itemReviewed` and 8 with no `author`. The local site has 45 published reviews; running the live piece over all of them with WP-CLI gives:
+
+| Check | Before | After |
+| --- | --- | --- |
+| No `itemReviewed` | 44 (the legacy code dropped serialised relationship arrays) | **4** |
+| No `author` | 8 (no reviewer name) | **0**: 8 now use the post-author fallback |
+| Reviewer email in output | 0 | 0 |
+
+The remaining 4 are content issues, not schema issues:
+- **371 "Empty Review"**: no links.
+- **303 "Elisabeth"**: linked to accommodation 10787, which does not exist.
+- **301 "Savita Sinha"**: linked to destinations 2569, 15599, 2570 and 2571, which do not exist.
+- **291 "George du Pré"**: linked to tour 19761, which does not exist.
+
+Re-link each of these to a published tour, accommodation or destination.
 
 **Still to do before sign-off**: steps 4 (external validators), 8 (no Yoast) and 9 (core 2.1) on `tour-operator.lightspeedwp.dev`.
