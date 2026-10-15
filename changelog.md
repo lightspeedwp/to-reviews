@@ -2,22 +2,33 @@
 
 ## [Unreleased]
 
-### Security
-- Cleared all 13 Dependabot alerts. Every one was a transitive build-toolchain package reached through `@wordpress/scripts`, `stylelint` or `cssnano`, with no direct dependency to bump, so they are constrained with `overrides` in `package.json`, which survives lockfile regeneration. These are caret ranges rather than exact pins: they set a patched floor and let npm resolve upwards within the major. `fast-uri ^3.1.6` (4 high, SSRF and host confusion), `serialize-javascript ^7.0.5` (high RCE, moderate CPU-exhaustion DoS), `browserslist ^4.28.7` (high), `@humanfs/node ^0.16.8` (moderate), and `sockjs > uuid ^11.1.1`. `postcss-selector-parser` (2 low) is pinned `^6.1.3` at the root for the cssnano v6 plugin set, with nested `^7.1.3` overrides for stylelint and the postcss-modules packages, so neither major line is forced across a boundary. `markdownlint-cli ^0.49.1` clears the `markdown-it` smartquotes ReDoS and the `minimatch` backtracking alerts at source rather than force-patching leaves into a 2022-era parent.
+### Added
+- CI workflow that builds the block assets and lints styles. The only checks were PHP syntax and CodeQL, so a broken webpack config or stylesheet could merge unnoticed. It uses GitHub's native `concurrency` with `cancel-in-progress`, keyed on `github.ref` so that fork pull requests sharing a branch name cannot cancel each other's checks.
+- PHPUnit regression tests for the Review schema (`composer test`).
 
 ### Changed
 - All version sources reconciled on `2.2.0`. The plugin header and the readme `Stable tag` read `2.2`, `LSX_TO_REVIEWS_VER` read `2.2.0`, and `package.json` was further behind still at `2.0.0`. Only `2.2.0` has ever existed as a git tag, and `10up/action-wordpress-plugin-deploy` derives the WordPress.org SVN tag from the git tag, so `Stable tag: 2.2` pointed at a tag that was never created. All four sources now read `2.2.0`, and `npm run lint:version` (`scripts/check-version-sync.mjs`) fails CI if they drift apart again.
 - Raised the Node support contract to `>=24.0.0` with `npm >=11.0.0`, pinned in a new `.nvmrc` on 24.20.0, the current LTS line. The previous `>=18.0.0` was far broader than the resolved toolchain supports, which requires Node 20 and 22 in places.
 - `.coderabbit.yaml` now parses. It had a duplicated `reviews.path_filters` mapping key, which is a hard YAML error, so CodeRabbit had been silently falling back to default settings instead of this repository's own review instructions. Also removed the top-level `commands` and `linked_issues` keys, which are not in the v2 schema.
 
-### Added
-- CI workflow that builds the block assets and lints styles. The only checks were PHP syntax and CodeQL, so a broken webpack config or stylesheet could merge unnoticed. It uses GitHub's native `concurrency` with `cancel-in-progress`, keyed on `github.ref` so that fork pull requests sharing a branch name cannot cancel each other's checks.
-
 ### Removed
 - The `dependencies` block. `lodash`, `minimatch` and `randomatic` were never imported by any source file; they were leftover `npm audit fix` pins, and declaring them as runtime dependencies is why Dependabot reported them under runtime scope for a plugin that ships PHP and built assets only.
 - `.github/workflows/check-php-syntax-errors.yml`. It pinned `overtrue/phplint@9.8`, whose published action image is missing `symfony/stopwatch` and dies before linting anything. The new CI workflow lints with plain `php -l` across 8.2, 8.3 and 8.4 instead.
 - `.github/workflows/cancel.yml`. GitHub cancels superseded runs natively, and the workflow queried the API for every workflow id on each run.
 - `.stylelintrc.json`. It extended `@humanmade/stylelint-config`, which is not installed, so `npm run lint:css` aborted with a `ConfigurationError` before linting anything, and it shadowed the `stylelint.config.js` that extends `@wordpress/stylelint-config`.
+
+### Fixed
+- Schema: rebuilt the `Review` schema piece as a self-contained class on the Tour Operator core 2.2 schema helpers. It no longer depends on the legacy `LSX_TO_Schema_Graph_Piece` base class, which core is removing; without this change, review pages emit no Review schema with the new core. ([TO-216](https://linear.app/lightspeedwp/issue/TO-216))
+- Schema: the Review schema is only registered when the core 2.2 schema helpers are available (no fatal error on older core), and a standalone JSON-LD block is printed when Yoast SEO is inactive.
+- Schema: `reviewRating` is only output for whole ratings from 1 to 5. A stored rating of "0" no longer produces an invalid rating.
+- Schema: `itemReviewed` and `spatialCoverage` include each item's URL, list published items only, and remove duplicates. Relationship fields stored as a single serialised array are now read correctly.
+- Schema: `itemReviewed` now also includes linked destinations (`TouristDestination`), and `author` falls back to the review post's WordPress author when no reviewer name is set. Google requires both for review rich results.
+- Schema: a visit end date before the start date falls back to a "Date of Visit" property instead of an invalid `temporalCoverage` interval.
+- Schema: categories are output as `about` Thing nodes, replacing the invalid `reviewSection`. Empty `about` and `keywords` are no longer output.
+- Schema: the headline, author name and item names are plain text, with HTML entities decoded. The reviewer email is never output, and `offers` is no longer output.
+
+### Security
+- Cleared all 13 Dependabot alerts. Every one was a transitive build-toolchain package reached through `@wordpress/scripts`, `stylelint` or `cssnano`, with no direct dependency to bump, so they are constrained with `overrides` in `package.json`, which survives lockfile regeneration. These are caret ranges rather than exact pins: they set a patched floor and let npm resolve upwards within the major. `fast-uri ^3.1.6` (4 high, SSRF and host confusion), `serialize-javascript ^7.0.5` (high RCE, moderate CPU-exhaustion DoS), `browserslist ^4.28.7` (high), `@humanfs/node ^0.16.8` (moderate), and `sockjs > uuid ^11.1.1`. `postcss-selector-parser` (2 low) is pinned `^6.1.3` at the root for the cssnano v6 plugin set, with nested `^7.1.3` overrides for stylelint and the postcss-modules packages, so neither major line is forced across a boundary. `markdownlint-cli ^0.49.1` clears the `markdown-it` smartquotes ReDoS and the `minimatch` backtracking alerts at source rather than force-patching leaves into a 2022-era parent.
 
 ## [[2.2]](https://github.com/lightspeedwp/to-reviews/releases/tag/2.2) - 2026-07-29
 
