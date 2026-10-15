@@ -137,9 +137,14 @@ class LSX_TO_Reviews_Frontend {
 
 		require_once LSX_TO_REVIEWS_PATH . '/classes/class-to-review-schema.php';
 		$piece = new LSX_TO_Schema_Review();
+		$data  = $piece->generate();
+		if ( empty( $data ) ) {
+			return;
+		}
+
 		$graph = array(
 			'@context' => 'https://schema.org',
-			'@graph'   => array( $piece->generate() ),
+			'@graph'   => array( $data ),
 		);
 
 		// JSON_HEX_TAG prevents </script> injection; JSON_HEX_AMP avoids HTML entity issues.

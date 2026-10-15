@@ -315,4 +315,51 @@ class ReviewSchemaTest extends TestCase {
 		$this->assertArrayNotHasKey( 'offers', $data );
 		$this->assertStringNotContainsString( 'PriceSpecification', (string) json_encode( $data ) );
 	}
+
+	/**
+	 * Non-public post statuses.
+	 *
+	 * @return array
+	 */
+	public static function unpublished_statuses() {
+		return array(
+			'draft'   => array( 'draft' ),
+			'pending' => array( 'pending' ),
+			'private' => array( 'private' ),
+			'future'  => array( 'future' ),
+		);
+	}
+
+	/**
+	 * @dataProvider unpublished_statuses
+	 *
+	 * @param string $status Post status.
+	 */
+	public function test_unpublished_reviews_emit_nothing( $status ) {
+		$GLOBALS['lsx_to_test']['posts'][ self::REVIEW_ID ]->post_status = $status;
+
+		$this->assertSame( array(), $this->generate() );
+	}
+
+	public function test_missing_post_emits_nothing() {
+		$this->assertSame( array(), $this->generate( array( 'id' => 999 ) ) );
+	}
+
+	public function test_without_context_the_queried_post_is_used_not_the_loop_post() {
+		lsx_to_test_add_post( 50, array( 'post_title' => 'Some other post' ) );
+		$GLOBALS['lsx_to_test']['queried'] = self::REVIEW_ID;
+		$GLOBALS['lsx_to_test']['loop_id'] = 50;
+
+		$data = ( new LSX_TO_Schema_Review() )->generate();
+
+		$this->assertSame( 'https://example.test/review/10/#/schema/review/10', $data['@id'] );
+	}
+
+	public function test_without_context_falls_back_to_the_loop_post() {
+		$GLOBALS['lsx_to_test']['loop_id'] = self::REVIEW_ID;
+
+		$data = ( new LSX_TO_Schema_Review() )->generate();
+
+		$this->assertSame( 'https://example.test/review/10/#/schema/review/10', $data['@id'] );
+	}
 }
