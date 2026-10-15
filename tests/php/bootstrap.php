@@ -56,6 +56,8 @@ function lsx_to_test_reset() {
 		'terms'    => array(),
 		'users'    => array(),
 		'singular' => '',
+		'queried'  => 0,
+		'loop_id'  => 0,
 		'currency' => 'USD',
 	);
 }
@@ -162,7 +164,11 @@ function get_post_status( $id = null ) {
 }
 
 function get_the_ID() {
-	return 0;
+	return $GLOBALS['lsx_to_test']['loop_id'];
+}
+
+function get_queried_object_id() {
+	return $GLOBALS['lsx_to_test']['queried'];
 }
 
 function is_singular( $post_types = '' ) {

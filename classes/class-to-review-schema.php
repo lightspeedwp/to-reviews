@@ -57,11 +57,20 @@ class LSX_TO_Schema_Review {
 	/**
 	 * Constructor.
 	 *
+	 * Without a Yoast context the post is taken from the queried object, which
+	 * stays reliable in wp_head even if a custom loop has changed the global
+	 * $post, falling back to get_the_ID().
+	 *
 	 * @param \Yoast\WP\SEO\Context\Meta_Tags_Context|\WPSEO_Schema_Context|null $context Yoast context, or null when Yoast is inactive.
 	 */
 	public function __construct( $context = null ) {
-		$this->context   = $context;
-		$this->post_id   = ( null !== $context ) ? (int) $context->id : (int) get_the_ID();
+		$this->context = $context;
+		if ( null !== $context ) {
+			$this->post_id = (int) $context->id;
+		} else {
+			$queried_id    = (int) get_queried_object_id();
+			$this->post_id = $queried_id > 0 ? $queried_id : (int) get_the_ID();
+		}
 		$this->post      = get_post( $this->post_id );
 		$this->canonical = (string) get_permalink( $this->post_id );
 	}
@@ -78,10 +87,13 @@ class LSX_TO_Schema_Review {
 	/**
 	 * Generates and returns the Review schema data array.
 	 *
-	 * @return array Schema.org Review data.
+	 * Returns an empty array for a missing post or a review that is not
+	 * published, so drafts, private posts and previews never emit a Review.
+	 *
+	 * @return array Schema.org Review data, or an empty array.
 	 */
 	public function generate() {
-		if ( ! is_object( $this->post ) ) {
+		if ( ! is_object( $this->post ) || 'publish' !== get_post_status( $this->post_id ) ) {
 			return array();
 		}
 
