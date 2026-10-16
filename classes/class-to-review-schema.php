@@ -252,24 +252,29 @@ class LSX_TO_Schema_Review {
 	}
 
 	/**
-	 * Adds the date of visit as an ISO 8601 temporalCoverage interval when both
-	 * dates are valid and in order. Otherwise the valid dates are reported as
-	 * entered in a "Date of Visit" additionalProperty, so a reversed or
-	 * partial range never produces an invalid interval.
+	 * Adds the date of visit as an ISO 8601 temporalCoverage value: an
+	 * interval when both dates are valid, put in order if entered reversed,
+	 * or the single date when only one is valid.
 	 *
 	 * @param array $data Review data.
 	 * @return array
 	 */
 	protected function add_date_of_visit( array $data ) {
-		$start = Helpers::format_iso_date( Helpers::get_meta( $this->post_id, 'date_of_visit_start' ) );
-		$end   = Helpers::format_iso_date( Helpers::get_meta( $this->post_id, 'date_of_visit_end' ) );
+		$dates = array_filter(
+			array(
+				Helpers::format_iso_date( Helpers::get_meta( $this->post_id, 'date_of_visit_start' ) ),
+				Helpers::format_iso_date( Helpers::get_meta( $this->post_id, 'date_of_visit_end' ) ),
+			)
+		);
 
-		if ( '' !== $start && '' !== $end && $start <= $end ) {
-			$data['temporalCoverage'] = $start . '/' . $end;
-		} elseif ( '' !== $start || '' !== $end ) {
-			$dates                        = array_filter( array( $start, $end ) );
-			$data['additionalProperty'][] = Helpers::make_property_value( __( 'Date of Visit', 'to-reviews' ), implode( ' – ', $dates ) );
+		if ( empty( $dates ) ) {
+			return $data;
 		}
+
+		sort( $dates );
+		$dates = array_unique( $dates );
+
+		$data['temporalCoverage'] = implode( '/', $dates );
 
 		return $data;
 	}

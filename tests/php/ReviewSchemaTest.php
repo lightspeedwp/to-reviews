@@ -232,7 +232,7 @@ class ReviewSchemaTest extends TestCase {
 		$this->assertArrayNotHasKey( 'additionalProperty', $data );
 	}
 
-	public function test_reversed_visit_dates_fall_back_to_a_property() {
+	public function test_reversed_visit_dates_are_put_in_order() {
 		lsx_to_test_add_meta(
 			self::REVIEW_ID,
 			array(
@@ -243,17 +243,23 @@ class ReviewSchemaTest extends TestCase {
 
 		$data = $this->generate();
 
-		$this->assertArrayNotHasKey( 'temporalCoverage', $data );
-		$this->assertSame(
+		$this->assertSame( '2025-06-19/2025-09-05', $data['temporalCoverage'] );
+		$this->assertArrayNotHasKey( 'additionalProperty', $data );
+	}
+
+	public function test_a_single_visit_date_is_used_on_its_own() {
+		lsx_to_test_add_meta(
+			self::REVIEW_ID,
 			array(
-				array(
-					'@type' => 'PropertyValue',
-					'name'  => 'Date of Visit',
-					'value' => "2025-09-05 \u{2013} 2025-06-19",
-				),
-			),
-			$data['additionalProperty']
+				'date_of_visit_start' => (string) gmmktime( 0, 0, 0, 6, 1, 2025 ),
+				'date_of_visit_end'   => 'not a date',
+			)
 		);
+
+		$data = $this->generate();
+
+		$this->assertSame( '2025-06-01', $data['temporalCoverage'] );
+		$this->assertArrayNotHasKey( 'additionalProperty', $data );
 	}
 
 	public function test_categories_map_to_about_things_and_review_section_is_gone() {
