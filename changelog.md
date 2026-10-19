@@ -23,7 +23,7 @@
 - Schema: `reviewRating` is only output for whole ratings from 1 to 5. A stored rating of "0" no longer produces an invalid rating.
 - Schema: `itemReviewed` and `spatialCoverage` include each item's URL, list published items only, and remove duplicates. Relationship fields stored as a single serialised array are now read correctly.
 - Schema: `itemReviewed` now also includes linked destinations (`TouristDestination`), and `author` falls back to the review post's WordPress author when no reviewer name is set. Google requires both for review rich results.
-- Schema: a visit end date before the start date falls back to a "Date of Visit" property instead of an invalid `temporalCoverage` interval.
+- Schema: the date of visit is always output as `temporalCoverage`, since `additionalProperty` is not valid on a Review. Dates entered in reverse order are put in order, and a single valid date is used on its own. ([TO-216](https://linear.app/lightspeedwp/issue/TO-216))
 - Schema: categories are output as `about` Thing nodes, replacing the invalid `reviewSection`. Empty `about` and `keywords` are no longer output.
 - Schema: the headline, author name and item names are plain text, with HTML entities decoded. The reviewer email is never output, and `offers` is no longer output.
 
