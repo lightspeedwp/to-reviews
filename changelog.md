@@ -18,6 +18,7 @@
 - `.stylelintrc.json`. It extended `@humanmade/stylelint-config`, which is not installed, so `npm run lint:css` aborted with a `ConfigurationError` before linting anything, and it shadowed the `stylelint.config.js` that extends `@wordpress/stylelint-config`.
 
 ### Fixed
+- CI: `npm ci` failed on every run because `package-lock.json` and `package.json` disagreed. Dependabot's [#281](https://github.com/lightspeedwp/to-reviews/pull/281) moved the lock file to `@wordpress/scripts` 37.0.0, but `package.json` still asked for `^34.2.0`. `package.json` now asks for `^37.0.0` and the lock file is regenerated. Rebuilding with version 37 reformats the committed `build/*.asset.php` files; their dependencies and version hashes are unchanged.
 - Schema: rebuilt the `Review` schema piece as a self-contained class on the Tour Operator core 2.2 schema helpers. It no longer depends on the legacy `LSX_TO_Schema_Graph_Piece` base class, which core is removing; without this change, review pages emit no Review schema with the new core. ([TO-216](https://linear.app/lightspeedwp/issue/TO-216))
 - Schema: the Review schema is only registered when the core 2.2 schema helpers are available (no fatal error on older core), and a standalone JSON-LD block is printed when Yoast SEO is inactive.
 - Schema: `reviewRating` is only output for whole ratings from 1 to 5. A stored rating of "0" no longer produces an invalid rating.
