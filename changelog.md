@@ -5,6 +5,7 @@
 ### Added
 - CI workflow that builds the block assets and lints styles. The only checks were PHP syntax and CodeQL, so a broken webpack config or stylesheet could merge unnoticed. It uses GitHub's native `concurrency` with `cancel-in-progress`, keyed on `github.ref` so that fork pull requests sharing a branch name cannot cancel each other's checks.
 - PHPUnit regression tests for the Review schema (`composer test`).
+- Sentry release workflow (TO-271). Tour Operator reports this plugin's errors from developers' local sites with the release `to-reviews@<version>+<short commit>`. Each push to `develop` now creates that release in the `tour-operator-server` and `tour-operator-frontend` projects, with linked commits for suspect commits and source maps for `build/`. `SENTRY_SOURCEMAPS=1 npm run build` writes hidden source maps without changing the built JavaScript. The workflow skips itself until the `SENTRY_GITHUB_ACTIONS` secret is set.
 
 ### Changed
 - All version sources reconciled on `2.2.0`. The plugin header and the readme `Stable tag` read `2.2`, `LSX_TO_REVIEWS_VER` read `2.2.0`, and `package.json` was further behind still at `2.0.0`. Only `2.2.0` has ever existed as a git tag, and `10up/action-wordpress-plugin-deploy` derives the WordPress.org SVN tag from the git tag, so `Stable tag: 2.2` pointed at a tag that was never created. All four sources now read `2.2.0`, and `npm run lint:version` (`scripts/check-version-sync.mjs`) fails CI if they drift apart again.
